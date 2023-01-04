@@ -1,23 +1,19 @@
+package Die;
+
 import java.util.Random;
 
 public class Die {
-
     private int eyes;
-
     private int amountOfFaces;
-
     public Die(){
         amountOfFaces = 6;
     }
-
     public Die(int amountOfFaces){
         this.amountOfFaces = amountOfFaces;
     }
-
     public int getEyes() {
         return eyes;
     }
-
     public void setEyes(int eyes) {
         this.eyes = eyes;
     }
