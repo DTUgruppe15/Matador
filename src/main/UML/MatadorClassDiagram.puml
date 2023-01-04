@@ -1,0 +1,129 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Game{
+    -gui:UpdateGUI
+    -fields:Fields[]
+    +main(String[] args):void
+    +run():void
+}
+class Player{
+    -balance:int
+    -position:int
+    -inJail:boolean
+    -timeInJail:int
+    +getPosition():int
+    +setPosition(int pos):void
+    +updatePosition(int amount):void
+    +getJailStatus():boolean
+    +getTimeInJail():int
+    +setJailStatus(boolean status):void
+    +updateTimeInJail():void
+}
+class Die{
+    -eyes:int
+    -amountOfFaces:int
+    +rollDie():void
+    +getEyes():int
+    +setEyes():void
+}
+class MiscStates{
+
+}
+class Board{
+    +initBoard(Field[] fields):void
+}
+class DiceCup{
+    -die1:Die
+    -die2:Die
+    +rollDice():void
+    +getSum():int
+}
+
+abstract class Fields{
+    -label:String
+    +Fields(String label):
+    {abstract}+doStuff(Player player):void
+    +getLabel():String
+}
+class Chancecard{
+    +doStuff(Player player):void
+}
+class GoToJail{
+    +doStuff(Player player):void
+}
+class Plots{
+    +doStuff(Player player):void
+}
+class Ferry{
+    +doStuff(Player player):void
+}
+class DrinkPlot{
+    +doStuff(Player player):void
+}
+class UpdateGUI{
+    -gui:GUI
+    -players:GUI_Player
+    +movePlayer(int player, int field):void
+    +setBalance(int player, int amount):void
+    +setDice(int die1, int die2):void
+    +addAmountOfPlayers():int
+    +sendMessages(String text):void
+    +setInfoOnFields():void
+    +UpdateGUI():
+}
+class Deed{
+    -location:String
+    -price:int
+    -rent:int
+    -isMortgage:boolean
+    -colorID:int
+    -houses:int
+    -hotel:boolean
+    +getMortgageStatus():boolean
+    +setMortgageStatus():void
+    +Deed(String location, int price, int rent):
+    +getPrice():int
+    +getLocation():String
+    +getRent():int
+    +setHouses():void
+    +setHotel():void
+    +getColorID():int
+}
+abstract class Properties{
+    -deed:Deed
+    -isBought:boolean
+    +getDeed():Deed
+    +setBoughtStatus:void
+    +getBoughtStatus:boolean
+}
+class Jail{
+    +doStuff(Player player):void
+}
+class Parking{
+    +doStuff(Player player):void
+}
+
+
+
+Game -->"1" DiceCup
+DiceCup -->"2" Die
+Game -->"3..6" Player
+Game -->"1" UpdateGUI
+Game -->"1" Board
+Board -->"40" Fields
+
+Fields <|-- Chancecard
+Fields <|-- Properties
+Properties <|-- Plots
+Properties <|-- Ferry
+Fields <|-- GoToJail
+Properties <|-- DrinkPlot
+Properties -->"1" Deed
+Fields <|-- Jail
+Fields <|-- Parking
+
+Game ->"1" MiscStates
+MiscStates -->"1" UpdateGUI
+
+@enduml
