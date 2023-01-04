@@ -5,6 +5,8 @@ public abstract class Fields {
         this.label = label;
     }
 
+    public Fields(){}
+
     public abstract  void doStuff(Player player);
 
     public String getLabel(){

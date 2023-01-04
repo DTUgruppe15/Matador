@@ -9,8 +9,17 @@ public class Plot extends Properties{
         this.deed = deed;
     }
 
+    public Deed buyPlot(){
+        bought = true;
+        return deed;
+    }
+
+    public boolean getBoughtStatus(){
+        return bought;
+    }
+
     @Override
     public void doStuff(Player player) {
-        System.out.println("plots");
+        System.out.println("plot: " + getLabel());
     }
 }
