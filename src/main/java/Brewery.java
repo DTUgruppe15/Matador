@@ -4,9 +4,9 @@ public class Brewery extends Properties{
 
     private boolean bought;
 
-    public Brewery(Deed deed){
-        super(deed.getLocation());
-        this.deed = deed;
+    public Brewery(String label, int price) {
+        super(label);
+        this.deed = new Deed(label,price);
     }
 
     @Override

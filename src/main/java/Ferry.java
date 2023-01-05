@@ -3,9 +3,9 @@ public class Ferry extends Properties{
 
     private boolean bought;
 
-    public Ferry(Deed deed){
-        super(deed.getLocation());
-        this.deed = deed;
+    public Ferry(String label, int price){
+        super(label);
+        this.deed = new Deed(label,price);
     }
 
     @Override
