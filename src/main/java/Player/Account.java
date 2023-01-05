@@ -15,20 +15,32 @@ public class Account {
         this.totalValue = balance;
     }
 
-    public void UpdateOwnedDeeds(Deed newDeed) {
-        boolean isMortgaged = false;
-        int mortgagedDeedPosition = 0;
-        for(Deed checkDeed : mortgagedDeeds) {
-            if (checkDeed.getLocation = newDeed.getLocation) {
-                isMortgaged = true;
+    public void updateOwnedDeeds(Deed newDeed) {
+        if (this.mortgagedDeeds.contains(newDeed)) {
+            this.ownedDeeds.add(newDeed);
+            this.mortgagedDeeds.remove(mortgagedDeeds.indexOf(newDeed));
+        } else {
+            this.ownedDeeds.add(newDeed);
+        }
+        updateTotalValue();
+    }
 
-                break;
-            }
+    public void updateMortgagedDeeds(Deed newDeed) {
+        if (this.ownedDeeds.contains(newDeed)) {
+            this.mortgagedDeeds.add(newDeed);
+            this.ownedDeeds.remove(mortgagedDeeds.indexOf(newDeed));
+        } else {
+            this.mortgagedDeeds.add(newDeed);
         }
-        if (isMortgaged) {
-            ownedDeeds.add(Deed);
-            mortgagedDeeds.remove(Deed);
+        updateTotalValue();
+    }
+
+    private void updateTotalValue(){
+        int valueOfOwnedDeeds = 0;
+        for(Deed ownedDeed : ownedDeeds) {
+            ownedDeed.getValue;
         }
+        totalValue = balance+valueOfOwnedDeeds;
     }
 
     public int getBalance() {
@@ -37,5 +49,11 @@ public class Account {
 
     public void setBalance(int balance) {
         this.balance = balance;
+        updateTotalValue();
+    }
+
+    public void updateBalance(int amount) {
+        balance = balance+amount;
+        updateTotalValue();
     }
 }

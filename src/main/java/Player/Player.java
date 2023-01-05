@@ -8,7 +8,7 @@ public class Player {
     private Account playerAccount;
 
     public Player(){
-        this.playerAccount = new Account(ownedDeeds, mortgagedDeeds, totalValue);
+        this.playerAccount = new Account();
         this.isBankrupt = false;
         this.position = 0;
     }
@@ -42,13 +42,23 @@ public class Player {
         if(position>40){
             position-=40;
 
-            balance += 4000;//Maybe a popup is needed
+            playerAccount.updateBalance(4000);//Maybe a popup is needed
         }
     }
 
     public void updateBalance(int amount){
-        balance += amount;
+        playerAccount.updateBalance(amount);
 
         //Need function to handle <0 amount of money
+    }
+
+    public void mortgageDeed(Deed Deed) {
+        this.playerAccount.updateMortgagedDeeds(Deed);
+        this.playerAccount.updateBalance(Deed.getMortgageValue);
+    }
+
+    public void buyDeed(Deed Deed) {
+        this.playerAccount.updateOwnedDeeds(Deed);
+        this.playerAccount.updateBalance(Deed.getPrice);
     }
 }
