@@ -10,7 +10,7 @@ public class Brewery extends Properties{
     }
 
     @Override
-    public void doStuff(Player player) {
+    public void doStuff(Player[] player) {
         System.out.println("Brewery: " + getLabel());
     }
 }
