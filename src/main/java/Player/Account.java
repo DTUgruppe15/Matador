@@ -54,6 +54,7 @@ public class Account {
 
     /**
      * Updates the total value of the Account by adding the value of all owned Deed objects to the balance.
+     * plus the balance itself
      */
     private void updateTotalValue() {
         int valueOfOwnedDeeds = 0;
