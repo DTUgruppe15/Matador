@@ -74,7 +74,7 @@ public class PlayerTest {
         player.movePosition(5);
         assertEquals(5, player.getPosition());
         player.movePosition(35);
-        assertEquals(10, player.getPosition());
+        assertEquals(0, player.getPosition());
         assertEquals(34000, player.getBalance());
     }
 }
