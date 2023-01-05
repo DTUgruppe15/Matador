@@ -1,23 +1,24 @@
-public class Player {
+package Player;
 
-    private int balance;
+public class Player {
 
     private boolean isBankrupt;
 
     private int position;
+    private Account playerAccount;
 
     public Player(){
-        this.balance = 30000;
+        this.playerAccount = new Account(ownedDeeds, mortgagedDeeds, totalValue);
         this.isBankrupt = false;
         this.position = 0;
     }
 
     public int getBalance() {
-        return balance;
+        return playerAccount.getBalance();
     }
 
     public void setBalance(int balance) {
-        this.balance = balance;
+        this.playerAccount.setBalance(balance);
     }
 
     public boolean isBankrupt() {
