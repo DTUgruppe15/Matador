@@ -11,7 +11,7 @@ public class Board {
         String line = "";
         int whatField = -1;
         try {
-            br = new BufferedReader(new FileReader("C:/Users/jonat/OneDrive/Skrivebord/CSVMatador/fields.csv"));
+            br = new BufferedReader(new FileReader("src\\main\\resources\\fields.csv"));
             while ((line = br.readLine()) !=null) {
                 String[] fieldValues = line.split(",");
                 System.out.println(fieldValues[2]);
@@ -43,7 +43,7 @@ public class Board {
 
 
     public Board() {
-        createFields("C:/Users/jonat/OneDrive/Skrivebord/CSVMatador/fields.csv");
+        createFields("src\\main\\resources\\fields.csv");
     }
 
 
