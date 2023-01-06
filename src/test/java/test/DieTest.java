@@ -9,8 +9,8 @@ public class DieTest {
     Die die1 = new Die(6);
     Die die2 = new Die(6);
 
-    @org.junit.jupiter.api.Test
-    void TestSetGetEyes() {
+    @Test
+    public void TestSetGetEyes() {
         die1.setEyes(5);
         die2.setEyes(2);
         assertAll(
@@ -19,15 +19,14 @@ public class DieTest {
         );
     }
 
-    @Test
-    @RepeatedTest(100)
-    void TestRoll() {
+    @RepeatedTest(500)
+    public void TestRoll() {
         die1.rollDie();
-        assertTrue(die1.getEyes() > 1 || die1.getEyes() < 6);
+        assertTrue(die1.getEyes() >= 1 || die1.getEyes() <= 6);
     }
 
     @Test
-    void TestGetAmountOfFaces() {
+    public void TestGetAmountOfFaces() {
         assertTrue(die1.getAmountOfFaces() == 6);
     }
 
