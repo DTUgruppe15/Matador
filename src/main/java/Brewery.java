@@ -1,8 +1,5 @@
 public class Brewery extends Properties{
-
     private Deed deed;
-
-    private boolean bought;
 
     public Brewery(String label, int price) {
         super(label);
@@ -10,7 +7,7 @@ public class Brewery extends Properties{
     }
 
     @Override
-    public void doStuff(Player[] player) {
+    public void doStuff(Player player) {
         System.out.println("Brewery: " + getLabel());
     }
 }
