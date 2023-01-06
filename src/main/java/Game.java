@@ -10,19 +10,18 @@ public class Game {
     }
 
     public void run(){
-        fields = new Fields[40];
         players = new Player[1];
         players[0] = new Player();
 
-        Board board = new Board(fields);
+        Board board = new Board();
+        board.fields[0].doStuff(players);
 
 
-
-        for (int i = 0; i < 40; i++) {
+        /* for (int i = 0; i < 40; i++) {
             fields[i].doStuff(players[0]);
             players[0].movePosition(1);
         }
-
+        */
 
     }
 

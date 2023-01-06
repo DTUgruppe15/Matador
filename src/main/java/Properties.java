@@ -1,5 +1,5 @@
 public abstract class Properties extends Fields {
-
+    private String label;
 
 
     public Properties(String label) {
@@ -7,4 +7,5 @@ public abstract class Properties extends Fields {
     }
 
 
+    public abstract void doStuff(Player player);
 }

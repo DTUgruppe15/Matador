@@ -1,49 +1,46 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Objects;
+
 public class Board {
+    Fields[] fields = new Fields[40];
+    public void createFields(String fileName) {
+        BufferedReader br;
+        String line = "";
+        int whatField = -1;
+        try {
+            br = new BufferedReader(new FileReader("C:/Users/jonat/OneDrive/Skrivebord/CSVMatador/fields.csv"));
+            while ((line = br.readLine()) !=null) {
+                String[] fieldValues = line.split(",");
+                System.out.println(fieldValues[2]);
+                System.out.println(whatField);
+                switch (fieldValues[2]) {
+                    case " street" -> fields[whatField] = new Plot(fieldValues[0], Integer.parseInt(fieldValues[3]), Integer.parseInt(fieldValues[4]), Integer.parseInt(fieldValues[5]),
+                                Integer.parseInt(fieldValues[6]), Integer.parseInt(fieldValues[7]), Integer.parseInt(fieldValues[8]), Integer.parseInt(fieldValues[9]),
+                                Integer.parseInt(fieldValues[10]));
+                    case " brewery" -> fields[whatField] = new Brewery(fieldValues[0], Integer.parseInt(fieldValues[3]));
+                    case " ferry" -> fields[whatField] = new Ferry(fieldValues[0], Integer.parseInt(fieldValues[3]));
+                    case " start" -> fields[whatField] = new Go(fieldValues[0]);
+                    case " chance" -> fields[whatField] = new Chance();
+                    case " tax" -> fields[whatField] = new Tax(fieldValues[0], Integer.parseInt(fieldValues[3]));
+                    case " jail" -> fields[whatField] = new Jail(fieldValues[0]);
+                    case " refugee" -> fields[whatField] = new Parking();
+                }
+                whatField++;
+
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
-    public Board(Fields[] fields){
-        Chance chance = new Chance();
-
-        fields[0] = new Go();
-        fields[1] = new Plot(new Deed("Rødovre"));
-        fields[2] = chance;
-        fields[3] = new Plot(new Deed("Hvidovre"));
-        fields[4] = new IncomeTax();
-        fields[5] = new Ferry(new Deed("Scandlines 1"));
-        fields[6] = new Plot(new Deed("Roskilde"));
-        fields[7] = chance;
-        fields[8] = new Plot(new Deed("Valby"));
-        fields[9] = new Plot(new Deed("Allegade"));
-        fields[10] = new Jail();
-        fields[11] = new Plot(new Deed("Frederikberg"));
-        fields[12] = new Brewery((new Deed("Squash")));
-        fields[13] = new Plot(new Deed("Bulowsvej"));
-        fields[14] = new Plot(new Deed("Gl. Kongevej"));
-        fields[15] = new Ferry(new Deed("Mols-Linjen"));
-        fields[16] = new Plot(new Deed("Bernstorffsvej"));
-        fields[17] = chance;
-        fields[18] = new Plot(new Deed("Hellerupvej"));
-        fields[19] = new Plot(new Deed("Strandvejen"));
-        fields[20] = new Parking();
-        fields[21] = new Plot(new Deed("Trianglen"));
-        fields[22] = chance;
-        fields[23] = new Plot(new Deed("Østerbrogade"));
-        fields[24] = new Plot(new Deed("Grønningen"));
-        fields[25] = new Ferry(new Deed("Scandlines 2"));
-        fields[26] = new Plot(new Deed("Bredgade"));
-        fields[27] = new Plot(new Deed("Kgs. Nytorv"));
-        fields[28] = new Brewery((new Deed("Cola")));
-        fields[29] = new Plot(new Deed("Østergade"));
-        fields[30] = new GoToJail();
-        fields[31] = new Plot(new Deed("Amagertorv"));
-        fields[32] = new Plot(new Deed("Vimmelskaffet"));
-        fields[33] = chance;
-        fields[34] = new Plot(new Deed("Nygade"));
-        fields[35] = new Ferry(new Deed("Scandlines 3"));
-        fields[36] = chance;
-        fields[37] = new Plot(new Deed("Frederiksberggade"));
-        fields[38] = new LuxuryTax();
-        fields[39] = new Plot(new Deed("Rådhuspladsen"));
+    public Board() {
+        createFields("C:/Users/jonat/OneDrive/Skrivebord/CSVMatador/fields.csv");
     }
 
 
