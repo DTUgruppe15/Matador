@@ -5,7 +5,7 @@ public class Player {
     private boolean isBankrupt;
 
     private int position;
-    private Account playerAccount;
+    private final Account playerAccount;
 
     /**
      * Constructs a new Player object.

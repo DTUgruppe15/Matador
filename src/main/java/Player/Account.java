@@ -59,7 +59,7 @@ public class Account {
     private void updateTotalValue() {
         int valueOfOwnedDeeds = 0;
         for (Deed ownedDeed : ownedDeeds) {
-            ownedDeed.getValue;
+            ownedDeed.getPrice;
         }
         totalValue = balance + valueOfOwnedDeeds;
     }
