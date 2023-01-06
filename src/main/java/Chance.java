@@ -29,9 +29,13 @@ public class Chance extends Fields{
     @Override
     public void doStuff(Player player) {
 
-        if(cards[cardToDraw] == 35 && JailCardRemaining == 0){
-            
+        while(cards[cardToDraw] == 35 && JailCardRemaining == 0){
+            cardToDraw++;
         }
+        if(cardToDraw >= cards.length){
+            cardToDraw = 0;
+        }
+        drawCard(player, cardToDraw);
 
 
         System.out.println("Chance: " + getLabel());
