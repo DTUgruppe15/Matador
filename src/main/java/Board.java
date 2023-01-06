@@ -24,8 +24,8 @@ public class Board {
                     case " ferry" -> fields[whatField] = new Ferry(fieldValues[0], Integer.parseInt(fieldValues[3]));
                     case " start" -> fields[whatField] = new Go(fieldValues[0]);
                     case " chance" -> fields[whatField] = new Chance();
-                    case " tax" -> fields[whatField] = new LuxuryTax();
-                    case " jail" -> fields[whatField] = new Jail();
+                    case " tax" -> fields[whatField] = new Tax(fieldValues[0], Integer.parseInt(fieldValues[3]));
+                    case " jail" -> fields[whatField] = new Jail(fieldValues[0]);
                     case " refugee" -> fields[whatField] = new Parking();
                 }
                 whatField++;
