@@ -1,5 +1,7 @@
+import Fields.Chance;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import Player.Player;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -513,7 +515,7 @@ class ChanceTest {
     }
 
     @Test
-    @DisplayName("Move to Go")
+    @DisplayName("Move to Fields.Go")
     void drawCard22(){
         Player player = new Player();
         Chance chance = new Chance();
@@ -900,7 +902,7 @@ class ChanceTest {
     @DisplayName("Get out of jail, cards available")
     void drawCard33_1(){
         Player player = new Player();
-        Chance chance = new Chance();
+        Fields.Chance chance = new Fields.Chance();
 
         int target = player.getJailCardAmount()+1;
 
@@ -915,7 +917,7 @@ class ChanceTest {
     @DisplayName("Get out of jail, cards not available")
     void drawCard33_2(){
         Player player = new Player();
-        Chance chance = new Chance();
+        Fields.Chance chance = new Fields.Chance();
 
         int target = player.getJailCardAmount();
 
@@ -928,7 +930,7 @@ class ChanceTest {
     */
 
     @Test
-    @DisplayName("Go to jail")
+    @DisplayName("Fields.Go to jail")
     void drawCard34(){
         Player player = new Player();
         Chance chance = new Chance();

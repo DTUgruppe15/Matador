@@ -1,3 +1,7 @@
+package Fields;
+
+import Player.Player;
+
 public class Ferry extends Properties{
     private Deed deed;
 
@@ -8,6 +12,6 @@ public class Ferry extends Properties{
 
     @Override
     public void doStuff(Player player) {
-        System.out.println("Ferry: " + getLabel());
+        System.out.println("Fields.Ferry: " + getLabel());
     }
 }

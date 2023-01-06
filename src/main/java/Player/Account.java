@@ -1,5 +1,7 @@
 package Player;
 
+import Fields.Deed;
+
 import java.util.ArrayList;
 
 public class Account {
@@ -19,11 +21,11 @@ public class Account {
     }
 
     /**
-     * Adds a Deed object to the list of owned Deeds and removes it from the list of mortgaged Deeds if it is present.
-     * If the Deed is not in the list of mortgaged Deeds, it is simply added to the list of owned Deeds.
+     * Adds a Fields.Deed object to the list of owned Deeds and removes it from the list of mortgaged Deeds if it is present.
+     * If the Fields.Deed is not in the list of mortgaged Deeds, it is simply added to the list of owned Deeds.
      * Updates the total value of the Account.
      *
-     * @param newDeed the Deed object to be added to the list of owned Deeds
+     * @param newDeed the Fields.Deed object to be added to the list of owned Deeds
      */
     public void updateOwnedDeeds(Deed newDeed) {
         if (this.mortgagedDeeds.contains(newDeed)) {
@@ -36,11 +38,11 @@ public class Account {
     }
 
     /**
-     * Adds a Deed object to the list of mortgaged Deeds and removes it from the list of owned Deeds if it is present.
-     * If the Deed is not in the list of owned Deeds, it is simply added to the list of mortgaged Deeds.
+     * Adds a Fields.Deed object to the list of mortgaged Deeds and removes it from the list of owned Deeds if it is present.
+     * If the Fields.Deed is not in the list of owned Deeds, it is simply added to the list of mortgaged Deeds.
      * Updates the total value of the Account.
      *
-     * @param newDeed the Deed object to be added to the list of mortgaged Deeds
+     * @param newDeed the Fields.Deed object to be added to the list of mortgaged Deeds
      */
     public void updateMortgagedDeeds(Deed newDeed) {
         if (this.ownedDeeds.contains(newDeed)) {
@@ -53,13 +55,13 @@ public class Account {
     }
 
     /**
-     * Updates the total value of the Account by adding the value of all owned Deed objects to the balance.
+     * Updates the total value of the Account by adding the value of all owned Fields.Deed objects to the balance.
      * plus the balance itself
      */
     private void updateTotalValue() {
         int valueOfOwnedDeeds = 0;
         for (Deed ownedDeed : ownedDeeds) {
-            ownedDeed.getPrice;
+            ownedDeed.getPrice();
         }
         totalValue = balance + valueOfOwnedDeeds;
     }

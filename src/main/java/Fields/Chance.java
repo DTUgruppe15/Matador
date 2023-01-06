@@ -1,9 +1,13 @@
+package Fields;
+
+import Player.Player;
+
 public class Chance extends Fields{
 
 
     @Override
     public void doStuff(Player player) {
-        System.out.println("Chance: " + getLabel());
+        System.out.println("Fields.Chance: " + getLabel());
     }
 
     public void drawCard(Player player, int draw){

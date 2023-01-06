@@ -1,5 +1,8 @@
 package Player;
 
+
+import Fields.Deed;
+
 public class Player {
 
     private boolean isBankrupt;
@@ -103,7 +106,7 @@ public class Player {
      */
     public void mortgageDeed(Deed deed) {
         this.playerAccount.updateMortgagedDeeds(deed);
-        this.playerAccount.updateBalance(deed.getMortgageValue);
+        this.playerAccount.updateBalance(deed.getMortgageValue());
     }
 
     /**
@@ -112,7 +115,7 @@ public class Player {
      * @param deed the deed to buy
      */
     public void buyDeed(Deed deed) {
-        this.playerAccount.updateOwnedDeeds(Deed);
-        this.playerAccount.updateBalance(Deed.getPrice);
+        this.playerAccount.updateOwnedDeeds(deed);
+        this.playerAccount.updateBalance(deed.getPrice());
     }
 }

@@ -1,3 +1,7 @@
+package Fields;
+
+import Player.Player;
+
 public class Tax extends Fields{
     int price;
     String label;
@@ -8,6 +12,6 @@ public class Tax extends Fields{
     @Override
     public void doStuff(Player player) {
         //player.updateBalance(-2000);
-        System.out.println("Tax: " + price + "removed from player");
+        System.out.println("Fields.Tax: " + price + "removed from player");
     }
 }

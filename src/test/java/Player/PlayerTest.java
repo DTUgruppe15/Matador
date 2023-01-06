@@ -73,8 +73,8 @@ public class PlayerTest {
         Player player = new Player();
         player.movePosition(5);
         assertEquals(5, player.getPosition());
-        player.movePosition(35);
-        assertEquals(0, player.getPosition());
+        player.movePosition(36);
+        assertEquals(1, player.getPosition());
         assertEquals(34000, player.getBalance());
     }
 }
