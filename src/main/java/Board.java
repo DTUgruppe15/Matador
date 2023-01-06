@@ -17,15 +17,18 @@ public class Board {
                 System.out.println(fieldValues[2]);
                 System.out.println(whatField);
                 switch (fieldValues[2]) {
-                    case " street" -> fields[whatField] = new Plot(fieldValues[0], Integer.parseInt(fieldValues[3]), Integer.parseInt(fieldValues[4]), Integer.parseInt(fieldValues[5]),
+                    case " street" -> {
+                        fields[whatField] = new Plot(fieldValues[0], Integer.parseInt(fieldValues[3]), Integer.parseInt(fieldValues[4]), Integer.parseInt(fieldValues[5]),
                                 Integer.parseInt(fieldValues[6]), Integer.parseInt(fieldValues[7]), Integer.parseInt(fieldValues[8]), Integer.parseInt(fieldValues[9]),
                                 Integer.parseInt(fieldValues[10]));
+                        System.out.println("yeh ");
+                    }
                     case " brewery" -> fields[whatField] = new Brewery(fieldValues[0], Integer.parseInt(fieldValues[3]));
                     case " ferry" -> fields[whatField] = new Ferry(fieldValues[0], Integer.parseInt(fieldValues[3]));
                     case " start" -> fields[whatField] = new Go(fieldValues[0]);
                     case " chance" -> fields[whatField] = new Chance();
                     case " tax" -> fields[whatField] = new Tax(fieldValues[0], Integer.parseInt(fieldValues[3]));
-                    case " jail" -> fields[whatField] = new Jail(fieldValues[0]);
+                    case " jail" -> fields[whatField] = new Jail();
                     case " refugee" -> fields[whatField] = new Parking();
                 }
                 whatField++;

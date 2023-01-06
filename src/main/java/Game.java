@@ -14,7 +14,7 @@ public class Game {
         players[0] = new Player();
 
         Board board = new Board();
-        board.fields[0].doStuff(players);
+
 
 
         /* for (int i = 0; i < 40; i++) {
