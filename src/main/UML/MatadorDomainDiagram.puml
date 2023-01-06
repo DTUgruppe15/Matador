@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Game
+class Player
+class Die
+class MiscStates
+class Board
+
+abstract class Fields
+class Chancecard
+class GoToJail
+class Plots
+class Ferry
+class DrinkPlot
+class UpdateGUI
+class Deed
+abstract class Properties
+class Jail
+class Parking
+
+
+
+Game "1"--"2" Die
+Game "1"--"3..6" Player
+Game "1"--"1" UpdateGUI
+Game "1"--"1" Board
+Board "1"--"40" Fields
+
+Fields <|-- Chancecard
+Fields <|-- Properties
+Properties <|-- Plots
+Properties <|-- Ferry
+Fields <|-- GoToJail
+Properties <|-- DrinkPlot
+Properties "1"--"1" Deed
+Fields <|-- Jail
+Fields <|-- Parking
+
+Game "1"-"1" MiscStates
+MiscStates "1"--"1" UpdateGUI
+
+@enduml
