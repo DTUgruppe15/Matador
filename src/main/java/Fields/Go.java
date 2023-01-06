@@ -1,3 +1,7 @@
+package Fields;
+
+import Player.Player;
+
 public class Go extends Fields {
 
     public Go(String label) {
@@ -6,6 +10,6 @@ public class Go extends Fields {
 
     @Override
     public void doStuff(Player player) {
-        System.out.println("Go: " + getLabel());
+        System.out.println("Fields.Go: " + getLabel());
     }
 }

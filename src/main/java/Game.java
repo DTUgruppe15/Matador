@@ -1,3 +1,7 @@
+import Fields.Fields;
+import Player.Player;
+import Fields.Board;
+
 public class Game {
     private Fields[] fields;
     private Player[] players;

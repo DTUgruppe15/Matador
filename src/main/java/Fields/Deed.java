@@ -1,5 +1,7 @@
+package Fields;
+
 public class Deed{
-    private int price, housePrice, rent0, rent1, rent2, rent3, rent4, rent5;
+    private int price, mortgageValue, housePrice, rent0, rent1, rent2, rent3, rent4, rent5;
     private String location;
     private boolean bought = false;
 
@@ -13,6 +15,7 @@ public class Deed{
         this.rent3 = rent3;
         this.rent4 = rent4;
         this.rent5 = rent5;
+        this.mortgageValue = price/2;
     }
 
     public Deed(String location, int price) {
@@ -32,4 +35,19 @@ public class Deed{
         return location;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getMortgageValue() {
+        return mortgageValue;
+    }
+
+    public void setMortgageValue(int mortgagePrice) {
+        this.mortgageValue = mortgagePrice;
+    }
 }

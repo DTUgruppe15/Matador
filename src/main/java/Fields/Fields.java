@@ -1,3 +1,7 @@
+package Fields;
+
+import Player.Player;
+
 public abstract class Fields {
     private String label;
 

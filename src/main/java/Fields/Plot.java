@@ -1,3 +1,7 @@
+package Fields;
+
+import Player.Player;
+
 public class Plot extends Properties{
     private String label;
     private Deed deed;

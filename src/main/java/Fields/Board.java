@@ -1,8 +1,11 @@
+package Fields;
+
+import Fields.Fields;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Board {
     Fields[] fields = new Fields[40];
