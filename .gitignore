@@ -210,3 +210,4 @@ README.html
 *.iml
 .idea
 .exercism
+*.class
