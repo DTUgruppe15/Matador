@@ -138,6 +138,47 @@ public class UpdateGUI {
         gui.setDice(die1, die2);
     }
 
+    public int addPlayers(){
+        int playerAmount = gui.getUserInteger("Hvor mange spillerer? (3-6)",3,6);
+
+        players = new GUI_Player[playerAmount];
+
+        for (int i = 0; i < players.length; i++) {
+            players[i] = new GUI_Player("Spiller " + (i+1),30000);
+            gui.addPlayer(players[i]);
+
+            switch (i){
+                case 0:
+                    players[i].getCar().setPrimaryColor(Color.RED);
+                    break;
+                case 1:
+                    players[i].getCar().setPrimaryColor(Color.BLUE);
+                    break;
+                case 2:
+                    players[i].getCar().setPrimaryColor(Color.YELLOW);
+                    break;
+                case 3:
+                    players[i].getCar().setPrimaryColor(Color.GREEN);
+                    break;
+                case 4:
+                    players[i].getCar().setPrimaryColor(Color.MAGENTA);
+                    break;
+                case 5:
+                    players[i].getCar().setPrimaryColor(Color.CYAN);
+                    break;
+            }
+            players[i].getCar().setPosition(fields[0]);
+        }
+
+        gui.showMessage("Spillet er klar");
+
+        return  playerAmount;
+    }
+
+    public void moveCar(int player, int field){
+        players[player].getCar().setPosition(fields[field]);
+    }
+
 
 
 

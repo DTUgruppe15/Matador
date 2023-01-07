@@ -20,12 +20,15 @@ public class Game {
         Board board = new Board();
 
         UpdateGUI gui = new UpdateGUI();
-
-        /* for (int i = 0; i < 40; i++) {
-            fields[i].doStuff(players[0]);
-            players[0].movePosition(1);
+        players = new Player[gui.addPlayers()];
+        for (int i = 0; i < players.length; i++) {
+            players[i] = new Player();
         }
-        */
+
+
+
+
+
 
     }
 
