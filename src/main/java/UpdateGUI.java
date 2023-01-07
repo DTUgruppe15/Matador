@@ -179,6 +179,12 @@ public class UpdateGUI {
         players[player].getCar().setPosition(fields[field]);
     }
 
+    public String playerChoice(){
+        String chosenElement = gui.getUserSelection("Vælg handling","Rull terninger","Køb huse");
+
+        return chosenElement;
+    }
+
 
 
 
