@@ -1,6 +1,9 @@
-import java.util.Random;
+package Fields;
 
-public class Chance extends Fields{
+import java.util.*;
+import Player.Player;
+
+public class Chance extends Fields {
 
     private int[] cards;
 
@@ -26,7 +29,6 @@ public class Chance extends Fields{
         }
     }
 
-    @Override
     public void doStuff(Player player) {
 
         while(cards[cardToDraw] == 35 && JailCardRemaining == 0){
