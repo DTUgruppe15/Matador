@@ -11,5 +11,5 @@ public abstract class Properties extends Fields {
     }
 
 
-    public abstract void doStuff(Player player);
+    public abstract void doStuff(Player player, Player[] players);
 }

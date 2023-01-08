@@ -94,4 +94,13 @@ public class Account {
         balance = balance + amount;
         updateTotalValue();
     }
+
+    /**
+     * Returns the Total Value of a player
+     *
+     * @return the total value
+     */
+    public int getTotalValue() {
+        return totalValue;
+    }
 }

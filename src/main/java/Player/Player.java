@@ -81,7 +81,7 @@ public class Player {
      */
     public void movePosition(int amount){
         position += amount;
-        if(position>40){
+        if(position>40) {
             position-=40;
 
             playerAccount.updateBalance(4000);//Maybe a popup is needed
@@ -117,5 +117,14 @@ public class Player {
     public void buyDeed(Deed deed) {
         this.playerAccount.updateOwnedDeeds(deed);
         this.playerAccount.updateBalance(deed.getPrice());
+    }
+
+    /**
+     * Returns the Total Value of a player
+     *
+     * @return the total value
+     */
+    public int getTotalValue() {
+        return playerAccount.getTotalValue();
     }
 }

@@ -18,7 +18,7 @@ public class Plot extends Properties{
     }
 
     @Override
-    public void doStuff(Player player) {
+    public void doStuff(Player player, Player[] players) {
         System.out.println("plot: " + getLabel());
     }
 }
