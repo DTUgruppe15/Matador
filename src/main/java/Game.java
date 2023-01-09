@@ -24,6 +24,8 @@ public class Game {
         DieController die = new DieController(); //!!!Why doesnt the DieController create the dice!!!
 
         Board board = new Board();
+        Fields[] fields = new Fields[40];
+        board.createFields(fields);
 
         UpdateGUI gui = new UpdateGUI();
         int amountOfPlayers = gui.addPlayers();
@@ -59,7 +61,8 @@ public class Game {
             //System.out.println("choice made");
 
             players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
-
+            fields[players[playerTurn].getPosition()].doStuff(players[playerTurn]);
+            gui.setBalance(playerTurn, players[playerTurn].getBalance());
             System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes());
             gui.moveCar(playerTurn,players[playerTurn].getPosition());
             gui.setDice(die1.getEyes(),die2.getEyes());
