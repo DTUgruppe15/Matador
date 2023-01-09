@@ -63,7 +63,7 @@ public class Game {
             players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
             fields[players[playerTurn].getPosition()].doStuff(players[playerTurn]);
             gui.setBalance(playerTurn, players[playerTurn].getBalance());
-            System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes());
+            System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes() + " " + players[playerTurn].getBalance());
             gui.moveCar(playerTurn,players[playerTurn].getPosition());
             gui.setDice(die1.getEyes(),die2.getEyes());
 
