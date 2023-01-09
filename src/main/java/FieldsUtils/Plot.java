@@ -1,6 +1,6 @@
-package Fields;
+package FieldsUtils;
 
-import Player.Player;
+import PlayerUtils.Player;
 
 public class Plot extends Properties{
     private String label;
@@ -10,6 +10,10 @@ public class Plot extends Properties{
         super(label);
         this.label = label;
         this.deed = new Deed(label,price,housePrice,rent0,rent1,rent2,rent3,rent4,rent5);
+    }
+
+    public Plot(Deed deed){
+        this.deed = deed;
     }
 
     public Deed buyDeed() {

@@ -1,6 +1,6 @@
-package Fields;
+package FieldsUtils;
 
-import Player.Player;
+import PlayerUtils.Player;
 
 public class Tax extends Fields{
     int price;

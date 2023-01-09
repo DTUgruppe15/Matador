@@ -1,6 +1,6 @@
-package Fields;
+package FieldsUtils;
 
-import Player.Player;
+import PlayerUtils.Player;
 
 public abstract class Properties extends Fields {
     private String label;
@@ -9,6 +9,8 @@ public abstract class Properties extends Fields {
     public Properties(String label) {
         super(label);
     }
+
+    public Properties(){};
 
 
     public abstract void doStuff(Player player);

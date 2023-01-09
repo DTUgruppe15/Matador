@@ -1,4 +1,4 @@
-package Fields;
+package FieldsUtils;
 
 public class Deed{
     private int price, mortgageValue, housePrice, rent0, rent1, rent2, rent3, rent4, rent5;

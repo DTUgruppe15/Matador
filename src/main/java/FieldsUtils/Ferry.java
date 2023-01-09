@@ -1,6 +1,6 @@
-package Fields;
+package FieldsUtils;
 
-import Player.Player;
+import PlayerUtils.Player;
 
 public class Ferry extends Properties{
     private Deed deed;
@@ -8,6 +8,10 @@ public class Ferry extends Properties{
     public Ferry(String label, int price){
         super(label);
         this.deed = new Deed(label,price);
+    }
+
+    public Ferry(Deed deed){
+        this.deed = deed;
     }
 
     @Override

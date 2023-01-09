@@ -1,11 +1,13 @@
-package Fields;
+package FieldsUtils;
 
-import Player.Player;
+import PlayerUtils.Player;
 
 public class GoToJail extends Fields{
 
     @Override
     public void doStuff(Player player) {
+        player.setPosition(10);
+        player.addJailTime();
         System.out.println("Fields.GoToJail: " + getLabel());
     }
 }

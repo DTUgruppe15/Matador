@@ -1,6 +1,8 @@
 package Player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import PlayerUtils.Account;
 import org.junit.jupiter.api.Test;
 
 public class AccountTest {

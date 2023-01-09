@@ -1,4 +1,4 @@
-package Die;
+package DieUtils;
 
 import java.util.Random;
 

@@ -1,8 +1,7 @@
-import Die.Die;
-import Die.DieController;
-import Fields.Fields;
-import Player.Player;
-import Fields.Board;
+import DieUtils.Die;
+import DieUtils.DieController;
+import FieldsUtils.Fields;
+import PlayerUtils.Player;
 
 public class Game {
     private Fields[] fields;
@@ -23,7 +22,7 @@ public class Game {
         Die die2 = new Die();
         DieController die = new DieController(); //!!!Why doesnt the DieController create the dice!!!
 
-        Board board = new Board();
+        //Board board = new Board();
 
         UpdateGUI gui = new UpdateGUI();
         int amountOfPlayers = gui.addPlayers();
