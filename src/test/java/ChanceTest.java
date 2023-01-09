@@ -693,18 +693,18 @@ class ChanceTest {
     }
     */
 
-    /*
     @Test
     @DisplayName("Move to field 15, doesn't pass go")
-    void drawCard27_1(){
-        Player player = new Player();
+    void drawCard28_1(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(2);
 
         int target = 15;
 
-        chance.drawCard(player, 27);
+        chance.drawCard(player, players, 28);
 
         int result = player.getPosition();
 
@@ -713,8 +713,9 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to field 15, does pass go")
-    void drawCard27_2(){
-        Player player = new Player();
+    void drawCard28_2(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(30);
@@ -722,7 +723,7 @@ class ChanceTest {
         int target1 = 15;
         int target2 = player.getBalance()+4000;
 
-        chance.drawCard(player, 27);
+        chance.drawCard(player, players,28);
 
         int result1 = player.getPosition();
         int result2 = player.getBalance();
@@ -735,15 +736,16 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to field 24, doesn't pass go")
-    void drawCard28_1(){
-        Player player = new Player();
+    void drawCard29_1(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(2);
 
         int target = 24;
 
-        chance.drawCard(player, 28);
+        chance.drawCard(player, players, 29);
 
         int result = player.getPosition();
 
@@ -752,8 +754,9 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to field 24, does pass go")
-    void drawCard28_2(){
-        Player player = new Player();
+    void drawCard29_2(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(30);
@@ -761,7 +764,7 @@ class ChanceTest {
         int target1 = 24;
         int target2 = player.getBalance()+4000;
 
-        chance.drawCard(player, 28);
+        chance.drawCard(player, players, 29);
 
         int result1 = player.getPosition();
         int result2 = player.getBalance();
@@ -774,15 +777,16 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to field 32, doesn't pass go")
-    void drawCard29_1(){
-        Player player = new Player();
+    void drawCard30_1(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(2);
 
         int target = 32;
 
-        chance.drawCard(player, 29);
+        chance.drawCard(player, players,30);
 
         int result = player.getPosition();
 
@@ -791,8 +795,9 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to field 32, does pass go")
-    void drawCard29_2(){
-        Player player = new Player();
+    void drawCard30_2(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(35);
@@ -800,7 +805,7 @@ class ChanceTest {
         int target1 = 32;
         int target2 = player.getBalance()+4000;
 
-        chance.drawCard(player, 29);
+        chance.drawCard(player, players,30);
 
         int result1 = player.getPosition();
         int result2 = player.getBalance();
@@ -813,13 +818,14 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to nearest ferry, first ferry")
-    void drawCard30_1(){
-        Player player = new Player();
+    void drawCard31_1(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         int target = 5;
 
-        chance.drawCard(player, 30);
+        chance.drawCard(player, players,31);
 
         int result = player.getPosition();
 
@@ -828,15 +834,16 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to nearest ferry, second ferry")
-    void drawCard30_2(){
-        Player player = new Player();
+    void drawCard31_2(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(6);
 
         int target = 15;
 
-        chance.drawCard(player, 30);
+        chance.drawCard(player, players,31);
 
         int result = player.getPosition();
 
@@ -845,15 +852,16 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to nearest ferry, third ferry")
-    void drawCard30_3(){
-        Player player = new Player();
+    void drawCard31_3(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(16);
 
         int target = 25;
 
-        chance.drawCard(player, 30);
+        chance.drawCard(player, players,31);
 
         int result = player.getPosition();
 
@@ -862,15 +870,16 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to nearest ferry, fourth ferry")
-    void drawCard30_4(){
-        Player player = new Player();
+    void drawCard31_4(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(26);
 
         int target = 35;
 
-        chance.drawCard(player, 30);
+        chance.drawCard(player, players, 31);
 
         int result = player.getPosition();
 
@@ -879,8 +888,9 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to nearest ferry, does pass go")
-    void drawCard30_5(){
-        Player player = new Player();
+    void drawCard31_5(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(36);
@@ -888,7 +898,7 @@ class ChanceTest {
         int target1 = 5;
         int target2 = player.getBalance()+4000;
 
-        chance.drawCard(player, 30);
+        chance.drawCard(player, players,31);
 
         int result1 = player.getPosition();
         int result2 = player.getBalance();
@@ -901,15 +911,16 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to field 19, doesn't pass go")
-    void drawCard31_1(){
-        Player player = new Player();
+    void drawCard32_1(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(2);
 
         int target = 19;
 
-        chance.drawCard(player, 31);
+        chance.drawCard(player, players,32);
 
         int result = player.getPosition();
 
@@ -918,8 +929,9 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to field 19, does pass go")
-    void drawCard31_2(){
-        Player player = new Player();
+    void drawCard32_2(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(35);
@@ -927,7 +939,7 @@ class ChanceTest {
         int target1 = 19;
         int target2 = player.getBalance()+4000;
 
-        chance.drawCard(player, 31);
+        chance.drawCard(player, players,32);
 
         int result1 = player.getPosition();
         int result2 = player.getBalance();
@@ -940,21 +952,23 @@ class ChanceTest {
 
     @Test
     @DisplayName("Move to field 39, doesn't pass go")
-    void drawCard32(){
-        Player player = new Player();
+    void drawCard33(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
         Chance chance = new Chance();
 
         player.setPosition(2);
 
         int target = 39;
 
-        chance.drawCard(player, 32);
+        chance.drawCard(player, players, 33);
 
         int result = player.getPosition();
 
         assertEquals(target,result);
     }
 
+    /*
     //Needs implementing
     @Test
     @DisplayName("Get out of jail, cards available")

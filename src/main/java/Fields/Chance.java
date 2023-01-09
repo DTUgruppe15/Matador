@@ -56,6 +56,7 @@ public class Chance extends Fields {
 
     public void drawCard(Player player, Player[] players, int draw){
         int temp = findObjectIndex(player, players);
+        int playerPosition = player.getPosition();
         switch(draw){
             case 0:
                 //Houses and hotels aren't implemented yet
@@ -186,17 +187,80 @@ public class Chance extends Fields {
             case 26:
                 //"Ryk frem til Frederiksberg Allé. Hvis De passere START, indkasser da 4000 kr."
                 int frederiksbergAlle = 11; //Frederiksberg Allé's index on the board is 11.
-                if (player.getPosition()>frederiksbergAlle) {
-                    player.movePosition(40-player.getPosition()+frederiksbergAlle); //If the player is past Frederiksberg Allé's position, then it needs to go around the bord
+                if (playerPosition > frederiksbergAlle) {
+                    player.movePosition(40-playerPosition+frederiksbergAlle); //If the player is past Frederiksberg Allé's position, then it needs to go around the bord
                 }
                 else {
-                    player.movePosition(frederiksbergAlle-player.getPosition()); //If the player is not past Frederiksberg Allé's position, then it just moves the difference between their positions forward
+                    player.movePosition(frederiksbergAlle-playerPosition); //If the player is not past Frederiksberg Allé's position, then it just moves the difference between their positions forward
                 }
                 break;
-            case 27:
+            case 27: //Ikke implementeret endnu (købs metoder er ikke 100% done endnu)
                 //"Ryk frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til, hvis selskabet ikke ejes af nogen kan de købe det af banken."
                 break;
-
+            case 28:
+                //"Tag med Mols-Linien, flyt brikken frem og hvis De passerer START indkassér da kr 4000."
+                int molsLinien = 15;
+                if(playerPosition > molsLinien) {
+                    player.movePosition(40-playerPosition+molsLinien);
+                } else {
+                    player.movePosition(molsLinien-playerPosition);
+                }
+                break;
+            case 29:
+                // "Ryk frem til Grønningen, hvis De passerer start indkasser da kr 4000"
+                int gronningen = 24;
+                if(playerPosition > gronningen) {
+                    player.movePosition(40-playerPosition+gronningen);
+                } else {
+                    player.movePosition(gronningen-playerPosition);
+                }
+                break;
+            case 30:
+                // "Ryk frem til Vimmelskaftet, hvis de passerer start indkasser da kr 4000"
+                int vimmelskaftet = 32;
+                if(playerPosition > vimmelskaftet) {
+                    player.movePosition(40-playerPosition+vimmelskaftet);
+                } else {
+                    player.movePosition(vimmelskaftet - playerPosition);
+                }
+                break;
+            case 31:
+                // "Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000"
+                int[] ferriesLocations = {5, 15, 25, 35};
+                int lowest = 50; //A number bigger than the board
+                int index = 0;
+                for(int i = 0; i < ferriesLocations.length; i++) {
+                    int calculation = ferriesLocations[i] - playerPosition;
+                    if(calculation < lowest & !(calculation < 0)) {
+                        lowest = calculation;
+                        index = i;
+                    }
+                }
+                if(playerPosition > ferriesLocations[index]) {
+                    player.movePosition(40-playerPosition + ferriesLocations[index]);
+                } else {
+                    player.movePosition(ferriesLocations[index] - playerPosition);
+                }
+                break;
+            case 32:
+                // Ryk frem til Strandvejen. Hvis De passere START, indkasser da 4000 kr.
+                int strandvejen = 19;
+                if(playerPosition > strandvejen) {
+                    player.movePosition(40-playerPosition + strandvejen);
+                } else {
+                    player.movePosition(strandvejen - playerPosition);
+                }
+                break;
+            case 33:
+                // Tag til Rådhuspladsen
+                player.setPosition(39);
+                break;
+            case 34: //Ikke implementeret endnu
+                //I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det.
+                break;
+            case 35: //Ikke implementeret endnu
+                // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.
+                break;
         }
 
 
