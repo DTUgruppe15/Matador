@@ -56,13 +56,15 @@ public class Game {
                         break;
                 }
             }
-            System.out.println("choice made");
+            //System.out.println("choice made");
 
             players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
 
-
+            System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes());
             gui.moveCar(playerTurn,players[playerTurn].getPosition());
             gui.setDice(die1.getEyes(),die2.getEyes());
+
+
             
 
             playerTurn++;
