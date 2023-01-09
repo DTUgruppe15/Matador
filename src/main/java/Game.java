@@ -27,7 +27,6 @@ public class Game {
             players[0].movePosition(1);
         }
 
-
     }
 
 
