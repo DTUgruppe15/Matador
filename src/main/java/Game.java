@@ -63,6 +63,7 @@ public class Game {
 
             gui.moveCar(playerTurn,players[playerTurn].getPosition());
             gui.setDice(die1.getEyes(),die2.getEyes());
+
             
 
             playerTurn++;
