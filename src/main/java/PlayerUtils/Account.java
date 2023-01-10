@@ -1,6 +1,6 @@
-package Player;
+package PlayerUtils;
 
-import Fields.Deed;
+import FieldsUtils.Deed;
 
 import java.util.ArrayList;
 

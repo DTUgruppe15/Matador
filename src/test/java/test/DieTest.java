@@ -3,7 +3,7 @@ package test;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import Die.*;
+import DieUtils.*;
 
 public class DieTest {
     Die die1 = new Die(6);
