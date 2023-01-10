@@ -81,7 +81,7 @@ public class Player {
      */
     public void movePosition(int amount){
         position += amount;
-        if(position>40){
+        if(position>=40){
             position-=40;
 
             playerAccount.updateBalance(4000);//Maybe a popup is needed
