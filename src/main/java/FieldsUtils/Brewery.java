@@ -26,7 +26,6 @@ public class Brewery extends Properties{
 
     //Lets player buy brewery deed
     @Override
-    public void doStuff(Player player) {
     public void doStuff(Player player, Player[] players) {
         //Checks if the deed is bought. Buys if it isn't
         //Pays rent if it is.

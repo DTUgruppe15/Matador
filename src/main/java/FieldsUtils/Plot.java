@@ -17,7 +17,7 @@ public class Plot extends Properties{
         this.deed = deed;
     }
 
-    public Deed buyDeed() {
+
     public Deed buyDeed(int whoBuys) {
         this.deed.buyDeed();
         this.owner = whoBuys;
@@ -26,7 +26,6 @@ public class Plot extends Properties{
 
     //Method that lets player buy plots
     @Override
-    public void doStuff(Player player) {
     public void doStuff(Player player, Player[] players) {
         //checks if the deed is bought, if it's not - buy it.
         // If it is - pay rent

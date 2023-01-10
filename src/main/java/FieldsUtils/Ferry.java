@@ -5,7 +5,11 @@ import PlayerUtils.Player;
 public class Ferry extends Properties{
     private Deed deed;
 
+
+
     private int owner;
+
+
 
     public Ferry(String label, int price){
         super(label);
@@ -23,7 +27,6 @@ public class Ferry extends Properties{
     }
     //Lets player buys Ferry deed
     @Override
-    public void doStuff(Player player) {
     public void doStuff(Player player, Player[] players) {
         //Checks if the deed is bought. Buys if it isn't
         //Pays rent if it is.

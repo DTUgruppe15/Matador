@@ -1,5 +1,6 @@
 import DieUtils.Die;
 import DieUtils.DieController;
+import FieldsUtils.Board;
 import FieldsUtils.Fields;
 import PlayerUtils.Player;
 
@@ -25,7 +26,8 @@ public class Game {
         //Board board = new Board();
         Board board = new Board();
         Fields[] fields = new Fields[40];
-        board.createFields(fields);
+        board.initBoard(fields);
+
 
         UpdateGUI gui = new UpdateGUI();
         int amountOfPlayers = gui.addPlayers();
@@ -49,7 +51,6 @@ public class Game {
             Boolean playerChoiceInProgress = true;
             while(playerChoiceInProgress){
                 switch (gui.playerChoice()){
-                    case "Rull terninger":
                     case "Rul terninger":
                         die.rollDies(die1,die2);
                         playerChoiceInProgress = false;

@@ -21,6 +21,5 @@ public abstract class Properties extends Fields {
         return -1; //failed to find the index of the object
     }
 
-    public abstract void doStuff(Player player);
     public abstract void doStuff(Player player, Player[] players);
 }
