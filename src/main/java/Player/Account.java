@@ -67,7 +67,7 @@ public class Account {
 
         if (this.ownedDeeds.contains(newDeed)) {
             this.mortgagedDeeds.add(newDeed);
-            this.ownedDeeds.remove(mortgagedDeeds.indexOf(newDeed));
+            this.ownedDeeds.remove(ownedDeeds.indexOf(newDeed));
             updateBalance(newDeed.getMortgageValue());
         } else {
             this.mortgagedDeeds.add(newDeed);

@@ -6,8 +6,10 @@ public class Chance extends Fields{
 
 
     @Override
-    public void doStuff(Player player, Player[] players) {
+    public int doStuff(Player player, Player[] players) {
         System.out.println("Fields.Chance: " + getLabel());
+
+        return 0;
     }
 
     public void drawCard(Player player, int draw){

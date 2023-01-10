@@ -55,7 +55,12 @@ public class Game {
             //System.out.println("choice made");
 
             players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
-            fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
+            int doStuffStatus = fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
+            if(doStuffStatus == 1){
+                gui.buyPlot(playerTurn,players[playerTurn].getPosition());
+            }
+
+
             for (int i = 0; i<players.length; i++) {
                 gui.setBalance(i, players[i].getBalance());
             }
@@ -67,13 +72,19 @@ public class Game {
             }
 
 
+            while(players[playerTurn].haveUnMortgagedDeeds() && players[playerTurn].getBalance() <= 0){
+                playerMortgaged();
+            }
 
-            
 
             playerTurn++;
 
             for (int i = 0; i<players.length; i++) {
                 if (players[i].getBalance() <= 0) {
+
+
+
+
                     anyBankruptPlayers = true;
                 }
             }

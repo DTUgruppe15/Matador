@@ -22,7 +22,7 @@ public class Brewery extends Properties{
 
     //Lets player buy brewery deed
     @Override
-    public void doStuff(Player player, Player[] players) {
+    public int doStuff(Player player, Player[] players) {
         //Checks if the deed is bought. Buys if it isn't
         //Pays rent if it is.
         //Needs to implement how much to pay
@@ -31,6 +31,7 @@ public class Brewery extends Properties{
             if (player.getBalance() >= deed.getPrice()) {
                 System.out.println("Du har købt skødet");
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
+                return 1;
             }
             //Then checks if the player who landed here already owns it
         } else if (findPlayerInArray(player, players) == owner) {
@@ -40,6 +41,7 @@ public class Brewery extends Properties{
             players[owner].updateBalance(deed.getPrice());
         }
         System.out.println("Fields.Brewery: " + getLabel());
+        return 0;
     }
     public int getOwner() {
         return owner;

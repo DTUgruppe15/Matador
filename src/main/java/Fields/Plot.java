@@ -21,13 +21,14 @@ public class Plot extends Properties{
 
     //Method that lets player buy plots
     @Override
-    public void doStuff(Player player, Player[] players) {
+    public int doStuff(Player player, Player[] players) {
         //checks if the deed is bought, if it's not - buy it.
         // If it is - pay rent
         if (!this.deed.getBoughtStatus()) {
             if (player.getBalance() >= deed.getPrice()) {
                 System.out.println("Du har købt skødet");
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
+                return 1;
             }
         } else if (findPlayerInArray(player, players) == owner) {
         } else {
@@ -38,6 +39,7 @@ public class Plot extends Properties{
             players[owner].updateBalance(deed.getRent0());
         }
         System.out.println("plot: " + getLabel());
+        return 0;
     }
     public int getOwner() { return owner; }
 

@@ -137,4 +137,16 @@ public class Player {
     public void printDeeds(){
         playerAccount.printAllDeedName();
     }
+
+    public boolean haveUnMortgagedDeeds(){
+
+        if(playerAccount.getOwnedDeeds().size() == 0){
+            System.out.println("have no UnMortgagedDeeds");
+            return false;
+        }else{
+            System.out.println("haveUnMortgagedDeeds");
+            return true;
+        }
+
+    }
 }
