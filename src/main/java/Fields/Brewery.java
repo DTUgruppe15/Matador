@@ -27,10 +27,12 @@ public class Brewery extends Properties{
         //Pays rent if it is.
         //Needs to implement how much to pay
         if (!this.deed.getBoughtStatus()) {
+            //First checks if the player can buy it
             if (player.getBalance() >= deed.getPrice()) {
                 System.out.println("Du har købt skødet");
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
             }
+            //Then checks if the player who landed here already owns it
         } else if (findPlayerInArray(player, players) == owner) {
         } else {
             System.out.println("Skødet er købt, betal: " + deed.getPrice() + " til spiller: " + owner);
