@@ -1,7 +1,8 @@
 
 
 
-import Player.Player;
+import PlayerUtils.Player;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -77,5 +78,17 @@ public class PlayerTest {
         player.movePosition(36);
         assertEquals(1, player.getPosition());
         assertEquals(34000, player.getBalance());
+    }
+
+    @Test
+    @DisplayName("Does player recieve money by passing go")
+    void PassGo(){
+        Player player = new Player();
+
+        player.setPosition(39);
+
+        player.movePosition(3);
+
+        assertEquals(34000,player.getBalance());
     }
 }

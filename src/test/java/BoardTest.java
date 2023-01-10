@@ -1,6 +1,5 @@
-import Fields.Board;
-import Fields.Fields;
-import Player.Player;
+import FieldsUtils.Board;
+import FieldsUtils.Fields;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

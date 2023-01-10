@@ -1,8 +1,8 @@
-import Die.Die;
-import Die.DieController;
-import Fields.Fields;
-import Player.Player;
-import Fields.Board;
+import DieUtils.Die;
+import DieUtils.DieController;
+import FieldsUtils.Fields;
+import PlayerUtils.Player;
+import FieldsUtils.Board;
 
 public class Game {
     private Fields[] fields;
