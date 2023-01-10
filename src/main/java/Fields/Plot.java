@@ -31,9 +31,9 @@ public class Plot extends Properties{
             }
         } else if (findPlayerInArray(player, players) == owner) {
         } else {
-            System.out.println("Skødet er købt, betal: " + deed.getPrice() + " til spiller: " + owner);
+            System.out.println("Skødet er købt, betal: " + deed.getRent0() + " til spiller: " + owner);
             //Pays rent
-            // needs to check for houses once implemented
+            //needs to check for houses once implemented
             player.updateBalance(-deed.getRent0());
             players[owner].updateBalance(deed.getPrice());
         }
