@@ -180,7 +180,13 @@ public class UpdateGUI {
     }
 
     public String playerChoice(){
-        String chosenElement = gui.getUserSelection("Vælg handling","Rul terninger","Køb huse");
+        String chosenElement = gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund");
+
+        return chosenElement;
+    }
+
+    public String playerMortgaged(String[] temp){
+        String chosenElement = gui.getUserSelection("Vælg grund til pantsætning",temp);
 
         return chosenElement;
     }

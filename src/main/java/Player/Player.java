@@ -3,6 +3,9 @@ package Player;
 
 import Fields.Deed;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Player {
 
     private boolean isBankrupt;
@@ -104,9 +107,16 @@ public class Player {
      *
      * @param deed the deed to mortgage
      */
-    public void mortgageDeed(Deed deed) {
-        this.playerAccount.updateMortgagedDeeds(deed);
-        this.playerAccount.updateBalance(deed.getMortgageValue());
+    public void mortgageDeed(String field) {
+
+        int index = Arrays.binarySearch(getOwnedDeeds(),field);
+
+        this.playerAccount.updateMortgagedDeeds(index);
+
+
+
+        //this.playerAccount.updateMortgagedDeeds(deed);
+        //this.playerAccount.updateBalance(deed.getMortgageValue());
     }
 
     /**
@@ -117,5 +127,9 @@ public class Player {
     public void buyDeed(Deed deed) {
         this.playerAccount.updateOwnedDeeds(deed);
         this.playerAccount.updateBalance(-deed.getPrice());
+    }
+
+    public String[] getOwnedDeeds() {
+        return playerAccount.getNameOfAllDeeds();
     }
 }

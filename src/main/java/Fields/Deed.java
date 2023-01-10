@@ -25,6 +25,7 @@ public class Deed{
     public Deed(String location, int price) {
         this.location = location;
         this.price = price;
+        this.mortgageValue = price/2;
     }
 
     public void buyDeed() {

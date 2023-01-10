@@ -6,6 +6,21 @@ import java.util.ArrayList;
 
 public class Account {
     private int balance;
+
+    public ArrayList<Deed> getOwnedDeeds() {
+        return ownedDeeds;
+    }
+    
+    public String[] getNameOfAllDeeds(){
+
+        String[] arr = new String[ownedDeeds.size()];
+
+        for (int i = 0; i < ownedDeeds.size(); i++) {
+            arr[i] = ownedDeeds.get(i).getLocation();
+        }
+        return arr;
+    }
+
     private ArrayList<Deed> ownedDeeds;
     private ArrayList<Deed> mortgagedDeeds;
     private int totalValue;
@@ -44,10 +59,16 @@ public class Account {
      *
      * @param newDeed the Fields.Deed object to be added to the list of mortgaged Deeds
      */
-    public void updateMortgagedDeeds(Deed newDeed) {
+    public void updateMortgagedDeeds(int index) {
+
+        Deed newDeed = ownedDeeds.get(index);
+
+
+
         if (this.ownedDeeds.contains(newDeed)) {
             this.mortgagedDeeds.add(newDeed);
             this.ownedDeeds.remove(mortgagedDeeds.indexOf(newDeed));
+            updateBalance(newDeed.getMortgageValue());
         } else {
             this.mortgagedDeeds.add(newDeed);
         }
