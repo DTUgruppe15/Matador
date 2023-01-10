@@ -11,7 +11,7 @@ public abstract class Fields {
 
     public Fields(){}
 
-    public abstract  void doStuff(Player player);
+    public abstract void doStuff(Player player,Player[] players);
 
     public String getLabel(){
         return label;
