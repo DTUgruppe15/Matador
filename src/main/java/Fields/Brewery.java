@@ -20,8 +20,12 @@ public class Brewery extends Properties{
         return this.deed;
     }
 
+    //Lets player buy brewery deed
     @Override
     public void doStuff(Player player, Player[] players) {
+        //Checks if the deed is bought. Buys if it isn't
+        //Pays rent if it is.
+        //Needs to implement how much to pay
         if (!this.deed.getBoughtStatus()) {
             if (player.getBalance() >= deed.getPrice()) {
                 System.out.println("Du har købt skødet");

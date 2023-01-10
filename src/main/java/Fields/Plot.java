@@ -5,9 +5,6 @@ import Player.Player;
 public class Plot extends Properties{
     private String label;
     private Deed deed;
-
-
-
     private int owner;
 
     public Plot(String label, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5){
@@ -22,8 +19,11 @@ public class Plot extends Properties{
         return this.deed;
     }
 
+    //Method that lets player buy plots
     @Override
     public void doStuff(Player player, Player[] players) {
+        //checks if the deed is bought, if it's not - buy it.
+        // If it is - pay rent
         if (!this.deed.getBoughtStatus()) {
             if (player.getBalance() >= deed.getPrice()) {
                 System.out.println("Du har købt skødet");
@@ -32,16 +32,14 @@ public class Plot extends Properties{
         } else if (findPlayerInArray(player, players) == owner) {
         } else {
             System.out.println("Skødet er købt, betal: " + deed.getPrice() + " til spiller: " + owner);
-            player.updateBalance(-deed.getPrice());
+            //Pays rent
+            // needs to check for houses once implemented
+            player.updateBalance(-deed.getRent0());
             players[owner].updateBalance(deed.getPrice());
         }
         System.out.println("plot: " + getLabel());
     }
-    public int getOwner() {
-        return owner;
-    }
+    public int getOwner() { return owner; }
 
-    public void setOwner(int owner) {
-        this.owner = owner;
-    }
+    public void setOwner(int owner) { this.owner = owner; }
 }
