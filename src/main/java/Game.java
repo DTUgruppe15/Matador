@@ -35,10 +35,10 @@ public class Game {
         }
 
         boolean gameActive = true;
-
+        boolean anyBankruptPlayers = false;
         int playerTurn = 0;
 
-        while(gameActive){
+        while(gameActive && !anyBankruptPlayers){
             if(playerTurn >= amountOfPlayers){
                 playerTurn = 0;
             }
@@ -49,7 +49,7 @@ public class Game {
             Boolean playerChoiceInProgress = true;
             while(playerChoiceInProgress){
                 switch (gui.playerChoice()){
-                    case "Rull terninger":
+                    case "Rul terninger":
                         die.rollDies(die1,die2);
                         playerChoiceInProgress = false;
                         break;
@@ -73,12 +73,19 @@ public class Game {
             }
 
 
+
             
 
             playerTurn++;
 
+            for (int i = 0; i<players.length; i++) {
+                if (players[i].getBalance() <= 0) {
+                    anyBankruptPlayers = true;
+                }
+            }
 
         }
+        System.out.println("Spiller " + playerTurn + " er gået fallit");
 
 
 
