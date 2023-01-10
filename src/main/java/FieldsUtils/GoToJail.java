@@ -8,6 +8,7 @@ public class GoToJail extends Fields{
     public void doStuff(Player player) {
         player.setPosition(10);
         player.addJailTime();
+    public void doStuff(Player player, Player[] players) {
         System.out.println("Fields.GoToJail: " + getLabel());
     }
 }

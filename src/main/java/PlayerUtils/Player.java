@@ -119,7 +119,7 @@ public class Player {
      */
     public void buyDeed(Deed deed) {
         this.playerAccount.updateOwnedDeeds(deed);
-        this.playerAccount.updateBalance(deed.getPrice());
+        this.playerAccount.updateBalance(-deed.getPrice());
     }
 
     public void addJailTime(){

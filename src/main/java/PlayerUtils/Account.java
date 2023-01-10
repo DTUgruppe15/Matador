@@ -92,6 +92,7 @@ public class Account {
      */
     public void updateBalance(int amount) {
         balance = balance + amount;
+        System.out.println(amount);
         updateTotalValue();
     }
 }
