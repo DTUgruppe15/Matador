@@ -1,6 +1,6 @@
-package FieldsUtils;
+package Fields;
 
-import PlayerUtils.Player;
+import Player.Player;
 
 public class Go extends Fields {
 

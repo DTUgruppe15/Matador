@@ -1,7 +1,7 @@
-package PlayerUtils;
+package Player;
 
 
-import FieldsUtils.Deed;
+import Fields.Deed;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,8 +13,6 @@ public class Player {
     private int position;
     private final Account playerAccount;
 
-    private int jailTime;
-
     /**
      * Constructs a new Player object.
      */
@@ -22,7 +20,6 @@ public class Player {
         this.playerAccount = new Account();
         this.isBankrupt = false;
         this.position = 0;
-        this.jailTime = 0;
     }
 
     /**
@@ -139,13 +136,5 @@ public class Player {
 
     public void printDeeds(){
         playerAccount.printAllDeedName();
-    }
-
-    public void addJailTime(){
-        jailTime++;
-    }
-
-    public void releaseFromJail(){
-        jailTime = 0;
     }
 }

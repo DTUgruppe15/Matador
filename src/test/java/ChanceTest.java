@@ -1,7 +1,7 @@
-import FieldsUtils.Chance;
+import Fields.Chance;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import PlayerUtils.Player;
+import Player.Player;
 
 import static org.junit.jupiter.api.Assertions.*;
 

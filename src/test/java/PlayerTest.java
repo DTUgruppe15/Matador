@@ -1,7 +1,7 @@
 
 
 
-import PlayerUtils.Player;
+import Player.Player;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

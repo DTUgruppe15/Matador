@@ -1,4 +1,4 @@
-package DieUtils;
+package Die;
 
 public class DieController {
     public DieController() {

@@ -1,7 +1,6 @@
-package FieldsUtils;
+package Fields;
 
-import FileReader.*;
-
+import Fields.Fields;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -36,13 +35,7 @@ public class Board {
                     case " start" -> fields1[whatField] = new Go(fieldValues[0]);
                     case " chance" -> fields1[whatField] = chance;
                     case " tax" -> fields1[whatField] = new Tax(fieldValues[0], Integer.parseInt(fieldValues[3]));
-                    case " jail" -> {
-                        if(whatField == 30){
-                            fields1[whatField] = new GoToJail();
-                        }else{
-                            fields1[whatField] = new Jail();
-                        }
-                    }
+                    case " jail" -> fields1[whatField] = new Jail();
                     case " refugee" -> fields1[whatField] = new Parking();
                 }
                 whatField++;
@@ -57,49 +50,8 @@ public class Board {
     }
 
 
-    public void initBoard(Fields[] fields){
-        CSVReader csv = new CSVReader();
 
-        Chance chance = new Chance();
-        Deed deed;
 
-        for (int i = 0; i < fields.length; i++) {
-            deed = new Deed(csv.getName(i),csv.getPrice(i),csv.getHousePrice(i), csv.getRent0(i),csv.getRent1(i),csv.getRent2(i),csv.getRent3(i),csv.getRent4(i),csv.getRent5(i));
 
-            switch(csv.getType(i)){
-                case " start":
-                    fields[i] = new Go(csv.getName(i));
-                    break;
-                case " street":
-                    fields[i] = new Plot(deed);
-                    break;
-                case " chance":
-                    fields[i] = chance;
-                    break;
-                case " tax":
-                    if(csv.getPosition(i) == 4){
-                        fields[i] = new Tax(csv.getName(i), csv.getPrice(i));
-                    }else {
-                        fields[i] = new LuxuryTax();
-                    }
-                    break;
-                case " ferry":
-                    fields[i] = new Ferry(deed);
-                    break;
-                case " jail":
-                    if(csv.getPosition(i) == 30){
-                        fields[i] = new GoToJail();
-                    }else {
-                        fields[i] = new Jail();
-                    }
-                    break;
-                case " brewery":
-                    fields[i] = new Brewery(deed);
-                    break;
-                case " refugee":
-                    fields[i] = new Parking();
-                    break;
-            }
-        }
-    }
+
 }

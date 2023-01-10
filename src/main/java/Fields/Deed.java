@@ -1,4 +1,4 @@
-package FieldsUtils;
+package Fields;
 
 public class Deed{
 
