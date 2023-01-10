@@ -96,6 +96,7 @@ public class Game {
                     break;
                 case "Køb huse":
                     System.out.println("Not implemented");
+                    players[playerTurn].printDeeds();
                     break;
                 case "Pantsæt grund":
                     System.out.println("pant");
@@ -111,14 +112,9 @@ public class Game {
 
         String choosenProperty = gui.playerMortgaged(arr);
 
+        players[playerTurn].mortgageDeed(choosenProperty);
 
-
-
-
-
-
-
-
+        gui.setBalance(playerTurn,players[playerTurn].getBalance());
     }
 
 

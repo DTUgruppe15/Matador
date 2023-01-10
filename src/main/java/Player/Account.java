@@ -116,4 +116,19 @@ public class Account {
         System.out.println(amount);
         updateTotalValue();
     }
+
+    public void printAllDeedName(){
+        System.out.println("Owned");
+        for (int i = 0; i < ownedDeeds.size(); i++) {
+            System.out.println(ownedDeeds.get(i).getLocation());
+        }
+
+        System.out.println("Mortgaged");
+
+        for (int i = 0; i < mortgagedDeeds.size(); i++) {
+            System.out.println(mortgagedDeeds.get(i).getLocation());
+        }
+
+
+    }
 }

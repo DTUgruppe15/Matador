@@ -110,6 +110,7 @@ public class Player {
     public void mortgageDeed(String field) {
 
         int index = Arrays.binarySearch(getOwnedDeeds(),field);
+        System.out.println("index " + index);
 
         this.playerAccount.updateMortgagedDeeds(index);
 
@@ -131,5 +132,9 @@ public class Player {
 
     public String[] getOwnedDeeds() {
         return playerAccount.getNameOfAllDeeds();
+    }
+
+    public void printDeeds(){
+        playerAccount.printAllDeedName();
     }
 }
