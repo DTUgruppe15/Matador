@@ -89,4 +89,8 @@ public class Deed{
     public int getRent5() { return rent5; }
 
     public void setRent5(int rent5) { this.rent5 = rent5; }
+
+    public int getColorId() {
+        return colorId;
+    }
 }

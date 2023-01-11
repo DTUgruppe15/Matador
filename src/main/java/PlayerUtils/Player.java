@@ -4,8 +4,6 @@ package PlayerUtils;
 import FieldsUtils.Deed;
 import org.apache.commons.lang.ArrayUtils;
 
-import java.util.Arrays;
-
 public class Player {
 
     private boolean isBankrupt;
@@ -109,7 +107,7 @@ public class Player {
     /**
      * Mortgages a deed owned by the player.
      *
-     * @param deed the deed to mortgage
+     * @param field the deed to mortgage
      */
     public void mortgageDeed(String field) {
 
@@ -164,5 +162,9 @@ public class Player {
             return true;
         }
 
+    }
+    public int getOwnedDeedColorId(int index) {
+        int[] colorIdArray = playerAccount.getColorIdOfAllDeeds();
+        return colorIdArray[index];
     }
 }

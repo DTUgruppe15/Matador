@@ -13,22 +13,31 @@ public class Account {
     
     public String[] getNameOfAllDeeds(){
 
-        String[] arr = new String[ownedDeeds.size()];
+        String[] array = new String[ownedDeeds.size()];
 
         for (int i = 0; i < ownedDeeds.size(); i++) {
-            arr[i] = ownedDeeds.get(i).getLocation();
+            array[i] = ownedDeeds.get(i).getLocation();
         }
-        return arr;
+        return array;
     }
 
     public String[] getNameOfAllMortgagedDeeds(){
 
-        String[] arr = new String[mortgagedDeeds.size()];
+        String[] array = new String[mortgagedDeeds.size()];
 
         for (int i = 0; i < mortgagedDeeds.size(); i++) {
-            arr[i] = mortgagedDeeds.get(i).getLocation();
+            array[i] = mortgagedDeeds.get(i).getLocation();
         }
-        return arr;
+        return array;
+    }
+
+    public int[] getColorIdOfAllDeeds() {
+        int[] array = new int[ownedDeeds.size()];
+
+        for (int i = 0; i < ownedDeeds.size(); i++) {
+            array[i] = ownedDeeds.get(i).getColorId();
+        }
+        return array;
     }
 
     private ArrayList<Deed> ownedDeeds;
@@ -67,7 +76,7 @@ public class Account {
      * If the Fields.Deed is not in the list of owned Deeds, it is simply added to the list of mortgaged Deeds.
      * Updates the total value of the Account.
      *
-     * @param newDeed the Fields.Deed object to be added to the list of mortgaged Deeds
+     * @param index the Fields.Deed object to be added to the list of mortgaged Deeds
      */
     public void updateMortgagedDeeds(int index) {
 
