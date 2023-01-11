@@ -7,10 +7,10 @@ public class Plot extends Properties{
     private Deed deed;
     private int owner;
 
-    public Plot(String label, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5){
+    public Plot(String label, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5, int colorId){
         super(label);
         this.label = label;
-        this.deed = new Deed(label,price,housePrice,rent0,rent1,rent2,rent3,rent4,rent5);
+        this.deed = new Deed(label,price,housePrice,rent0,rent1,rent2,rent3,rent4,rent5,colorId);
     }
 
     public Plot(Deed deed){
