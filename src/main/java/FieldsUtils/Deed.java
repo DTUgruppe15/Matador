@@ -1,7 +1,7 @@
 package FieldsUtils;
 
 public class Deed{
-    private int price, mortgageValue, housePrice, rent0, rent1, rent2, rent3, rent4, rent5;
+    private int price, mortgageValue, housePrice, rent0, rent1, rent2, rent3, rent4, rent5, colorId;
     private String location;
     private boolean bought = false;
 
@@ -15,7 +15,7 @@ public class Deed{
 
     private  boolean isMortgaged = false;
 
-    public Deed(String location, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5) {
+    public Deed(String location, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5, int colorId) {
         this.location = location;
         this.price = price;
         this.housePrice = housePrice;
@@ -26,6 +26,7 @@ public class Deed{
         this.rent4 = rent4;
         this.rent5 = rent5;
         this.mortgageValue = price/2;
+        this.colorId = colorId;
     }
 
     public Deed(String location, int price) {
