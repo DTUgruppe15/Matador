@@ -121,9 +121,9 @@ public class Game {
 
         String[] arr = players[playerTurn].getOwnedDeeds();
 
-        String choosenProperty = gui.playerMortgaged(arr);
+        String chosenProperty = gui.playerMortgaged(arr);
 
-        players[playerTurn].mortgageDeed(choosenProperty);
+        players[playerTurn].mortgageDeed(chosenProperty);
 
         gui.setBalance(playerTurn,players[playerTurn].getBalance());
     }

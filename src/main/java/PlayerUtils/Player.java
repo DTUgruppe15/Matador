@@ -167,4 +167,5 @@ public class Player {
         int[] colorIdArray = playerAccount.getColorIdOfAllDeeds();
         return colorIdArray[index];
     }
+
 }
