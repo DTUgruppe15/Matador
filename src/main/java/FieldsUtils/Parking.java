@@ -3,6 +3,11 @@ package FieldsUtils;
 import PlayerUtils.Player;
 
 public class Parking extends Fields{
+
+    public Parking(String label){
+        super(label);
+    }
+
     @Override
     public int doStuff(Player player, Player[] players) {
         System.out.println("Fields.Parking: " + getLabel());

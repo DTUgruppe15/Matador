@@ -12,6 +12,7 @@ public class Board {
     //Constructor
     public Board(){}
 
+    /*
     //Method that creates all the fields from the CSV file
     public Fields[] createFields(Fields[] fields) {
         Fields[] fields1 = fields;
@@ -47,12 +48,12 @@ public class Board {
         } catch (IOException e) {
             e.printStackTrace();
         } return fields1;
-    }
+    }*/
 
     public void initBoard(Fields[] fields){
         CSVReader csv = new CSVReader();
 
-        Chance chance = new Chance();
+        Chance chance = new Chance(csv.getName(2));
         Deed deed;
 
         for (int i = 0; i < fields.length; i++) {
@@ -72,7 +73,7 @@ public class Board {
                     if(csv.getPosition(i) == 4){
                         fields[i] = new Tax(csv.getName(i), csv.getPrice(i));
                     }else {
-                        fields[i] = new LuxuryTax();
+                        fields[i] = new LuxuryTax(csv.getName(i), csv.getPrice(i));
                     }
                     break;
                 case " ferry":
@@ -80,21 +81,32 @@ public class Board {
                     break;
                 case " jail":
                     if(csv.getPosition(i) == 30){
-                        fields[i] = new GoToJail();
+                        fields[i] = new GoToJail(csv.getName(i));
                     }else {
-                        fields[i] = new Jail();
+                        fields[i] = new Jail(csv.getName(i));
                     }
                     break;
                 case " brewery":
                     fields[i] = new Brewery(deed);
                     break;
                 case " refugee":
-                    fields[i] = new Parking();
+                    fields[i] = new Parking(csv.getName(i));
                     break;
             }
         }
     }
 
+    public static void main(String[] args) {
+        System.out.println("Writing board");
+
+        Board board = new Board();
+        Fields[] fields = new Fields[40];
+        board.initBoard(fields);
+
+        for (int i = 0; i < fields.length; i++) {
+            System.out.println(fields[i].getLabel());
+        }
+    }
 
 
 
