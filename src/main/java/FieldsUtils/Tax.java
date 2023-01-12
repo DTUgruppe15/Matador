@@ -6,6 +6,7 @@ public class Tax extends Fields{
     int price;
     String label;
     public Tax(String label, int price) {
+        super(label);
         this.label = label;
         this.price = price;
     }

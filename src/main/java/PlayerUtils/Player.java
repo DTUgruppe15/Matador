@@ -14,6 +14,7 @@ public class Player {
     private final Account playerAccount;
 
     private int jailTime;
+    private int getOutOfJail;
 
     /**
      * Constructs a new Player object.
@@ -24,6 +25,7 @@ public class Player {
         this.position = 0;
 
         this.jailTime = 0;
+        getOutOfJail = 0;
     }
 
     /**
@@ -164,5 +166,25 @@ public class Player {
             return true;
         }
 
+    }
+
+    public int getJailTime(){
+        return jailTime;
+    }
+
+    public boolean haveGetOutOfJail(){
+        if(getOutOfJail>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void useGetOutOfJail(){
+        getOutOfJail--;
+    }
+
+    public void addGetOutOfJail(){
+        getOutOfJail++;
     }
 }

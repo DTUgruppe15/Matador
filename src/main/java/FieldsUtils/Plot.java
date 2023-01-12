@@ -14,6 +14,7 @@ public class Plot extends Properties{
     }
 
     public Plot(Deed deed){
+        super(deed.getLocation());
         this.deed = deed;
     }
 
@@ -35,7 +36,7 @@ public class Plot extends Properties{
                 return 1;
             }
         } else if (findPlayerInArray(player, players) == owner) {
-        } else if(!deed.isMortgaged()) {
+        } else if(!deed.isMortgaged() && players[owner].getJailTime() == 0) {
             System.out.println("Skødet er købt, betal: " + deed.getRent0() + " til spiller: " + owner);
             //Pays rent
             //needs to check for houses once implemented

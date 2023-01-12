@@ -5,6 +5,12 @@ import PlayerUtils.Player;
 public class Chance extends Fields{
 
 
+    public Chance(String label) {
+        super(label);
+    }
+
+    public Chance(){}
+
     @Override
     public int doStuff(Player player, Player[] players) {
         System.out.println("Fields.Chance: " + getLabel());

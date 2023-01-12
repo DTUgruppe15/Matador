@@ -17,6 +17,7 @@ public class Ferry extends Properties{
     }
 
     public Ferry(Deed deed){
+        super(deed.getLocation());
         this.deed = deed;
     }
 

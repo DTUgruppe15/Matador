@@ -187,10 +187,58 @@ public class UpdateGUI {
         players[player].getCar().setPosition(fields[field]);
     }
 
-    public String playerChoice(){
-        String chosenElement = gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund");
+    public int playerChoice(){
+        int choice = 0;
 
-        return chosenElement;
+        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Cheat Dice")){
+            case "Rul terninger":
+                choice = 1;
+                break;
+            case "Køb huse":
+                choice = 2;
+                break;
+            case "Pantsæt grund":
+                choice = 3;
+                break;
+            case "Cheat Dice":
+                choice = 4;
+                break;
+        }
+
+        return choice;
+    }
+
+    public int playerJailChoice(boolean haveGetOutOfJail){
+        int choice = 0;
+        if(haveGetOutOfJail){
+            switch (gui.getUserSelection("Du er i fængsel. Vælg handling", "Rul terninger", "Betal 1000", "Brug et løsladelseskort", "Cheat Dice")) {
+                case "Rul terninger":
+                    choice = 1;
+                    break;
+                case "Betal 1000":
+                    choice = 2;
+                    break;
+                case "Brug et løsladelseskort":
+                    choice = 3;
+                    break;
+                case "Cheat Dice":
+                    choice = 4;
+                    break;
+            }
+        }else {
+            switch (gui.getUserSelection("Du er i fængsel. Vælg handling", "Rul terninger", "Betal 1000", "Cheat Dice")) {
+                case "Rul terninger":
+                    choice = 1;
+                    break;
+                case "Betal 1000":
+                    choice = 2;
+                    break;
+                case "Cheat Dice":
+                    choice = 4;
+                    break;
+            }
+        }
+        return choice;
     }
 
     public String playerMortgaged(String[] temp){
@@ -203,5 +251,9 @@ public class UpdateGUI {
         GUI_Field field = gui.getFields()[position];
         GUI_Ownable ownable = (GUI_Ownable) field;
         ownable.setBorder(players[player].getCar().getPrimaryColor());
+    }
+
+    public int getUserInt(int die){
+        return gui.getUserInteger("Input for die" + die);
     }
 }

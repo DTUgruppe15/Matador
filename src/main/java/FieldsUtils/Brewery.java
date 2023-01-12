@@ -15,6 +15,7 @@ public class Brewery extends Properties{
     }
 
     public Brewery(Deed deed){
+        super(deed.getLocation());
         this.deed = deed;
     }
 

@@ -148,4 +148,27 @@ class LandOnFieldTest {
         assertEquals( 10,players[0].getPosition());
     }
 
+    @Test
+    @DisplayName("Player land on jailed players plot")
+    void LandOnJailedPlayersPlot(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[1].doStuff(players[0],players);
+        fields[30].doStuff(players[0],players);
+
+        fields[1].doStuff(players[1],players);
+
+        assertAll(
+                () -> assertEquals(30000-1200,players[0].getBalance()),
+                () -> assertEquals(30000,players[1].getBalance()),
+                () -> assertTrue(players[0].getJailTime()>0)
+        );
+    }
 }

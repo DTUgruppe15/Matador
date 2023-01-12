@@ -26,11 +26,11 @@ public class Game {
 
         die1 = new Die();
         die2 = new Die();
-        die = new DieController(); //!!!Why doesnt the DieController create the dice!!!
+        die = new DieController();
 
         Board board = new Board();
         Fields[] fields = new Fields[40];
-        board.createFields(fields);
+        board.initBoard(fields);
 
         gui = new UpdateGUI();
         int amountOfPlayers = gui.addPlayers();
@@ -47,14 +47,16 @@ public class Game {
             if(playerTurn >= amountOfPlayers){
                 playerTurn = 0;
             }
-
-
-
-            playerChoice();
+            if(players[playerTurn].getJailTime() > 0){
+                playerJailChoice();
+            }
+            if(players[playerTurn].getJailTime() == 0) {
+                playerChoice();
+            }
 
             //System.out.println("choice made");
 
-            players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
+
             int doStuffStatus = fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
             if(doStuffStatus == 1){
                 gui.buyPlot(playerTurn,players[playerTurn].getPosition());
@@ -101,17 +103,25 @@ public class Game {
         Boolean playerChoiceInProgress = true;
         while(playerChoiceInProgress){
             switch (gui.playerChoice()){
-                case "Rul terninger":
+                case 1:
                     die.rollDies(die1,die2);
+                    players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
                     playerChoiceInProgress = false;
                     break;
-                case "Køb huse":
+                case 2:
                     System.out.println("Not implemented");
                     players[playerTurn].printDeeds();
                     break;
-                case "Pantsæt grund":
+                case 3:
                     System.out.println("pant");
                     playerMortgaged();
+                    break;
+                case 4:
+                    System.out.println("Cheating");
+                    die1.setEyes(gui.getUserInt(1));
+                    die2.setEyes(gui.getUserInt(2));
+                    players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
+                    playerChoiceInProgress = false;
                     break;
             }
         }
@@ -128,7 +138,47 @@ public class Game {
         gui.setBalance(playerTurn,players[playerTurn].getBalance());
     }
 
+    public void playerJailChoice(){
+        if(players[playerTurn].getJailTime()>=3){
+            gui.sendMessage("Betal 1000");
+            players[playerTurn].updateBalance(-1000);
+            players[playerTurn].releaseFromJail();
+        }else{
+            switch (gui.playerJailChoice(players[playerTurn].haveGetOutOfJail())){
+                case 1:
+                    die.rollDies(die1,die2);
+                    if(die.isEqual(die1,die2)){
+                        players[playerTurn].releaseFromJail();
+                    } else{
+                        players[playerTurn].addJailTime();
+                    }
+                    break;
+                case 2:
+                    players[playerTurn].updateBalance(-1000);
+                    players[playerTurn].releaseFromJail();
+                    break;
+                case 3:
+                    players[playerTurn].useGetOutOfJail();
+                    players[playerTurn].releaseFromJail();
+                    break;
+                case 4:
+                    System.out.println("Cheating");
+                    die1.setEyes(gui.getUserInt(1));
+                    die2.setEyes(gui.getUserInt(2));
+                    if(die.isEqual(die1,die2)){
+                        players[playerTurn].releaseFromJail();
+                    } else{
+                        players[playerTurn].addJailTime();
+                    }
+                    break;
 
+            }
+        }
+
+
+
+
+    }
 
 
 
