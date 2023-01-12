@@ -131,11 +131,13 @@ class LandOnFieldTest {
 
         Board board = new Board();
         board.initBoard(fields);
+        fields = board.createFields(fields);
+
 
         fields[6].doStuff(players[0],players);
         fields[8].doStuff(players[0],players);
         fields[9].doStuff(players[0],players);
-        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse(fields[6].getLabel());
         fields[6].doStuff(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
