@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 public class Account {
     private int balance;
-
+    private ArrayList<Deed> ownedDeeds;
+    private ArrayList<Deed> mortgagedDeeds;
+    private int totalValue;
     public ArrayList<Deed> getOwnedDeeds() {
         return ownedDeeds;
     }
@@ -40,11 +42,22 @@ public class Account {
         return array;
     }
 
-    public boolean[] DeedsOfSameColorId;
+    private Deed[] getDeedsOfSameColor() {
+        boolean ownsAllOfSameColor = false;
+        int countOfOwnedDeedColor = 0;
+        for (int deedsOfSameColor = 0; deedsOfSameColor < ownedDeeds.size(); deedsOfSameColor++) {
+            if (players[this.deed.getOwner()].getOwnedDeedColorId(deedsOfSameColor) == deed.getColorId()) {
+                countOfOwnedDeedColor++;
+            }
+        }
+        if ((deed.getColorId() == 1 || deed.getColorId() == 8) && countOfOwnedDeedColor == 2) {
+            ownsAllOfSameColor = true;
+        } else if (countOfOwnedDeedColor == 3) {
+            ownsAllOfSameColor = true;
+        }
+    }
 
-    private ArrayList<Deed> ownedDeeds;
-    private ArrayList<Deed> mortgagedDeeds;
-    private int totalValue;
+
 
     /**
      * Constructor for the Account class

@@ -43,10 +43,8 @@ public class Plot extends Properties{
                     countOfOwnedDeedColor++;
                 }
             }
-            if (deed.getColorId() == 1 || deed.getColorId() == 8 ) {
-                if (countOfOwnedDeedColor == 2) {
-                    ownsAllOfSameColor = true;
-                }
+            if ((deed.getColorId() == 1 || deed.getColorId() == 8) && countOfOwnedDeedColor == 2) {
+                ownsAllOfSameColor = true;
             } else if (countOfOwnedDeedColor == 3) {
                 ownsAllOfSameColor = true;
             }

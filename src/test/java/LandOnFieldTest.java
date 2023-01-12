@@ -9,19 +9,6 @@ import FileReader.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LandOnFieldTest {
-    /*
-    @Test
-    void Template(){
-        Player[] players = new Player[2];
-        players[0] = new Player();
-        players[1] = new Player();
-
-        Fields[] fields = new Fields[40];
-
-        Board board = new Board();
-        board.initBoard(fields);
-    }
-     */
 
     @Test
     @DisplayName("Buy unowned plot")
