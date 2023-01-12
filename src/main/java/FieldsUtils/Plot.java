@@ -7,7 +7,6 @@ import java.util.Arrays;
 public class Plot extends Properties{
     private String label;
     private Deed deed;
-    private int owner;
 
     public Plot(String label, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5, int colorId){
         super(label);
@@ -20,8 +19,7 @@ public class Plot extends Properties{
     }
 
     public Deed buyDeed(int whoBuys) {
-        this.deed.buyDeed();
-        this.owner = whoBuys;
+        this.deed.buyDeed(whoBuys);
         return this.deed;
     }
 
@@ -36,12 +34,12 @@ public class Plot extends Properties{
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
                 return 1;
             }
-        } else if (findPlayerInArray(player, players) == owner) {
+        } else if (findPlayerInArray(player, players) == this.deed.getOwner()) {
         } else if(!deed.isMortgaged()) {
             boolean ownsAllOfSameColor = false;
             int countOfOwnedDeedColor = 0;
-            for (int deedsOfSameColor = 0; deedsOfSameColor < players[owner].getOwnedDeeds().length; deedsOfSameColor++) {
-                if (players[owner].getOwnedDeedColorId(deedsOfSameColor) == deed.getColorId()) {
+            for (int deedsOfSameColor = 0; deedsOfSameColor < players[this.deed.getOwner()].getOwnedDeeds().length; deedsOfSameColor++) {
+                if (players[this.deed.getOwner()].getOwnedDeedColorId(deedsOfSameColor) == deed.getColorId()) {
                     countOfOwnedDeedColor++;
                 }
             }
@@ -53,25 +51,22 @@ public class Plot extends Properties{
                 ownsAllOfSameColor = true;
             }
             if (ownsAllOfSameColor) {
-                System.out.println("Skødet er købt, betal: " + deed.getRent0()*2 + " til spiller: " + owner);
+                System.out.println("Skødet er købt, betal: " + deed.getRent0()*2 + " til spiller: " + this.deed.getOwner());
                 //Pays rent
                 //needs to check for houses once implemented
                 player.updateBalance(-deed.getRent0()*2);
-                players[owner].updateBalance(deed.getRent0()*2);
+                players[this.deed.getOwner()].updateBalance(deed.getRent0()*2);
             } else {
-                System.out.println("Skødet er købt, betal: " + deed.getRent0() + " til spiller: " + owner);
+                System.out.println("Skødet er købt, betal: " + deed.getRent0() + " til spiller: " + this.deed.getOwner());
                 //Pays rent
                 //needs to check for houses once implemented
                 player.updateBalance(-deed.getRent0());
-                players[owner].updateBalance(deed.getRent0());
+                players[this.deed.getOwner()].updateBalance(deed.getRent0());
             }
         }
         System.out.println("plot: " + getLabel());
         return 0;
     }
-    public int getOwner() { return owner; }
-
-    public void setOwner(int owner) { this.owner = owner; }
 
     public int getColorId() {return deed.getColorId(); }
 }

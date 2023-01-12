@@ -5,10 +5,6 @@ import PlayerUtils.Player;
 public class Brewery extends Properties{
     private Deed deed;
 
-
-
-    private int owner;
-
     public Brewery(String label, int price) {
         super(label);
         this.deed = new Deed(label,price);
@@ -19,8 +15,7 @@ public class Brewery extends Properties{
     }
 
     public Deed buyDeed(int whoBuys) {
-        this.deed.buyDeed();
-        this.owner = whoBuys;
+        this.deed.buyDeed(whoBuys);
         return this.deed;
     }
 
@@ -38,20 +33,13 @@ public class Brewery extends Properties{
                 return 1;
             }
             //Then checks if the player who landed here already owns it
-        } else if (findPlayerInArray(player, players) == owner) {
+        } else if (findPlayerInArray(player, players) == this.deed.getOwner()) {
         } else {
-            System.out.println("Skødet er købt, betal: " + deed.getPrice() + " til spiller: " + owner);
+            System.out.println("Skødet er købt, betal: " + deed.getPrice() + " til spiller: " + this.deed.getOwner());
             player.updateBalance(-deed.getPrice());
-            players[owner].updateBalance(deed.getPrice());
+            players[this.deed.getOwner()].updateBalance(deed.getPrice());
         }
         System.out.println("Fields.Brewery: " + getLabel());
         return 0;
-    }
-    public int getOwner() {
-        return owner;
-    }
-
-    public void setOwner(int owner) {
-        this.owner = owner;
     }
 }

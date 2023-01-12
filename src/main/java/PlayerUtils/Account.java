@@ -40,6 +40,8 @@ public class Account {
         return array;
     }
 
+    public boolean[] DeedsOfSameColorId;
+
     private ArrayList<Deed> ownedDeeds;
     private ArrayList<Deed> mortgagedDeeds;
     private int totalValue;

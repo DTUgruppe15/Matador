@@ -5,6 +5,10 @@ public class Deed{
     private String location;
     private boolean bought = false;
 
+
+
+    private int owner;
+
     public boolean isMortgaged() {
         return isMortgaged;
     }
@@ -35,7 +39,8 @@ public class Deed{
         this.mortgageValue = price/2;
     }
 
-    public void buyDeed() {
+    public void buyDeed(int owner) {
+        this.owner = owner;
         this.bought = true;
     }
 
@@ -89,7 +94,8 @@ public class Deed{
     public int getRent5() { return rent5; }
 
     public void setRent5(int rent5) { this.rent5 = rent5; }
-
+    public int getOwner() { return owner; }
+    public void setOwner(int owner) { this.owner = owner; }
     public int getColorId() {
         return colorId;
     }
