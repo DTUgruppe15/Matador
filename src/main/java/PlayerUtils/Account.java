@@ -26,6 +26,7 @@ public class Account {
     public void buyHouse(int index) {
         Deed newDeed = ownedDeeds.get(index);
         newDeed.buyHouse();
+        this.balance = this.balance-newDeed.getHousePrice();
     }
 
     public String[] getNameOfAllDeeds(){

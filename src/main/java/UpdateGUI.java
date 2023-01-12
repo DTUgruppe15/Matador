@@ -201,7 +201,7 @@ public class UpdateGUI {
 
     public String buyHouse(String[] temp) {
         String chosenElement = gui.getUserSelection("Vælg grund til at købe hus på",temp);
-
+        System.out.println(chosenElement);
         return chosenElement;
     }
     public void buyPlot(int player, int position){

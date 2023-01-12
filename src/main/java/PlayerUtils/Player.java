@@ -135,6 +135,7 @@ public class Player {
     public void buyHouse(String field) {
         int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
         System.out.println("index " + index);
+        System.out.println("field " + field);
 
         this.playerAccount.buyHouse(index);
     }

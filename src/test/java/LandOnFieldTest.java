@@ -118,9 +118,10 @@ class LandOnFieldTest {
         );
     }
 
+    //K15_AT
     @Test
-    @DisplayName("Land On a plot owned by another player where the player owns all plots of same color with with three of same color")
-    void LandOnOwnedPlotWithOwnerOwningAllPlotsOfSameColorThree(){
+    @DisplayName("Land On a plot owned by another player with 1 house")
+    void LandOnOwnedPlotWithHouse(){
         Player[] players = new Player[2];
         players[0] = new Player();
         players[1] = new Player();
@@ -134,19 +135,153 @@ class LandOnFieldTest {
         fields[6].doStuff(players[0],players);
         fields[8].doStuff(players[0],players);
         fields[9].doStuff(players[0],players);
+        players[0].buyHouse("Roskildevej");
         fields[6].doStuff(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
 
         assertAll(
-                () -> assertEquals(30000-2000-2000-2400+200,players[0].getBalance()),
+                () -> assertEquals(30000-2000-2000-2400-1000+600,players[0].getBalance()),
                 () -> assertArrayEquals(new String[]{csv.getName(6),csv.getName(8),csv.getName(9)},temp1),
                 () -> assertArrayEquals(new String[0],temp2),
-                () -> assertEquals(30000-200,players[1].getBalance())
+                () -> assertEquals(30000-600,players[1].getBalance())
         );
     }
 
+    //K15_AT
+    @Test
+    @DisplayName("Land On a plot owned by another player with 2 houses")
+    void LandOnOwnedPlotWith2Houses(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(players[0],players);
+        fields[8].doStuff(players[0],players);
+        fields[9].doStuff(players[0],players);
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        fields[6].doStuff(players[1],players);
+
+        String[] temp1 = players[0].getOwnedDeeds();
+        String[] temp2 = players[1].getOwnedDeeds();
+
+        assertAll(
+                () -> assertEquals(30000-2000-2000-2400-1000-1000+1800,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(6),csv.getName(8),csv.getName(9)},temp1),
+                () -> assertArrayEquals(new String[0],temp2),
+                () -> assertEquals(30000-1800,players[1].getBalance())
+        );
+    }
+
+    //K15_AT
+    @Test
+    @DisplayName("Land On a plot owned by another player with 3 houses")
+    void LandOnOwnedPlotWith3Houses(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(players[0],players);
+        fields[8].doStuff(players[0],players);
+        fields[9].doStuff(players[0],players);
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        fields[6].doStuff(players[1],players);
+
+        String[] temp1 = players[0].getOwnedDeeds();
+        String[] temp2 = players[1].getOwnedDeeds();
+
+        assertAll(
+                () -> assertEquals(30000-2000-2000-2400-1000-1000-1000+5400,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(6),csv.getName(8),csv.getName(9)},temp1),
+                () -> assertArrayEquals(new String[0],temp2),
+                () -> assertEquals(30000-5400,players[1].getBalance())
+        );
+    }
+
+    //K15_AT
+    @Test
+    @DisplayName("Land On a plot owned by another player with 4 houses")
+    void LandOnOwnedPlotWith4Houses(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(players[0],players);
+        fields[8].doStuff(players[0],players);
+        fields[9].doStuff(players[0],players);
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        fields[6].doStuff(players[1],players);
+
+        String[] temp1 = players[0].getOwnedDeeds();
+        String[] temp2 = players[1].getOwnedDeeds();
+
+        assertAll(
+                () -> assertEquals(30000-2000-2000-2400-1000-1000-1000-1000+8000,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(6),csv.getName(8),csv.getName(9)},temp1),
+                () -> assertArrayEquals(new String[0],temp2),
+                () -> assertEquals(30000-8000,players[1].getBalance())
+        );
+    }
+
+    //K15_AT
+    @Test
+    @DisplayName("Land On a plot owned by another player with Hotel")
+    void LandOnOwnedPlotWithHotel(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(players[0],players);
+        fields[8].doStuff(players[0],players);
+        fields[9].doStuff(players[0],players);
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        players[0].buyHouse("Roskildevej");
+        fields[6].doStuff(players[1],players);
+
+        String[] temp1 = players[0].getOwnedDeeds();
+        String[] temp2 = players[1].getOwnedDeeds();
+
+        assertAll(
+                () -> assertEquals(30000-2000-2000-2400-1000-1000-1000-1000-1000+11000,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(6),csv.getName(8),csv.getName(9)},temp1),
+                () -> assertArrayEquals(new String[0],temp2),
+                () -> assertEquals(30000-11000,players[1].getBalance())
+        );
+    }
     @Test
     @DisplayName("Land on mortgaged plot")
     void MortgagedPlot(){
