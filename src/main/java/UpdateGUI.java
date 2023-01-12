@@ -199,6 +199,11 @@ public class UpdateGUI {
         return chosenElement;
     }
 
+    public String buyHouse(String[] temp) {
+        String chosenElement = gui.getUserSelection("Vælg grund til at købe hus på",temp);
+
+        return chosenElement;
+    }
     public void buyPlot(int player, int position){
         GUI_Field field = gui.getFields()[position];
         GUI_Ownable ownable = (GUI_Ownable) field;

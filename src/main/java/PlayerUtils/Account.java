@@ -42,19 +42,44 @@ public class Account {
         return array;
     }
 
-    private Deed[] getDeedsOfSameColor() {
-        boolean ownsAllOfSameColor = false;
-        int countOfOwnedDeedColor = 0;
-        for (int deedsOfSameColor = 0; deedsOfSameColor < ownedDeeds.size(); deedsOfSameColor++) {
-            if (players[this.deed.getOwner()].getOwnedDeedColorId(deedsOfSameColor) == deed.getColorId()) {
-                countOfOwnedDeedColor++;
+    public String[] getDeedsOfSameColor() {
+        ArrayList<String> deedsWhereAllColorsAreOwned = new ArrayList<>();
+        String[] tempDeeds;
+        int[] colorIdArray = new int[8];
+        for (Deed ownedDeed : ownedDeeds) {
+            int colorId = ownedDeed.getColorId();
+            switch (colorId) {
+                case 1 -> colorIdArray[0]++;
+                case 2 -> colorIdArray[1]++;
+                case 3 -> colorIdArray[2]++;
+                case 4 -> colorIdArray[3]++;
+                case 5 -> colorIdArray[4]++;
+                case 6 -> colorIdArray[5]++;
+                case 7 -> colorIdArray[6]++;
+                case 8 -> colorIdArray[7]++;
             }
         }
-        if ((deed.getColorId() == 1 || deed.getColorId() == 8) && countOfOwnedDeedColor == 2) {
-            ownsAllOfSameColor = true;
-        } else if (countOfOwnedDeedColor == 3) {
-            ownsAllOfSameColor = true;
+
+        for (int colorId = 0 ; colorId < colorIdArray.length ; colorId++){
+            if (colorIdArray[colorId] == 2 && (colorId == 0 || colorId == 7)) {
+                for (Deed ownedDeed : ownedDeeds) {
+                    if (ownedDeed.getColorId() == colorId) {
+                        deedsWhereAllColorsAreOwned.add(ownedDeed.getLocation());
+                    }
+                }
+            } else if (colorIdArray[colorId] == 3){
+                for (Deed ownedDeed : ownedDeeds) {
+                    if (ownedDeed.getColorId() == colorId) {
+                        deedsWhereAllColorsAreOwned.add(ownedDeed.getLocation());
+                    }
+                }
+            }
         }
+        tempDeeds = new String[deedsWhereAllColorsAreOwned.size()];
+        for (int i = 0; i < tempDeeds.length; i++) {
+            tempDeeds[i] = deedsWhereAllColorsAreOwned.get(i);
+        }
+        return tempDeeds;
     }
 
 

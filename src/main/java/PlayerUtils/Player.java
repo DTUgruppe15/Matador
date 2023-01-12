@@ -151,6 +151,7 @@ public class Player {
     public void printDeeds(){
         playerAccount.printAllDeedName();
     }
+    public String[] getDeedsReadyForHouses() {return this.playerAccount.getDeedsOfSameColor();}
 
     public boolean haveUnMortgagedDeeds(){
 
