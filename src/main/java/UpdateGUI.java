@@ -1,3 +1,4 @@
+import FileReader.CSVReader;
 import gui_fields.*;
 import gui_main.GUI;
 
@@ -30,41 +31,50 @@ public class UpdateGUI {
                     fields[i] = new GUI_Start();
                     fields[i].setTitle(csvReader.getName(i));
                     fields[i].setSubText("<----");
+                    fields[i].setDescription("Modtag 4000 for passering");
                     break;
                 case " street":
                     fields[i] = new GUI_Street();
                     fields[i].setTitle(csvReader.getName(i));
                     fields[i].setSubText(Integer.toString(csvReader.getPrice(i)));
+                    fields[i].setDescription("Rent: "+csvReader.getRent0(i)+" "+csvReader.getRent1(i)+" "+csvReader.getRent2(i)+" "+csvReader.getRent3(i)+" "+csvReader.getRent4(i)+" "+csvReader.getRent5(i)+" House: "+csvReader.getHousePrice(i));
                     break;
                 case " chance":
                     fields[i] = new GUI_Chance();
+                    fields[i].setDescription("Træk chancekort");
                     break;
                 case " tax":
                     fields[i] = new GUI_Tax();
                     fields[i].setTitle(csvReader.getName(i));
                     fields[i].setSubText(Integer.toString(csvReader.getPrice(i)));
+                    fields[i].setDescription("Betal skat");
                     break;
                 case " ferry":
                     fields[i] = new GUI_Shipping();
                     fields[i].setTitle(csvReader.getName(i));
                     fields[i].setSubText(Integer.toString(csvReader.getPrice(i)));
+                    fields[i].setDescription("");
                     break;
                 case " jail":
                     fields[i] = new GUI_Jail();
                     if(csvReader.getPosition(i) == 10){
                         fields[i].setSubText("På besøg");
+                        fields[i].setDescription("På besøg");
                     }else{
                         fields[i].setSubText("Gå i fængsel");
+                        fields[i].setDescription("Gå i fængsel");
                     }
                     break;
                 case " brewery":
                     fields[i] = new GUI_Brewery();
                     fields[i].setTitle(csvReader.getName(i));
                     fields[i].setSubText(Integer.toString(csvReader.getPrice(i)));
+                    fields[i].setDescription("");
                     break;
                 case " refugee":
                     fields[i] = new GUI_Refuge();
                     fields[i].setSubText("Parkering");
+                    fields[i].setDescription("Intet sker her");
                     break;
                 default:
                     fields[i] = new GUI_Street();
@@ -122,8 +132,6 @@ public class UpdateGUI {
         fields[38].setBackGroundColor(Color.CYAN);
         fields[39].setBackGroundColor(Color.MAGENTA);
 
-
-
     }
 
     public void sendMessage(String text){
@@ -180,13 +188,20 @@ public class UpdateGUI {
     }
 
     public String playerChoice(){
-        String chosenElement = gui.getUserSelection("Vælg handling","Rull terninger","Køb huse");
+        String chosenElement = gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund");
 
         return chosenElement;
     }
 
+    public String playerMortgaged(String[] temp){
+        String chosenElement = gui.getUserSelection("Vælg grund til pantsætning",temp);
 
+        return chosenElement;
+    }
 
-
-
+    public void buyPlot(int player, int position){
+        GUI_Field field = gui.getFields()[position];
+        GUI_Ownable ownable = (GUI_Ownable) field;
+        ownable.setBorder(players[player].getCar().getPrimaryColor());
+    }
 }
