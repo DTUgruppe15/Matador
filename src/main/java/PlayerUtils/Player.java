@@ -132,6 +132,13 @@ public class Player {
         this.playerAccount.updateBalance(-deed.getPrice());
     }
 
+    public void buyHouse(String field) {
+        int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
+        System.out.println("index " + index);
+
+        this.playerAccount.buyHouse(index);
+    }
+
     public void addJailTime(){
         jailTime++;
     }

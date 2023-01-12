@@ -49,11 +49,38 @@ public class Plot extends Properties{
                 ownsAllOfSameColor = true;
             }
             if (ownsAllOfSameColor) {
-                System.out.println("Skødet er købt, betal: " + deed.getRent0()*2 + " til spiller: " + this.deed.getOwner());
-                //Pays rent
-                //needs to check for houses once implemented
-                player.updateBalance(-deed.getRent0()*2);
-                players[this.deed.getOwner()].updateBalance(deed.getRent0()*2);
+                switch (this.deed.getHousesAmount()) {
+                    case 0 -> {
+                        System.out.println("Skødet er købt, betal: " + deed.getRent0() * 2 + " til spiller: " + this.deed.getOwner());
+                        player.updateBalance(-deed.getRent0() * 2);
+                        players[this.deed.getOwner()].updateBalance(deed.getRent0() * 2);
+                    }
+                    case 1 -> {
+                        System.out.println("Skødet er købt, der er 1 hus på. Betal, : " + deed.getRent1() + " til spiller: " + this.deed.getOwner());
+                        player.updateBalance(-deed.getRent1());
+                        players[this.deed.getOwner()].updateBalance(deed.getRent1());
+                    }
+                    case 2 -> {
+                        System.out.println("Skødet er købt, der er 2 huse på. Betal: " + deed.getRent2() + " til spiller: " + this.deed.getOwner());
+                        player.updateBalance(-deed.getRent2());
+                        players[this.deed.getOwner()].updateBalance(deed.getRent2());
+                    }
+                    case 3 -> {
+                        System.out.println("Skødet er købt, der er 3 huse på. Betal, : " + deed.getRent3() + " til spiller: " + this.deed.getOwner());
+                        player.updateBalance(-deed.getRent3());
+                        players[this.deed.getOwner()].updateBalance(deed.getRent3());
+                    }
+                    case 4 -> {
+                        System.out.println("Skødet er købt, der er 4 huse på. Betal: " + deed.getRent4() + " til spiller: " + this.deed.getOwner());
+                        player.updateBalance(-deed.getRent4());
+                        players[this.deed.getOwner()].updateBalance(deed.getRent4());
+                    }
+                    case 5 -> {
+                        System.out.println("Skødet er købt, der er et hotel på. Betal: " + deed.getRent5() + " til spiller: " + this.deed.getOwner());
+                        player.updateBalance(-deed.getRent5());
+                        players[this.deed.getOwner()].updateBalance(deed.getRent5());
+                    }
+                }
             } else {
                 System.out.println("Skødet er købt, betal: " + deed.getRent0() + " til spiller: " + this.deed.getOwner());
                 //Pays rent

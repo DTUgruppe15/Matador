@@ -107,7 +107,6 @@ public class Game {
                     break;
                 case "Køb huse":
                     System.out.println("Not implemented");
-                    players[playerTurn].getDeedsReadyForHouses();
                     break;
                 case "Pantsæt grund":
                     System.out.println("pant");
@@ -118,7 +117,11 @@ public class Game {
     }
 
     public void playBuyHouse() {
+        String[] array = players[playerTurn].getDeedsReadyForHouses();
 
+        String chosenProperty = gui.buyHouse(array);
+
+        players[playerTurn].buyHouse(chosenProperty);
     }
 
     public void playerMortgaged(){

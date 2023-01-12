@@ -12,7 +12,22 @@ public class Account {
     public ArrayList<Deed> getOwnedDeeds() {
         return ownedDeeds;
     }
-    
+
+    /**
+     * Constructor for the Account class
+     */
+    public Account() {
+        this.balance = 30000;
+        this.ownedDeeds = new ArrayList<Deed>();
+        this.mortgagedDeeds = new ArrayList<Deed>();
+        this.totalValue = balance;
+    }
+
+    public void buyHouse(int index) {
+        Deed newDeed = ownedDeeds.get(index);
+        newDeed.buyHouse();
+    }
+
     public String[] getNameOfAllDeeds(){
 
         String[] array = new String[ownedDeeds.size()];
@@ -84,15 +99,8 @@ public class Account {
 
 
 
-    /**
-     * Constructor for the Account class
-     */
-    public Account() {
-        this.balance = 30000;
-        this.ownedDeeds = new ArrayList<Deed>();
-        this.mortgagedDeeds = new ArrayList<Deed>();
-        this.totalValue = balance;
-    }
+
+
 
     /**
      * Adds a Fields.Deed object to the list of owned Deeds and removes it from the list of mortgaged Deeds if it is present.
