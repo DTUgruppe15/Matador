@@ -107,6 +107,7 @@ public class Game {
                     break;
                 case "Køb huse":
                     System.out.println("Not implemented");
+                    playBuyHouse();
                     break;
                 case "Pantsæt grund":
                     System.out.println("pant");

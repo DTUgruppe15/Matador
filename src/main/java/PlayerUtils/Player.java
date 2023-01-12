@@ -132,6 +132,10 @@ public class Player {
         this.playerAccount.updateBalance(-deed.getPrice());
     }
 
+    /**
+     * Lets player buy a house on a deed
+     * @param field is a String containing the deeds location-name
+     */
     public void buyHouse(String field) {
         int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
         System.out.println("index " + index);

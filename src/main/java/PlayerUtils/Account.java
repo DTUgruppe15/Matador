@@ -58,10 +58,15 @@ public class Account {
         return array;
     }
 
+    /**
+     * Checks all the player's owned deeds to see if it has all deeds of the same color
+     * @return a String[] og the names of all the deeds where the player owns all the same colors
+     */
     public String[] getDeedsOfSameColor() {
         ArrayList<String> deedsWhereAllColorsAreOwned = new ArrayList<>();
         String[] tempDeeds;
         int[] colorIdArray = new int[8];
+        //For loop that checks the deeds colorId and ups a counter for each one of th ID's
         for (Deed ownedDeed : ownedDeeds) {
             int colorId = ownedDeed.getColorId();
             switch (colorId) {
@@ -75,7 +80,7 @@ public class Account {
                 case 8 -> colorIdArray[7]++;
             }
         }
-
+        // For loop that adds the location of the deeds to a list if the player owns all deeds of that color
         for (int colorId = 0 ; colorId < colorIdArray.length ; colorId++){
             if (colorIdArray[colorId] == 2 && (colorId == 0 || colorId == 7)) {
                 for (Deed ownedDeed : ownedDeeds) {
@@ -92,6 +97,7 @@ public class Account {
             }
         }
         tempDeeds = new String[deedsWhereAllColorsAreOwned.size()];
+        //For loop that makes the list into an array
         for (int i = 0; i < tempDeeds.length; i++) {
             tempDeeds[i] = deedsWhereAllColorsAreOwned.get(i);
         }
