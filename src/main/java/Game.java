@@ -83,11 +83,9 @@ public class Game {
             }
             System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes() + " " + players[playerTurn].getBalance());
 
-            /* Why are we updating player balance two times?
             for (int i = 0; i<players.length; i++) {
                 gui.setBalance(i, players[i].getBalance());
             }
-            */
 
             while(players[playerTurn].haveUnMortgagedDeeds() && players[playerTurn].getBalance() <= 0) {
                 playerMortgaged();
@@ -184,6 +182,8 @@ public class Game {
                     if(players[playerTurn].haveGetOutOfJailCard()) {
                         players[playerTurn].useGetOutOfJailCard();
                         players[playerTurn].releaseFromJail();
+
+
                     } else {
                         //Do nothing. The player do not have a getOutOfJailCard
                         System.out.println("Player " + players[playerTurn] + " does not have a getOutOfJailCard");

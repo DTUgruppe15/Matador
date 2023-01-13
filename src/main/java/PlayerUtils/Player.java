@@ -91,6 +91,9 @@ public class Player {
 
                 playerAccount.updateBalance(4000);//Maybe a popup is needed
             }
+            if(position<0){
+                position+=40;
+            }
         }
 
 
@@ -105,11 +108,6 @@ public class Player {
         //Need function to handle <0 amount of money
     }
 
-    /**
-     * Mortgages a deed owned by the player.
-     *
-     * @param deed the deed to mortgage
-     */
     public void mortgageDeed(String field) {
 
         int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
@@ -184,10 +182,15 @@ public class Player {
         getOutOfJail--;
     }
 
+    public int getAmountOfGetOutOfJailCard() {
+        return getOutOfJail;
+    }
+
     public void addGetOutOfJailCard(){
         getOutOfJail++;
     }
 
-
-
+    public boolean isPlayerInJail() {
+        return jailTime > 0;
+    }
 }

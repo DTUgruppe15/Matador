@@ -15,29 +15,58 @@ public class Chance extends Fields {
         shuffleCards();
     }
 
+    /**
+     * Creates the Chance Deck
+     */
     public void initChanceDeck() {
         for (int i = 0; i < cardsArr.length; i++) {
             cardsList.add(cardsArr[i]);
         }
     }
 
+    /**
+     * Shuffles the Chance Cards
+     */
     public void shuffleCards(){
         Collections.shuffle(cardsList);
     }
 
+    /**
+     * Adds a specific card to the Chance Cards Deck
+     *
+     * @param card The card ID to be added
+     */
     public void addToDeck(int card) {
         cardsList.add(card);
     }
 
+    /**
+     * Adds getOutOfJailCard to the Chance Cards Deck
+     */
+    public void addGetOutOfJailCardToDeck() {
+        addToDeck(34);
+    }
+
+    /**
+     * Public getter
+     *
+     * @return Returns the Chance Cards as a ListArray
+     */
     public List getDeck() {
         return cardsList;
     }
 
+    /**
+     * Draws the first element in the deck and inserts it back into the deck. Gives the draw to drawCard() method
+     *
+     * @param player The current player
+     * @param players A list of players
+     *
+     * @return Returns 0 for "do nothing"
+     */
     @Override
     public int doStuff(Player player, Player[] players) {
-        System.out.println(Arrays.toString(cardsList.toArray()));
         int cardToDraw = cardsList.remove(0);
-        System.out.println("CardToDraw: " + cardToDraw);
         if(cardToDraw == 34) {
             //Do not add it back into the list
         }
@@ -45,11 +74,17 @@ public class Chance extends Fields {
             //Add the card to the bottom of the list
             addToDeck(cardToDraw);
         }
-        System.out.println(Arrays.toString(cardsList.toArray()));
         drawCard(player, players, cardToDraw);
         return 0;
     }
 
+    /**
+     * Make the appropriate action based on the drawn Chance card
+     *
+     * @param player The current player
+     * @param players A list of players
+     * @param draw The drawn card
+     */
     public void drawCard(Player player, Player[] players, int draw){
         int temp = findPlayerInArray(player, players);
         int playerPosition = player.getPosition();
@@ -191,6 +226,7 @@ public class Chance extends Fields {
                 }
                 break;
             case 27: //Ikke implementeret endnu (købs metoder er ikke 100% done endnu)
+                //There exists two of these ChanceCards
                 //"Ryk frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til, hvis selskabet ikke ejes af nogen kan de købe det af banken."
                 break;
             case 28:
@@ -251,12 +287,14 @@ public class Chance extends Fields {
                 // Tag til Rådhuspladsen
                 player.setPosition(39);
                 break;
-            case 34: //Ikke implementeret endnu
+            case 34:
                 //I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det.
                 player.addGetOutOfJailCard();
                 break;
-            case 35: //Ikke implementeret endnu
+            case 35:
                 // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.
+                player.addJailTime();
+                player.setPosition(10);
                 break;
         }
 

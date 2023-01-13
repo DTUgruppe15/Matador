@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,15 +12,33 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChanceTest {
 
-    /*
+    //Tests if the shuffled Arraylist is equal to the arraylist before shuffling
     @Test
-    @DisplayName("The cardList is randomized")
-    void cardListRandomizedTest() {
-        Chance chance = new Chance();
-        Integer[] cardsArr = {0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 11, 12, 12, 12, 13, 14, 15, 16, 16, 17, 18, 19, 20, 21, 22, 23, 23, 24, 24, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 34, 35, 35};
-        List<Integer> cardsList = Arrays.asList(cardsArr);
+    @DisplayName("Is cards shuffled")
+    void shuffleCardsTest() {
+        int[] sortedArr = {0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 11, 12, 12, 12, 13, 14, 15, 16, 16, 17, 18, 19, 20, 21, 22, 23, 23, 24, 24, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 34, 35, 35};
+        List<Integer> sortedList = new ArrayList<Integer>(sortedArr.length);
 
-        assertFalse(cardsList == chance.getDeck());
+        for (int i = 0; i < sortedArr.length; i++) {
+            sortedList.add(sortedArr[i]);
+        }
+
+        Chance chance = new Chance("ChanceField");
+
+        assertFalse(sortedList.equals(chance.getDeck()));
+    }
+
+    @Test
+    @DisplayName("Is card added")
+    void addCardsToDeckTest() {
+        Chance chance = new Chance("ChanceField");
+
+        chance.addToDeck(10);
+        List<Integer> chanceList = chance.getDeck();
+
+        int lastElem = chanceList.get(chanceList.size() - 1);
+
+        assertEquals(10, lastElem);
     }
 
     /*
@@ -152,7 +171,7 @@ class ChanceTest {
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
 
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-1000;
 
@@ -168,7 +187,7 @@ class ChanceTest {
     void drawCard3(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-300;
 
@@ -185,7 +204,7 @@ class ChanceTest {
     void drawCard4(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-200;
 
@@ -201,7 +220,7 @@ class ChanceTest {
     void drawCard5(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-3000;
 
@@ -217,7 +236,7 @@ class ChanceTest {
     void drawCard6(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-1000;
 
@@ -233,7 +252,7 @@ class ChanceTest {
     void drawCard7(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-200;
 
@@ -249,7 +268,7 @@ class ChanceTest {
     void drawCard8(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-1000;
 
@@ -265,7 +284,7 @@ class ChanceTest {
     void drawCard9(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-200;
 
@@ -281,7 +300,7 @@ class ChanceTest {
     void drawCard10(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()-2000;
 
@@ -297,7 +316,7 @@ class ChanceTest {
     void drawCard11(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()+500;
 
@@ -313,7 +332,7 @@ class ChanceTest {
     void drawCard12(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()+1000;
 
@@ -329,7 +348,7 @@ class ChanceTest {
     void drawCard13(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()+3000;
 
@@ -345,7 +364,7 @@ class ChanceTest {
     void drawCard14(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()+1000;
 
@@ -361,7 +380,7 @@ class ChanceTest {
     void drawCard15(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()+1000;
 
@@ -377,7 +396,7 @@ class ChanceTest {
     void drawCard16(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()+1000;
 
@@ -393,7 +412,7 @@ class ChanceTest {
     void drawCard17(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()+1000;
 
@@ -409,7 +428,7 @@ class ChanceTest {
     void drawCard18(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = player.getBalance()+200;
 
@@ -425,7 +444,7 @@ class ChanceTest {
     void drawCard19_1(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setBalance(10000);
 
@@ -443,7 +462,7 @@ class ChanceTest {
     void drawCard19_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setBalance(15000);
 
@@ -461,7 +480,7 @@ class ChanceTest {
     void drawCard19_3(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setBalance(15001);
 
@@ -479,7 +498,7 @@ class ChanceTest {
     void drawCard20(){
         Player[] players = {new Player(),new Player(),new Player(),new Player()};
 
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target1 = players[0].getBalance()-200;
         int target2 = players[1].getBalance()+600;
@@ -506,7 +525,7 @@ class ChanceTest {
     void drawCard21() {
         Player[] players = {new Player(),new Player(),new Player(),new Player()};
 
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target1 = players[0].getBalance()-500;
         int target2 = players[1].getBalance()+1500;
@@ -533,7 +552,7 @@ class ChanceTest {
     void drawCard22(){
         Player[] players = {new Player(),new Player(),new Player(),new Player()};
 
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target1 = players[0].getBalance()-500;
         int target2 = players[1].getBalance()+1500;
@@ -560,7 +579,7 @@ class ChanceTest {
     void drawCard23() {
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(20);
 
@@ -578,7 +597,7 @@ class ChanceTest {
     void drawCard24(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = 3;
 
@@ -594,7 +613,7 @@ class ChanceTest {
     void drawCard25_1(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(20);
 
@@ -612,7 +631,7 @@ class ChanceTest {
     void drawCard25_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(2);
 
@@ -630,7 +649,7 @@ class ChanceTest {
     void drawCard26_1(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(2);
 
@@ -648,7 +667,7 @@ class ChanceTest {
     void drawCard26_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(30);
 
@@ -691,7 +710,7 @@ class ChanceTest {
     void drawCard28_1(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(2);
 
@@ -709,7 +728,7 @@ class ChanceTest {
     void drawCard28_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(30);
 
@@ -732,7 +751,7 @@ class ChanceTest {
     void drawCard29_1(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(2);
 
@@ -750,7 +769,7 @@ class ChanceTest {
     void drawCard29_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(30);
 
@@ -773,7 +792,7 @@ class ChanceTest {
     void drawCard30_1(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(2);
 
@@ -791,7 +810,7 @@ class ChanceTest {
     void drawCard30_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(35);
 
@@ -814,7 +833,7 @@ class ChanceTest {
     void drawCard31_1(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         int target = 5;
 
@@ -830,7 +849,7 @@ class ChanceTest {
     void drawCard31_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(6);
 
@@ -848,7 +867,7 @@ class ChanceTest {
     void drawCard31_3(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(16);
 
@@ -866,7 +885,7 @@ class ChanceTest {
     void drawCard31_4(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(26);
 
@@ -884,7 +903,7 @@ class ChanceTest {
     void drawCard31_5(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(36);
 
@@ -907,7 +926,7 @@ class ChanceTest {
     void drawCard32_1(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(2);
 
@@ -925,7 +944,7 @@ class ChanceTest {
     void drawCard32_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(35);
 
@@ -948,7 +967,7 @@ class ChanceTest {
     void drawCard33(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
         player.setPosition(2);
 
@@ -961,58 +980,54 @@ class ChanceTest {
         assertEquals(target,result);
     }
 
-    /*
-    //Needs implementing
     @Test
-    @DisplayName("Get out of jail, cards available")
-    void drawCard33_1(){
-        Player player = new Player();
-        Fields.Chance chance = new Fields.Chance();
+    @DisplayName("Player gets a getOutOfJailCard from ChanceCards")
+    void drawCard34_1() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
+        Chance chance = new Chance("ChanceField");
 
-        int target = player.getJailCardAmount()+1;
+        assertFalse(player.haveGetOutOfJailCard());
 
-        chance.drawCard(player, 33);
+        chance.drawCard(player, players, 34);
 
-        int result = player.getJailCardAmount();
-
-        assertEquals(target,result);
+        assertTrue(player.haveGetOutOfJailCard());
     }
 
     @Test
-    @DisplayName("Get out of jail, cards not available")
-    void drawCard33_2(){
-        Player player = new Player();
-        Fields.Chance chance = new Fields.Chance();
+    @DisplayName("Get out of jail cards, do not continue to be in the deck")
+    void drawCard34_2() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player1 = players[0];
+        Player player2 = players[1];
+        Chance chance = new Chance("ChanceField");
 
-        int target = player.getJailCardAmount();
+        for(int i = 0; i < 46; i++) {
+            chance.doStuff(player1, players);
+        }
+        //Lost two chanceCards (card: 34) to player1
+        for(int i = 0; i < 44; i++) {
+            chance.doStuff(player2, players);
+        }
 
-        chance.drawCard(player, 33);
+        assertTrue(player1.haveGetOutOfJailCard());
+        assertEquals(2, player1.getAmountOfGetOutOfJailCard());
+        assertFalse(player2.haveGetOutOfJailCard());
+        assertEquals(0, player2.getAmountOfGetOutOfJailCard());
 
-        int result = player.getJailCardAmount();
-
-        assertEquals(target,result);
     }
 
     @Test
-    @DisplayName("Fields.Go to jail")
-    void drawCard34(){
-        Player player = new Player();
-        Chance chance = new Chance();
+    @DisplayName("Player goes to jail")
+    void drawCard35(){
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
+        Chance chance = new Chance("ChanceField");
 
-        player.setPosition(36);
+        chance.drawCard(player, players, 35);
 
-        int target1 = 10;
-        int target2 = player.getBalance();
-
-        chance.drawCard(player, 34);
-
-        int result1 = player.getPosition();
-        int result2 = player.getBalance();
-
-        assertAll(
-                () -> assertEquals(target1,result1),
-                () -> assertEquals(target2,result2)
-        );
+        assertEquals(30000, player.getBalance());
+        assertEquals(10, player.getPosition());
+        assertTrue(player.isPlayerInJail());
     }
-     */
 }
