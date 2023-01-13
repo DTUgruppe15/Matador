@@ -116,10 +116,6 @@ public class Player {
 
         this.playerAccount.updateMortgagedDeeds(index);
 
-
-
-        //this.playerAccount.updateMortgagedDeeds(deed);
-        //this.playerAccount.updateBalance(deed.getMortgageValue());
     }
 
     /**

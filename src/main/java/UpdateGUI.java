@@ -1,3 +1,4 @@
+import FieldsUtils.Fields;
 import FileReader.CSVReader;
 import gui_fields.*;
 import gui_main.GUI;
@@ -183,6 +184,44 @@ public class UpdateGUI {
         return  playerAmount;
     }
 
+    public void moveCar(int player, int previousField, int newField){
+        int previousPosition = previousField;
+        if (previousPosition <= newField) {
+            while (previousPosition <= newField) {
+                players[player].getCar().setPosition(fields[previousPosition]);
+                previousPosition++;
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } else {
+            while (previousPosition <= 39 && previousPosition != 0) {
+                players[player].getCar().setPosition(fields[previousPosition]);
+                if (previousPosition != 39) {
+                    previousPosition++;
+                } else {
+                    previousPosition = 0;
+                }
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            while (previousPosition <= newField) {
+                players[player].getCar().setPosition(fields[previousPosition]);
+                previousPosition++;
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+    }
     public void moveCar(int player, int field){
         players[player].getCar().setPosition(fields[field]);
     }
@@ -200,9 +239,14 @@ public class UpdateGUI {
     }
 
     public String buyHouse(String[] temp) {
-        String chosenElement = gui.getUserSelection("Vælg grund til at købe hus på",temp);
-        System.out.println(chosenElement);
-        return chosenElement;
+        if (temp.length == 0) {
+            gui.showMessage("Du ejer ikke alle grundende af en farve, du kan ikke købe huse");
+            return null;
+        } else {
+            String chosenElement = gui.getUserSelection("Vælg grund til at købe hus på",temp);
+            System.out.println(chosenElement);
+            return chosenElement;
+        }
     }
     public void buyPlot(int player, int position){
         GUI_Field field = gui.getFields()[position];

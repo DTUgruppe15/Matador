@@ -53,8 +53,9 @@ public class Game {
             playerChoice();
 
             //System.out.println("choice made");
-
-            players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
+            int playerPreviousPosition = players[playerTurn].getPosition();
+            players[playerTurn].movePosition(die1.getEyes() + die2.getEyes());
+            int playerNewPosition = players[playerTurn].getPosition();
             int doStuffStatus = fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
             if(doStuffStatus == 1){
                 gui.buyPlot(playerTurn,players[playerTurn].getPosition());
@@ -65,7 +66,7 @@ public class Game {
                 gui.setBalance(i, players[i].getBalance());
             }
             System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes() + " " + players[playerTurn].getBalance());
-            gui.moveCar(playerTurn,players[playerTurn].getPosition());
+            gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
             gui.setDice(die1.getEyes(),die2.getEyes());
             for (int i = 0; i<players.length; i++) {
                 gui.setBalance(i, players[i].getBalance());
@@ -121,11 +122,13 @@ public class Game {
 
 
         String chosenProperty = gui.buyHouse(array);
-        if (players[playerTurn].canBuyHouse(chosenProperty)) {
-            players[playerTurn].buyHouse(chosenProperty);
-        } else gui.sendMessage("Du skal købe huse på alle ejendomme før du kan købe 1 mere");
-
-
+        if (chosenProperty != null) {
+            if (players[playerTurn].canBuyHouse(chosenProperty)) {
+                players[playerTurn].buyHouse(chosenProperty);
+            } else {
+                gui.sendMessage("Du skal købe huse på alle ejendomme før du kan købe 1 mere");
+            }
+        }
 
     }
 
