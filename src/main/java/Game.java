@@ -38,6 +38,12 @@ public class Game {
         for (int i = 0; i < players.length; i++) {
             players[i] = new Player();
         }
+        int temp = gui.childAdvantage(players.length);
+        for (int i = 0; i < temp; i++) {
+            players[i].setChild();
+            gui.setBalance(i, players[i].getBalance());
+        }
+
 
         boolean gameActive = true;
         boolean anyBankruptPlayers = false;

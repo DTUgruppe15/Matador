@@ -91,4 +91,41 @@ public class PlayerTest {
 
         assertEquals(34000,player.getBalance());
     }
+
+    @Test
+    @DisplayName("Child have advantage")
+    void ChildMoney(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        players[1].setChild();
+
+        assertAll(
+                () -> assertEquals(30000,players[0].getBalance()),
+                () -> assertFalse(players[0].haveGetOutOfJail()),
+                () -> assertEquals(40000,players[1].getBalance()),
+                () -> assertTrue(players[1].haveGetOutOfJail())
+        );
+    }
+
+    @Test
+    @DisplayName("Child have advantage over Go")
+    void ChildMoneyOverGo(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        players[1].setChild();
+
+        players[0].setPosition(39);
+        players[0].movePosition(3);
+        players[1].setPosition(39);
+        players[1].movePosition(3);
+
+        assertAll(
+                () -> assertEquals(30000+4000,players[0].getBalance()),
+                () -> assertEquals(40000+5000,players[1].getBalance())
+        );
+    }
 }

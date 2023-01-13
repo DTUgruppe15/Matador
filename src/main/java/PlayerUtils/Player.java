@@ -16,6 +16,14 @@ public class Player {
     private int jailTime;
     private int getOutOfJail;
 
+    private int moneyOverGo;
+
+    public boolean isChild() {
+        return isChild;
+    }
+
+    private boolean isChild;
+
     /**
      * Constructs a new Player object.
      */
@@ -26,6 +34,9 @@ public class Player {
 
         this.jailTime = 0;
         getOutOfJail = 0;
+
+        moneyOverGo = 4000;
+        isChild = false;
     }
 
     /**
@@ -93,7 +104,7 @@ public class Player {
         if(position>=40){
             position-=40;
 
-            playerAccount.updateBalance(4000);//Maybe a popup is needed
+            playerAccount.updateBalance(moneyOverGo);//Maybe a popup is needed
         }
     }
 
@@ -186,5 +197,16 @@ public class Player {
 
     public void addGetOutOfJail(){
         getOutOfJail++;
+    }
+
+    public void setMoneyOverGo(int amount){
+        this.moneyOverGo = amount;
+    }
+
+    public void setChild(){
+        playerAccount.setBalance(40000);
+        getOutOfJail++;
+        moneyOverGo = 5000;
+        isChild = true;
     }
 }

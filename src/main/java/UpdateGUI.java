@@ -256,4 +256,15 @@ public class UpdateGUI {
     public int getUserInt(int die){
         return gui.getUserInteger("Input for die" + die);
     }
+
+    public int childAdvantage(int amount){
+
+        if(gui.getUserLeftButtonPressed("Er der børnespillerer?","Ja","Nej")){
+            return gui.getUserInteger("Hvor mange",0,amount);
+        }else{
+            return 0;
+        }
+
+
+    }
 }
