@@ -124,7 +124,7 @@ public class Game {
         String chosenProperty = gui.buyHouse(array);
         if (players[playerTurn].canBuyHouse(chosenProperty)) {
             players[playerTurn].buyHouse(chosenProperty);
-        }
+        } else gui.sendMessage("Du skal købe huse på alle huse før du kan købe 1 mere");
 
 
 
