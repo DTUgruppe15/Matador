@@ -106,8 +106,7 @@ public class Game {
                     playerChoiceInProgress = false;
                     break;
                 case "Køb huse":
-                    System.out.println("Not implemented");
-                    playBuyHouse();
+                    playerBuyHouse();
                     break;
                 case "Pantsæt grund":
                     System.out.println("pant");
@@ -117,14 +116,14 @@ public class Game {
         }
     }
 
-    public void playBuyHouse() {
+    public void playerBuyHouse() {
         String[] array = players[playerTurn].getDeedsReadyForHouses();
 
 
         String chosenProperty = gui.buyHouse(array);
         if (players[playerTurn].canBuyHouse(chosenProperty)) {
             players[playerTurn].buyHouse(chosenProperty);
-        } else gui.sendMessage("Du skal købe huse på alle huse før du kan købe 1 mere");
+        } else gui.sendMessage("Du skal købe huse på alle ejendomme før du kan købe 1 mere");
 
 
 

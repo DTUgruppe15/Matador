@@ -122,7 +122,6 @@ public class Account {
      */
     public Boolean areThereAHouseOnTheOtherDeeds(int colorId, int housesOnDeed){
         ArrayList<Integer> amountOfHouses = new ArrayList<>();
-        int trueHouseAmount = 0;
         for (Deed ownedDeed : ownedDeeds) {
             if (ownedDeed.getColorId() == colorId){
                 amountOfHouses.add(ownedDeed.getHousesAmount());

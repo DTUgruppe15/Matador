@@ -12,10 +12,7 @@ public class Deed{
     private int rent5;
     private int colorId;
 
-    public int getHousesAmount() {
-        return housesAmount;
-    }
-
+    public int getHousesAmount() { return housesAmount; }
     private int housesAmount;
     private String location;
     private boolean bought,isMortgaged;
@@ -107,13 +104,9 @@ public class Deed{
     public int getColorId() {
         return colorId;
     }
-    public boolean isMortgaged() {
-        return isMortgaged;
-    }
+    public boolean isMortgaged() { return isMortgaged; }
 
-    public void setMortgaged(boolean mortgaged) {
-        isMortgaged = mortgaged;
-    }
+    public void setMortgaged(boolean mortgaged) { isMortgaged = mortgaged; }
 
 
 }
