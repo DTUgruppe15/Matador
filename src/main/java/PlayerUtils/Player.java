@@ -144,6 +144,14 @@ public class Player {
         this.playerAccount.buyHouse(index);
     }
 
+    public boolean canBuyHouse(String field) {
+        int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
+        System.out.println("index " + index);
+        System.out.println("field " + field);
+
+        return this.playerAccount.areThereAHouseOnTheOtherDeeds(getHouseAmountOfDeeds()[index],getColorIdOfAllDeeds()[index]);
+    }
+
     public void addJailTime(){
         jailTime++;
     }
@@ -163,8 +171,9 @@ public class Player {
     public void printDeeds(){
         playerAccount.printAllDeedName();
     }
-    public String[] getDeedsReadyForHouses() {return this.playerAccount.getDeedsOfSameColor();}
-
+    public String[] getDeedsReadyForHouses() { return this.playerAccount.getDeedsOfSameColor();}
+    public int[] getHouseAmountOfDeeds() { return this.playerAccount.getHouseAmountOfAllDeeds(); }
+    public int[] getColorIdOfAllDeeds() { return this.playerAccount.getColorIdOfAllDeeds(); }
     public boolean haveUnMortgagedDeeds(){
 
         if(playerAccount.getOwnedDeeds().size() == 0){

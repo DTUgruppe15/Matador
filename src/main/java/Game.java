@@ -120,9 +120,14 @@ public class Game {
     public void playBuyHouse() {
         String[] array = players[playerTurn].getDeedsReadyForHouses();
 
-        String chosenProperty = gui.buyHouse(array);
 
-        players[playerTurn].buyHouse(chosenProperty);
+        String chosenProperty = gui.buyHouse(array);
+        if (players[playerTurn].canBuyHouse(chosenProperty)) {
+            players[playerTurn].buyHouse(chosenProperty);
+        }
+
+
+
     }
 
     public void playerMortgaged(){

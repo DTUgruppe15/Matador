@@ -3,6 +3,7 @@ package PlayerUtils;
 import FieldsUtils.Deed;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Account {
     private int balance;
@@ -45,6 +46,16 @@ public class Account {
 
         for (int i = 0; i < mortgagedDeeds.size(); i++) {
             array[i] = mortgagedDeeds.get(i).getLocation();
+        }
+        return array;
+    }
+
+    public int[] getHouseAmountOfAllDeeds(){
+
+        int[] array = new int[ownedDeeds.size()];
+
+        for (int i = 0; i < ownedDeeds.size(); i++) {
+            array[i] = ownedDeeds.get(i).getHousesAmount();
         }
         return array;
     }
@@ -104,7 +115,21 @@ public class Account {
         return tempDeeds;
     }
 
-
+    /**
+     * Checks if there are the same amount of houses on each one in order to let the player
+     * buy more houses.
+     * Returns true if the player may buy houses on that deed
+     */
+    public Boolean areThereAHouseOnTheOtherDeeds(int colorId, int housesOnDeed){
+        ArrayList<Integer> amountOfHouses = new ArrayList<>();
+        int trueHouseAmount = 0;
+        for (Deed ownedDeed : ownedDeeds) {
+            if (ownedDeed.getColorId() == colorId){
+                amountOfHouses.add(ownedDeed.getHousesAmount());
+            }
+        }
+        return Collections.min(amountOfHouses)==housesOnDeed;
+    }
 
 
 
