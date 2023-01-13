@@ -54,6 +54,7 @@ public class Board {
         CSVReader csv = new CSVReader();
 
         Chance chance = new Chance(csv.getName(2));
+        System.out.println(csv.getName(2));
         Deed deed;
 
         for (int i = 0; i < fields.length; i++) {

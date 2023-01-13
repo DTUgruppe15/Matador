@@ -241,6 +241,20 @@ public class UpdateGUI {
         return choice;
     }
 
+    //Player sees choice when paying tax on taxfield
+    public int playerTaxChoice() {
+        int choice = 0;
+        switch (gui.getUserSelection("Vælg handling", "Betal 4.000", "Betal 10% af din totalværdi")) {
+            case "Betal 4.000":
+                choice = 1;
+                break;
+            case "Betal 10% af din totalværdi":
+                choice = 2;
+                break;
+        }
+        return choice;
+    }
+
     public String playerMortgaged(String[] temp){
         String chosenElement = gui.getUserSelection("Vælg grund til pantsætning",temp);
 

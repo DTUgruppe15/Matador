@@ -1,7 +1,6 @@
 package PlayerUtils;
 
 import FieldsUtils.Deed;
-
 import java.util.ArrayList;
 
 public class Account {
@@ -95,6 +94,10 @@ public class Account {
             ownedDeed.getPrice();
         }
         totalValue = balance + valueOfOwnedDeeds;
+    }
+
+    public int getTotalValue() {
+        return totalValue;
     }
 
     /**

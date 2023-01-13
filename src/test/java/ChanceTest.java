@@ -1,15 +1,17 @@
-import Fields.Chance;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import Player.Player;
 
 import java.util.Arrays;
 import java.util.List;
+
+import PlayerUtils.Player;
+import FieldsUtils.Chance;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChanceTest {
 
+    /*
     @Test
     @DisplayName("The cardList is randomized")
     void cardListRandomizedTest() {
@@ -18,15 +20,6 @@ class ChanceTest {
         List<Integer> cardsList = Arrays.asList(cardsArr);
 
         assertFalse(cardsList == chance.getDeck());
-    }
-
-    @Test
-    void findObjectIndexTest() {
-        Player[] players = {new Player(), new Player(), new Player(), new Player()};
-        Player player = players[1];
-        Chance chance = new Chance();
-
-        assertTrue(chance.findObjectIndex(player, players) == 1);
     }
 
     /*

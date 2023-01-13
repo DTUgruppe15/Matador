@@ -7,12 +7,9 @@ import org.apache.commons.lang.ArrayUtils;
 import java.util.Arrays;
 
 public class Player {
-
     private boolean isBankrupt;
-
     private int position;
     private final Account playerAccount;
-
     private int jailTime;
     private int getOutOfJail;
 
@@ -23,9 +20,8 @@ public class Player {
         this.playerAccount = new Account();
         this.isBankrupt = false;
         this.position = 0;
-
         this.jailTime = 0;
-        getOutOfJail = 0;
+        this.getOutOfJail = 0;
     }
 
     /**
@@ -88,14 +84,15 @@ public class Player {
      *
      * @param amount the amount to move the player's position
      */
-    public void movePosition(int amount){
-        position += amount;
-        if(position>=40){
-            position-=40;
+    public void movePosition(int amount) {
+            position += amount;
+            if(position>=40){
+                position-=40;
 
-            playerAccount.updateBalance(4000);//Maybe a popup is needed
+                playerAccount.updateBalance(4000);//Maybe a popup is needed
+            }
         }
-    }
+
 
     /**
      * Updates the player's balance by a certain amount.
@@ -135,13 +132,14 @@ public class Player {
         this.playerAccount.updateOwnedDeeds(deed);
         this.playerAccount.updateBalance(-deed.getPrice());
     }
-
-    public void addJailTime(){
+    public void addJailTime() {
         jailTime++;
     }
-
     public void releaseFromJail(){
         jailTime = 0;
+    }
+    public int getJailTime() {
+        return jailTime;
     }
 
     public String[] getOwnedDeeds() {
@@ -156,8 +154,7 @@ public class Player {
         playerAccount.printAllDeedName();
     }
 
-    public boolean haveUnMortgagedDeeds(){
-
+    public boolean haveUnMortgagedDeeds() {
         if(playerAccount.getOwnedDeeds().size() == 0){
             System.out.println("have no UnMortgagedDeeds");
             return false;
@@ -165,26 +162,32 @@ public class Player {
             System.out.println("haveUnMortgagedDeeds");
             return true;
         }
-
     }
 
-    public int getJailTime(){
-        return jailTime;
+    public int getTotalValue() {
+        return playerAccount.getTotalValue();
     }
 
-    public boolean haveGetOutOfJail(){
-        if(getOutOfJail>0){
+    public boolean haveGetOutOfJailCard() {
+        return getOutOfJail > 0;
+        /*
+        if(getOutOfJail>0) {
             return true;
-        }else{
+        }
+        else {
             return false;
         }
+        */
     }
 
-    public void useGetOutOfJail(){
+    public void useGetOutOfJailCard(){
         getOutOfJail--;
     }
 
-    public void addGetOutOfJail(){
+    public void addGetOutOfJailCard(){
         getOutOfJail++;
     }
+
+
+
 }

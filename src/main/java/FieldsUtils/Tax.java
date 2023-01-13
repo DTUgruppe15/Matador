@@ -12,8 +12,7 @@ public class Tax extends Fields{
     }
     @Override
     public int doStuff(Player player, Player[] players) {
-        //player.updateBalance(-2000);
         System.out.println("Fields.Tax: " + price + "removed from player");
-        return 0;
+        return 2;
     }
 }
