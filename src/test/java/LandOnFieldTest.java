@@ -282,6 +282,39 @@ class LandOnFieldTest {
                 () -> assertEquals(30000-11000,players[1].getBalance())
         );
     }
+
+    //K21_AT
+    @Test
+    @DisplayName("Land on a field where 1 player first bought a house and then sold it")
+    void LandOnOwnedPlotWithHouseAndOnePlayerSoldAHouse(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(players[0],players);
+        fields[8].doStuff(players[0],players);
+        fields[9].doStuff(players[0],players);
+        players[0].buyHouse("Roskildevej");
+        players[0].sellHouse("Roskildevej");
+        fields[6].doStuff(players[1],players);
+
+        String[] temp1 = players[0].getOwnedDeeds();
+        String[] temp2 = players[1].getOwnedDeeds();
+
+        assertAll(
+                () -> assertEquals(30000-2000-2000-2400-1000+200+500,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(6),csv.getName(8),csv.getName(9)},temp1),
+                () -> assertArrayEquals(new String[0],temp2),
+                () -> assertEquals(30000-200,players[1].getBalance())
+        );
+    }
+
     @Test
     @DisplayName("Land on mortgaged plot")
     void MortgagedPlot(){
