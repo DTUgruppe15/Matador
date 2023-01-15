@@ -140,6 +140,16 @@ public class Account {
         return ferries;
     }
 
+    public int howManyBreweries() {
+        int breweries = 0;
+        for (Deed deed : ownedDeeds) {
+            if (Objects.equals(deed.getLocation(), "Coca Cola") || Objects.equals(deed.getLocation(), "Tuborg Squash")) {
+                breweries++;
+            }
+        }
+        return breweries;
+    }
+
 
     /**
      * Adds a Fields.Deed object to the list of owned Deeds and removes it from the list of mortgaged Deeds if it is present.

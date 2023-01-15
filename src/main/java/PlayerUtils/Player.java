@@ -218,6 +218,9 @@ public class Player {
     public int getFerries() {
         return this.playerAccount.howManyFerries();
     }
+    public int getBreweries() {
+        return this.playerAccount.howManyBreweries();
+    }
     public int getOwnedDeedColorId(int index) {
         int[] colorIdArray = playerAccount.getColorIdOfAllDeeds();
         return colorIdArray[index];
