@@ -19,6 +19,9 @@ public class UpdateGUI {
 
     }
 
+    /**
+     * Fills the gui with details on each field.
+     */
     public void initBoard(){
 
         CSVReader csvReader = new CSVReader();
@@ -134,18 +137,40 @@ public class UpdateGUI {
 
     }
 
+    /**
+     * Display a message in the gui.
+     *
+     * @param text The text that is displayed.
+     */
     public void sendMessage(String text){
         gui.showMessage(text);
     }
 
+    /**
+     * Updates the number displayed in the gui.
+     *
+     * @param player The index of the player.
+     * @param money The amount money is set.
+     */
     public void setBalance(int player, int money){
         players[player].setBalance(money);
     }
 
+    /**
+     * Updates the dice in the gui.
+     *
+     * @param die1 The number rolled by the first die.
+     * @param die2 The number rolled by the second die.
+     */
     public void setDice(int die1, int die2){
         gui.setDice(die1, die2);
     }
 
+    /**
+     * Prompts user for how many players in the game and initialise them.
+     *
+     * @return The amount of players choosen.
+     */
     public int addPlayers(){
         int playerAmount = gui.getUserInteger("Hvor mange spillerer? (3-6)",3,6);
 
@@ -183,10 +208,19 @@ public class UpdateGUI {
         return  playerAmount;
     }
 
+    /**
+     * Moves the player token to the selected field.
+     *
+     * @param player The index of the player.
+     * @param field The index of the field that is moved to.
+     */
     public void moveCar(int player, int field){
         players[player].getCar().setPosition(fields[field]);
     }
 
+    /**
+     * Prompts user for what they want to do.
+     */
     public int playerChoice(){
         int choice = 0;
 
@@ -208,6 +242,11 @@ public class UpdateGUI {
         return choice;
     }
 
+    /**
+     * Prompts user for what they want to do in jail.
+     *
+     * @param haveGetOutOfJail Does the player have a getOutOfJail card.
+     */
     public int playerJailChoice(boolean haveGetOutOfJail){
         int choice = 0;
         if(haveGetOutOfJail){
@@ -241,22 +280,43 @@ public class UpdateGUI {
         return choice;
     }
 
+    /**
+     * Prompts the user on which deed they want mortgaged.
+     *
+     * @param temp All the nemes on deeds that can be mortgaged.
+     */
     public String playerMortgaged(String[] temp){
         String chosenElement = gui.getUserSelection("Vælg grund til pantsætning",temp);
 
         return chosenElement;
     }
 
+    /**
+     * Sets the border of the plot to the owners color.
+     *
+     * @param player The index of the player.
+     * @param position The index of field on the board.
+     */
     public void buyPlot(int player, int position){
         GUI_Field field = gui.getFields()[position];
         GUI_Ownable ownable = (GUI_Ownable) field;
         ownable.setBorder(players[player].getCar().getPrimaryColor());
     }
 
+    /**
+     * Prompts user for value the cheat die gets.
+     *
+     * @param die The die that is cast.
+     */
     public int getUserInt(int die){
         return gui.getUserInteger("Input for die" + die);
     }
 
+    /**
+     * Prompts the user for the amount of players that are children.
+     *
+     * @param amount The amount of players in the game.
+     */
     public int childAdvantage(int amount){
 
         if(gui.getUserLeftButtonPressed("Er der børnespillerer?","Ja","Nej")){

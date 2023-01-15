@@ -50,6 +50,11 @@ public class Board {
         } return fields1;
     }*/
 
+    /**
+     * Fills the correct field types to the array that holds all fields.
+     *
+     * @param fields The amount of fields on the board.
+     */
     public void initBoard(Fields[] fields){
         CSVReader csv = new CSVReader();
 
@@ -96,6 +101,7 @@ public class Board {
         }
     }
 
+    //For testing
     public static void main(String[] args) {
         System.out.println("Writing board");
 

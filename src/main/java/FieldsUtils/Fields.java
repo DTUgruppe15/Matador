@@ -11,6 +11,12 @@ public abstract class Fields {
 
     public Fields(){}
 
+    /**
+     * Runs the function attached to the field.
+     *
+     * @param player The specific player that landed on the field.
+     * @param players All the players in the game.
+     */
     public abstract int doStuff(Player player,Player[] players);
 
     public String getLabel(){

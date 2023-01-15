@@ -16,10 +16,11 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game();
         game.run();
-
-
     }
 
+    /**
+     * Initialize everything and contains the gameloop.
+     */
     public void run(){
         players = new Player[1];
         players[0] = new Player();
@@ -86,13 +87,9 @@ public class Game {
 
 
             playerTurn++;
-
+            //Check if there are any players that have gone bankrupt and stops the gameloop.
             for (int i = 0; i<players.length; i++) {
                 if (players[i].getBalance() <= 0) {
-
-
-
-
                     anyBankruptPlayers = true;
                 }
             }
@@ -105,24 +102,27 @@ public class Game {
 
     }
 
+    /**
+     * Prompts user for what they want to do.
+     */
     public void playerChoice(){
         Boolean playerChoiceInProgress = true;
         while(playerChoiceInProgress){
             switch (gui.playerChoice()){
-                case 1:
+                case 1: //Roll dice and move.
                     die.rollDies(die1,die2);
                     players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
                     playerChoiceInProgress = false;
                     break;
-                case 2:
+                case 2: //Buy houses. Not implemented temp function: prints deeds.
                     System.out.println("Not implemented");
                     players[playerTurn].printDeeds();
                     break;
-                case 3:
+                case 3: //Mortgaged deeds.
                     System.out.println("pant");
                     playerMortgaged();
                     break;
-                case 4:
+                case 4: //Cheat dice to test stuff
                     System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
@@ -133,6 +133,9 @@ public class Game {
         }
     }
 
+    /**
+     * UPrompts the user for which deed gets mortgaged.
+     */
     public void playerMortgaged(){
 
         String[] arr = players[playerTurn].getOwnedDeeds();
@@ -144,14 +147,18 @@ public class Game {
         gui.setBalance(playerTurn,players[playerTurn].getBalance());
     }
 
+    /**
+     * Prompts the user for what they want to do in jail.
+     */
     public void playerJailChoice(){
+        //If the player have been in jail for 3 rounds, they are forced to pay to get released.
         if(players[playerTurn].getJailTime()>=3){
             gui.sendMessage("Betal 1000");
             players[playerTurn].updateBalance(-1000);
             players[playerTurn].releaseFromJail();
         }else{
             switch (gui.playerJailChoice(players[playerTurn].haveGetOutOfJail())){
-                case 1:
+                case 1: //Roll dice. If 2 of the same they get released
                     die.rollDies(die1,die2);
                     if(die.isEqual(die1,die2)){
                         players[playerTurn].releaseFromJail();
@@ -159,15 +166,15 @@ public class Game {
                         players[playerTurn].addJailTime();
                     }
                     break;
-                case 2:
+                case 2: //Pay to get released
                     players[playerTurn].updateBalance(-1000);
                     players[playerTurn].releaseFromJail();
                     break;
-                case 3:
+                case 3: //Use getOutOfJail card.
                     players[playerTurn].useGetOutOfJail();
                     players[playerTurn].releaseFromJail();
                     break;
-                case 4:
+                case 4: //Roll with cheat dice that the player chooses
                     System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
@@ -177,16 +184,7 @@ public class Game {
                         players[playerTurn].addJailTime();
                     }
                     break;
-
             }
         }
-
-
-
-
     }
-
-
-
-
 }

@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PlayerTest {
     // Test the constructor
     @Test
+    @DisplayName("is player create correctly.")
     public void testConstructor() {
         Player player = new Player();
         assertEquals(30000, player.getBalance());
@@ -19,6 +20,7 @@ public class PlayerTest {
 
     // Test the setBalance method
     @Test
+    @DisplayName("Does player.setBalance() work.")
     public void testSetBalance() {
         Player player = new Player();
         player.setBalance(40000);
@@ -27,6 +29,7 @@ public class PlayerTest {
 
     // Test the updateBalance method
     @Test
+    @DisplayName("Does player.updateBalance() work.")
     public void testUpdateBalance() {
         Player player = new Player();
         player.updateBalance(10000);
@@ -37,6 +40,7 @@ public class PlayerTest {
 
     // Test the isBankrupt method
     @Test
+    @DisplayName("Does player.isBankrupt() work.")
     public void testIsBankrupt() {
         Player player = new Player();
         assertFalse(player.isBankrupt());
@@ -46,6 +50,7 @@ public class PlayerTest {
 
     // Test the setBankrupt method
     @Test
+    @DisplayName("Does player.setBankrupt() work.")
     public void testSetBankrupt() {
         Player player = new Player();
         player.setBankrupt(true);
@@ -56,6 +61,7 @@ public class PlayerTest {
 
     // Test the getPosition method
     @Test
+    @DisplayName("Does player.getPosition() work.")
     public void testGetPosition() {
         Player player = new Player();
         assertEquals(0, player.getPosition());
@@ -63,6 +69,7 @@ public class PlayerTest {
 
     // Test the setPosition method
     @Test
+    @DisplayName("Does player.setPosition() work")
     public void testSetPosition() {
         Player player = new Player();
         player.setPosition(5);
@@ -71,6 +78,7 @@ public class PlayerTest {
 
     // Test the movePosition method
     @Test
+    @DisplayName("Does player.movePosition() work")
     public void testMovePosition() {
         Player player = new Player();
         player.movePosition(5);
@@ -81,7 +89,7 @@ public class PlayerTest {
     }
 
     @Test
-    @DisplayName("Does player recieve money by passing go")
+    @DisplayName("Does player recieve money by passing go. K1_AT")
     void PassGo(){
         Player player = new Player();
 
@@ -93,7 +101,7 @@ public class PlayerTest {
     }
 
     @Test
-    @DisplayName("Child have advantage")
+    @DisplayName("Child have advantage. K32_AT and K33_AT")
     void ChildMoney(){
         Player[] players = new Player[2];
         players[0] = new Player();
@@ -110,7 +118,7 @@ public class PlayerTest {
     }
 
     @Test
-    @DisplayName("Child have advantage over Go")
+    @DisplayName("Child have advantage over Go. K34_AT")
     void ChildMoneyOverGo(){
         Player[] players = new Player[2];
         players[0] = new Player();

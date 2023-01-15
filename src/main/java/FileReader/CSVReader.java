@@ -115,6 +115,7 @@ public class CSVReader {
         readFile();
     }
 
+    //For testing
     public static void main(String[] args) {
         CSVReader temp = new CSVReader();
 

@@ -15,6 +15,19 @@ public class Deed{
 
     private  boolean isMortgaged = false;
 
+    /**
+     * Creates a deed with all info.
+     *
+     * @param location The name of the field the deed belongs to.
+     * @param price The cost of buying the plot.
+     * @param housePrice The cost of a house on the plot.
+     * @param rent0 The amount of rent with no houses.
+     * @param rent1 The amount of rent with 1 house.
+     * @param rent2 The amount of rent with 2 houses.
+     * @param rent3 The amount of rent with 3 houses.
+     * @param rent4 The amount of rent with 4 houses.
+     * @param rent5 The amount of rent with 1 hotel.
+     */
     public Deed(String location, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5) {
         this.location = location;
         this.price = price;
@@ -28,6 +41,12 @@ public class Deed{
         this.mortgageValue = price/2;
     }
 
+    /**
+     * Creates a deed with location and price.
+     *
+     * @param location The name of the field the deed belongs to.
+     * @param price The cost of buying the plot.
+     */
     public Deed(String location, int price) {
         this.location = location;
         this.price = price;
