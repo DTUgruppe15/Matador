@@ -23,7 +23,7 @@ public class Ferry extends Properties{
     public int doStuff(Player player, Player[] players) {
         //Checks if the deed is bought. Buys if it isn't
         //Pays rent if it is.
-        //Needs to implement how much to pay
+        int payAmount = 0;
         if (!this.deed.getBoughtStatus()) {
             if (player.getBalance() >= deed.getPrice()) {
                 System.out.println("Du har købt skødet");
@@ -32,9 +32,16 @@ public class Ferry extends Properties{
             }
         } else if (findPlayerInArray(player, players) == this.deed.getOwner()) {
         } else {
-            System.out.println("Skødet er købt, betal: " + deed.getPrice() + " til spiller: " + this.deed.getOwner());
-            player.updateBalance(-deed.getPrice());
-            players[this.deed.getOwner()].updateBalance(deed.getPrice());
+            //Checks how many ferry deeds the owner of this deed has
+            switch (players[this.deed.getOwner()].getFerries()){
+                case 1 -> payAmount = 500;
+                case 2 -> payAmount = 1000;
+                case 3 -> payAmount = 2000;
+                case 4 -> payAmount = 4000;
+            }
+            System.out.println("Skødet er købt, betal: " + payAmount + " til spiller: " + this.deed.getOwner() + ", da de ejer " + players[this.deed.getOwner()].getFerries() + " færge skøder");
+            player.updateBalance(-payAmount);
+            players[this.deed.getOwner()].updateBalance(payAmount);
         }
         System.out.println("Fields.Ferry: " + getLabel());
         return 0;

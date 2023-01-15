@@ -4,6 +4,7 @@ import FieldsUtils.Deed;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class Account {
     private int balance;
@@ -130,7 +131,15 @@ public class Account {
         return Collections.min(amountOfHouses)==housesOnDeed;
     }
 
-
+    public int howManyFerries() {
+        int ferries = 0;
+        for (Deed deed : ownedDeeds) {
+            if (Objects.equals(deed.getLocation(), "Helsingør") || Objects.equals(deed.getLocation(), "Mols-Linien") || Objects.equals(deed.getLocation(), "Gedser") || Objects.equals(deed.getLocation(), "Rødby")) {
+                ferries++;
+            }
+        }
+        return ferries;
+    }
 
 
     /**
