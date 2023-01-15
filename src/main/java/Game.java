@@ -141,8 +141,7 @@ public class Game {
                     playerChoiceInProgress = false;
                     break;
                 case 2:
-                    System.out.println("Not implemented");
-                    players[playerTurn].printDeeds();
+                    playerBuyHouse();
                     break;
                 case 3:
                     System.out.println("pant");
@@ -154,6 +153,9 @@ public class Game {
                     die2.setEyes(gui.getUserInt(2));
                     players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
                     playerChoiceInProgress = false;
+                    break;
+                case 5:
+                    playerSellHouse();
                     break;
             }
         }
@@ -224,4 +226,13 @@ public class Game {
         }
 
     }
+    public void playerSellHouse() {
+        String[] array = players[playerTurn].getDeedsWithHouses();
+        String chosenProperty = gui.sellHouse(array);
+        if (chosenProperty != null) {
+            players[playerTurn].sellHouse(chosenProperty);
+        }
+
+    }
+
 }

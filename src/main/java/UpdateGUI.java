@@ -229,7 +229,7 @@ public class UpdateGUI {
     public int playerChoice(){
         int choice = 0;
 
-        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Cheat Dice")){
+        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Cheat Dice","Sælg huse")){
             case "Rul terninger":
                 choice = 1;
                 break;
@@ -241,6 +241,9 @@ public class UpdateGUI {
                 break;
             case "Cheat Dice":
                 choice = 4;
+                break;
+            case "Sælg huse":
+                choice = 5;
                 break;
         }
 
@@ -306,6 +309,16 @@ public class UpdateGUI {
             return null;
         } else {
             String chosenElement = gui.getUserSelection("Vælg grund til at købe hus på",temp);
+            System.out.println(chosenElement);
+            return chosenElement;
+        }
+    }
+    public String sellHouse(String[] temp) {
+        if (temp.length == 0) {
+            gui.showMessage("Du har ingen huse at sælge");
+            return null;
+        } else {
+            String chosenElement = gui.getUserSelection("Vælg grund til at sælge hus på",temp);
             System.out.println(chosenElement);
             return chosenElement;
         }

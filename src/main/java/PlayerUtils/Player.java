@@ -197,6 +197,13 @@ public class Player {
 
         this.playerAccount.buyHouse(index);
     }
+    public void sellHouse(String field) {
+        int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
+        System.out.println("index " + index);
+        System.out.println("field " + field);
+
+        this.playerAccount.sellHouse(index);
+    }
 
     public boolean canBuyHouse(String field) {
         int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
@@ -220,6 +227,9 @@ public class Player {
     }
     public int getBreweries() {
         return this.playerAccount.howManyBreweries();
+    }
+    public String[] getDeedsWithHouses() {
+        return this.playerAccount.getDeedsWithHouses();
     }
     public int getOwnedDeedColorId(int index) {
         int[] colorIdArray = playerAccount.getColorIdOfAllDeeds();

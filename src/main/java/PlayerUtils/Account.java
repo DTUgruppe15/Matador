@@ -30,6 +30,12 @@ public class Account {
         this.balance = this.balance-newDeed.getHousePrice();
     }
 
+    public void sellHouse(int index) {
+        Deed newDeed = ownedDeeds.get(index);
+        newDeed.sellHouse();
+        this.balance = (int) (this.balance+(newDeed.getHousePrice()*0.5));
+    }
+
     public String[] getNameOfAllDeeds(){
 
         String[] array = new String[ownedDeeds.size()];
@@ -150,6 +156,16 @@ public class Account {
         return breweries;
     }
 
+    public String[] getDeedsWithHouses() {
+        String[] array = new String[ownedDeeds.size()];
+
+        for (int i = 0; i < ownedDeeds.size(); i++) {
+            if (ownedDeeds.get(i).getHousesAmount() > 0) {
+                array[i] = ownedDeeds.get(i).getLocation();
+            }
+        }
+        return array;
+    }
 
     /**
      * Adds a Fields.Deed object to the list of owned Deeds and removes it from the list of mortgaged Deeds if it is present.

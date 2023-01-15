@@ -48,6 +48,7 @@ public class Deed{
     public void buyHouse() {
         housesAmount++;
     }
+    public void sellHouse() { housesAmount--; }
 
     public boolean getBoughtStatus() {
         return this.bought;
