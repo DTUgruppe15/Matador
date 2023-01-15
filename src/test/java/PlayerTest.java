@@ -1,6 +1,9 @@
 
 
 
+import FieldsUtils.Board;
+import FieldsUtils.Chance;
+import FieldsUtils.Fields;
 import PlayerUtils.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -90,5 +93,63 @@ public class PlayerTest {
         player.movePosition(3);
 
         assertEquals(34000,player.getBalance());
+    }
+
+    @Test
+    void getTotalAmountOfHousesTest() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = new Player();
+
+        Fields[] fields = new Fields[40];
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
+
+        //Buying 8 houses
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+
+        assertEquals(8, player.getTotalAmountOfHouses());
+    }
+
+    @Test
+    void getTotalAmountOfHotelsTest() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = new Player();
+
+        Fields[] fields = new Fields[40];
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
+
+        //Buying 8 houses
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+
+        assertEquals(2, player.getTotalAmountOfHotels());
     }
 }

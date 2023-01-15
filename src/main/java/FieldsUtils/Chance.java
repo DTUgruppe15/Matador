@@ -2,6 +2,7 @@ package FieldsUtils;
 
 import java.util.*;
 import PlayerUtils.Player;
+import FieldsUtils.Ferry;
 
 public class Chance extends Fields {
 
@@ -91,14 +92,18 @@ public class Chance extends Fields {
     public void drawCard(Player player, Player[] players, int draw){
         int temp = findPlayerInArray(player, players);
         int playerPosition = player.getPosition();
+        int houses = player.getTotalAmountOfHouses();
+        int hotels = player.getTotalAmountOfHotels();
         switch(draw) {
             case 0:
                 //"Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel"
-                System.out.println("Isn't implemented yet.");
+                int cal1 = (houses*500) + (hotels*2000);
+                player.updateBalance(-cal1);
                 break;
             case 1:
                 //"Ejendomsskatten er steget. Ekstraudgifterne er: 800 kr pr hus, 2300 kr pr hotel."
-                System.out.println("Isn't implemented yet");
+                int cal2 = (houses*800) + (hotels*2300);
+                player.updateBalance(-cal2);
                 break;
             case 2:
                 //"De har kørt frem for “fuldt stop”, Betal 1000 kroner i bøde"
@@ -229,13 +234,32 @@ public class Chance extends Fields {
             case 27: //Ikke implementeret endnu (købs metoder er ikke 100% done endnu)
                 //There exists two of these ChanceCards
                 //"Ryk frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til, hvis selskabet ikke ejes af nogen kan de købe det af banken."
+                int[] ferriesLocations = {5, 15, 25, 35};
+                int lowest = 50; //A number bigger than the board
+                int index = 0;
+                for(int i = 0; i < ferriesLocations.length; i++) {
+                    int calculation = ferriesLocations[i] - playerPosition;
+                    if(calculation < lowest & !(calculation < 0)) {
+                        lowest = calculation;
+                        index = i;
+                    }
+                }
+                if(playerPosition > ferriesLocations[index]) {
+                    player.movePosition(40-playerPosition + ferriesLocations[index]);
+                    player.setPosition(0);
+
+                }
+                else {
+                    player.movePosition(ferriesLocations[index] - playerPosition);
+                }
                 break;
             case 28:
                 //"Tag med Mols-Linien, flyt brikken frem og hvis De passerer START indkassér da kr 4000."
                 int molsLinien = 15;
                 if(playerPosition > molsLinien) {
                     player.movePosition(40-playerPosition+molsLinien);
-                } else {
+                }
+                else {
                     player.movePosition(molsLinien-playerPosition);
                 }
                 break;
@@ -259,20 +283,21 @@ public class Chance extends Fields {
                 break;
             case 31:
                 // "Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000"
-                int[] ferriesLocations = {5, 15, 25, 35};
-                int lowest = 50; //A number bigger than the board
-                int index = 0;
-                for(int i = 0; i < ferriesLocations.length; i++) {
-                    int calculation = ferriesLocations[i] - playerPosition;
-                    if(calculation < lowest & !(calculation < 0)) {
+                int[] ferriesLocations1 = {5, 15, 25, 35};
+                int lowest1 = 50; //A number bigger than the board
+                int index1 = 0;
+                for(int i = 0; i < ferriesLocations1.length; i++) {
+                    int calculation = ferriesLocations1[i] - playerPosition;
+                    if(calculation < lowest1 & !(calculation < 0)) {
                         lowest = calculation;
                         index = i;
                     }
                 }
-                if(playerPosition > ferriesLocations[index]) {
-                    player.movePosition(40-playerPosition + ferriesLocations[index]);
-                } else {
-                    player.movePosition(ferriesLocations[index] - playerPosition);
+                if(playerPosition > ferriesLocations1[index1]) {
+                    player.movePosition(40-playerPosition + ferriesLocations1[index1]);
+                }
+                else {
+                    player.movePosition(ferriesLocations1[index1] - playerPosition);
                 }
                 break;
             case 32:
@@ -280,7 +305,8 @@ public class Chance extends Fields {
                 int strandvejen = 19;
                 if(playerPosition > strandvejen) {
                     player.movePosition(40-playerPosition + strandvejen);
-                } else {
+                }
+                else {
                     player.movePosition(strandvejen - playerPosition);
                 }
                 break;
@@ -298,9 +324,5 @@ public class Chance extends Fields {
                 player.setPosition(10);
                 break;
         }
-
-
     }
-
-
 }

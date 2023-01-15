@@ -66,6 +66,7 @@ public class Game {
             int playerPreviousPosition = players[playerTurn].getPosition();
             players[playerTurn].movePosition(die1.getEyes() + die2.getEyes());
             int playerNewPosition = players[playerTurn].getPosition();
+
             int doStuffStatus = fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
 
             //Updating Balance for all players (gui)
@@ -223,6 +224,4 @@ public class Game {
         }
 
     }
-
-
 }

@@ -1,3 +1,6 @@
+import FieldsUtils.Board;
+import FieldsUtils.Fields;
+import FileReader.CSVReader;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -41,130 +44,248 @@ class ChanceTest {
         assertEquals(10, lastElem);
     }
 
-    /*
-    @Test //Not implemented
+    @Test
     @DisplayName("Pay 500 per house and 2000 per hotel, with no house and no hotel")
     void drawCard0_1() {
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
-        int target = player.getBalance()-1; //Missing houses and hotel
+        Fields[] fields = new Fields[40];
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(players[0],players);
+        fields[8].doStuff(players[0],players);
+        fields[9].doStuff(players[0],players);
 
         chance.drawCard(player, players, 0);
 
-        int result = player.getBalance();
-
-        assertEquals(target,result);
+        assertEquals(30000-2000-2000-2400, player.getBalance());
     }
 
-    @Test //Not implemented
+    @Test
     @DisplayName("Pay 500 per house and 2000 per hotel, with 1 house and no hotel")
     void drawCard0_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
         Player player = players[0];
-        Chance chance = new Chance();
+        Chance chance = new Chance("ChanceField");
 
-        int target = player.getBalance()-1; //Missing houses and hotel
+        Fields[] fields = new Fields[40];
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
+
+        player.buyHouse("Roskildevej");
 
         chance.drawCard(player, players, 0);
 
-        int result = player.getBalance();
-
-        assertEquals(target,result);
+        assertEquals(30000-2000-2000-2400-1000-500, player.getBalance());
     }
 
-    @Test //Not implemented
-    @DisplayName("Pay 500 per house and 2000 per hotel, with no house and 1 hotel")
+    @Test
+    @DisplayName("Pay 500 per house and 2000 per hotel, with 0 house and 3 hotel")
     void drawCard0_3(){
-        Player player = new Player();
-        Chance chance = new Chance();
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
 
-        int target = player.getBalance()-1; //Missing houses and hotel
+        Fields[] fields = new Fields[40];
 
-        chance.drawCard(player, 0);
+        Chance chance = new Chance("ChanceField");
+        Board board = new Board();
+        board.initBoard(fields);
 
-        int result = player.getBalance();
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
 
-        assertEquals(target,result);
+        //Buying Hotels (5 houses = 1 hotel)
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+
+        chance.drawCard(player, players, 0);
+
+        assertEquals(30000-2000-2000-2400-15000-3*2000, player.getBalance());
     }
 
-    /*
-    @Test //Not implemented
-    @DisplayName("Pay 500 per house and 2000 per hotel, with 1 house and 1 hotel")
+    @Test
+    @DisplayName("Pay 500 per house and 2000 per hotel, with 8 house and 1 hotel")
     void drawCard0_4(){
-        Player player = new Player();
-        Chance chance = new Chance();
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
 
-        int target = player.getBalance()-1; //Missing houses and hotel
+        Fields[] fields = new Fields[40];
 
-        chance.drawCard(player, 0);
+        Chance chance = new Chance("ChanceField");
+        Board board = new Board();
+        board.initBoard(fields);
 
-        int result = player.getBalance();
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
 
-        assertEquals(target,result);
+        //Buying Hotels (5 houses = 1 hotel)
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+
+        chance.drawCard(player, players, 0);
+
+        assertEquals(30000-2000-2000-2400-13000-4000-2000, player.getBalance());
     }
 
-    @Test //Not implemented
+    @Test
     @DisplayName("Pay 800 per house and 2300 per hotel, with no house and no hotel")
     void drawCard1_1(){
-        Player player = new Player();
-        Chance chance = new Chance();
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
 
-        int target = player.getBalance()-1; //Missing houses and hotel
+        Fields[] fields = new Fields[40];
 
-        chance.drawCard(player, 1);
+        Chance chance = new Chance("ChanceField");
+        Board board = new Board();
+        board.initBoard(fields);
 
-        int result = player.getBalance();
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
 
-        assertEquals(target,result);
+        chance.drawCard(player, players, 1);
+
+        assertEquals(30000-2000-2000-2400, player.getBalance());
     }
 
-    @Test //Not implemented
+    @Test
     @DisplayName("Pay 800 per house and 2300 per hotel, with 1 house and no hotel")
     void drawCard1_2(){
-        Player player = new Player();
-        Chance chance = new Chance();
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
 
-        int target = player.getBalance()-1; //Missing houses and hotel
+        Fields[] fields = new Fields[40];
 
-        chance.drawCard(player, 1);
+        Chance chance = new Chance("ChanceField");
+        Board board = new Board();
+        board.initBoard(fields);
 
-        int result = player.getBalance();
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
 
-        assertEquals(target,result);
+        //Buying Hotels (5 houses = 1 hotel)
+        player.buyHouse("Roskildevej");
+
+        chance.drawCard(player, players, 1);
+
+        assertEquals(30000-2000-2000-2400-1000-800, player.getBalance());
     }
 
-    @Test //Not implemented
-    @DisplayName("Pay 800 per house and 2300 per hotel, with no house and 1 hotel")
-    void drawCard1_3(){
-        Player player = new Player();
-        Chance chance = new Chance();
+   @Test
+   @DisplayName("Pay 800 per house and 2300 per hotel, with no house and 3 hotel")
+   void drawCard1_3(){
+       Player[] players = {new Player(), new Player(), new Player(), new Player()};
+       Player player = players[0];
 
-        int target = player.getBalance()-1; //Missing houses and hotel
+       Fields[] fields = new Fields[40];
 
-        chance.drawCard(player, 1);
+       Chance chance = new Chance("ChanceField");
+       Board board = new Board();
+       board.initBoard(fields);
 
-        int result = player.getBalance();
+       //Buying Fields
+       fields[6].doStuff(player, players);
+       fields[8].doStuff(player, players);
+       fields[9].doStuff(player, players);
 
-        assertEquals(target,result);
-    }
+       //Buying Hotels (5 houses = 1 hotel)
+       player.buyHouse("Roskildevej");
+       player.buyHouse("Roskildevej");
+       player.buyHouse("Roskildevej");
+       player.buyHouse("Roskildevej");
+       player.buyHouse("Roskildevej");
+       player.buyHouse("Valby Langgade");
+       player.buyHouse("Valby Langgade");
+       player.buyHouse("Valby Langgade");
+       player.buyHouse("Valby Langgade");
+       player.buyHouse("Valby Langgade");
+       player.buyHouse("Allégade");
+       player.buyHouse("Allégade");
+       player.buyHouse("Allégade");
+       player.buyHouse("Allégade");
+       player.buyHouse("Allégade");
 
-    @Test //Not implemented
-    @DisplayName("Pay 800 per house and 2300 per hotel, with 1 house and 1 hotel")
-    void drawCard1_4(){
-        Player player = new Player();
-        Chance chance = new Chance();
+       chance.drawCard(player, players, 1);
 
-        int target = player.getBalance()-1; //Missing houses and hotel
+       assertEquals(30000-2000-2000-2400-2300*3-15*1000, player.getBalance());
+   }
 
-        chance.drawCard(player, 1);
+   @Test
+   @DisplayName("Pay 800 per house and 2300 per hotel, with 8 houses and 1 hotel")
+   void drawCard1_4(){
+       Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
 
-        int result = player.getBalance();
+        Fields[] fields = new Fields[40];
 
-        assertEquals(target,result);
-    }
-   */
+        Chance chance = new Chance("ChanceField");
+        Board board = new Board();
+        board.initBoard(fields);
+
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
+
+        //Buying Hotels (5 houses = 1 hotel)
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+        player.buyHouse("Allégade");
+
+        chance.drawCard(player, players, 1);
+
+        assertEquals(30000-2000-2000-2400-13000-800*8-2300, player.getBalance());
+   }
     @Test
     @DisplayName("Pay 1000")
     void drawCard2(){

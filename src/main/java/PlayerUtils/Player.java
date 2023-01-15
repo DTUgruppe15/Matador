@@ -4,6 +4,8 @@ package PlayerUtils;
 import FieldsUtils.Deed;
 import org.apache.commons.lang.ArrayUtils;
 
+import java.util.Arrays;
+
 public class Player {
     private boolean isBankrupt;
     private int position;
@@ -219,6 +221,39 @@ public class Player {
     public int getOwnedDeedColorId(int index) {
         int[] colorIdArray = playerAccount.getColorIdOfAllDeeds();
         return colorIdArray[index];
+    }
+
+    /**
+     * Returns the total amount of houses
+     *
+     * @return The total amount of houses a player has
+     */
+    public int getTotalAmountOfHouses() {
+        int total = 0;
+        int[] temp = getHouseAmountOfDeeds();
+        System.out.println(Arrays.toString(temp));
+        for(int i = 0; i < temp.length; i++) {
+            if(temp[i] > 0 && temp[i] != 5) {
+                total += temp[i];
+            }
+        }
+        return total;
+    }
+
+    /**
+     * Returns the total amount of hotels
+     *
+     * @return The total amount of hotels a player has
+     */
+    public int getTotalAmountOfHotels() {
+        int total = 0;
+        int[] temp = getHouseAmountOfDeeds();
+        for(int i = 0; i < temp.length; i++) {
+            if(temp[i] == 5) {
+                total++;
+            }
+        }
+        return total;
     }
 
 }
