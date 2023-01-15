@@ -9,6 +9,13 @@ public class Chance extends Fields {
     private int[] cardsArr = {0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 11, 12, 12, 12, 13, 14, 15, 16, 16, 17, 18, 19, 20, 21, 22, 23, 23, 24, 24, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 34, 35, 35};
     private List<Integer> cardsList = new ArrayList<Integer>(cardsArr.length);
 
+    private int counter = 0;
+
+    /**
+     * Constructor for the Chance class
+     *
+     * @param label
+     */
     public Chance(String label) {
         super(label);
         initChanceDeck();
@@ -41,13 +48,6 @@ public class Chance extends Fields {
     }
 
     /**
-     * Adds getOutOfJailCard to the Chance Cards Deck
-     */
-    public void addGetOutOfJailCardToDeck() {
-        addToDeck(34);
-    }
-
-    /**
      * Public getter
      *
      * @return Returns the Chance Cards as a ListArray
@@ -67,12 +67,15 @@ public class Chance extends Fields {
     @Override
     public int doStuff(Player player, Player[] players) {
         int cardToDraw = cardsList.remove(0);
-        if(cardToDraw == 34) {
-            //Do not add it back into the list
+        addToDeck(cardToDraw);
+        if(counter >= 45) {
+            System.out.println("Inside Shuffle");
+            shuffleCards();
+            counter = 0;
         }
         else {
-            //Add the card to the bottom of the list
-            addToDeck(cardToDraw);
+            counter++;
+            System.out.println("Counter: " + counter);
         }
         drawCard(player, players, cardToDraw);
         return 0;
@@ -90,12 +93,10 @@ public class Chance extends Fields {
         int playerPosition = player.getPosition();
         switch(draw) {
             case 0:
-                //Houses and hotels aren't implemented yet
                 //"Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel"
                 System.out.println("Isn't implemented yet.");
                 break;
             case 1:
-                //Houses and hotels aren't implemented yet
                 //"Ejendomsskatten er steget. Ekstraudgifterne er: 800 kr pr hus, 2300 kr pr hotel."
                 System.out.println("Isn't implemented yet");
                 break;

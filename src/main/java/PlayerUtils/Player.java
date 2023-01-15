@@ -4,8 +4,6 @@ package PlayerUtils;
 import FieldsUtils.Deed;
 import org.apache.commons.lang.ArrayUtils;
 
-import java.util.Arrays;
-
 public class Player {
     private boolean isBankrupt;
     private int position;
@@ -108,6 +106,11 @@ public class Player {
         //Need function to handle <0 amount of money
     }
 
+    /**
+     * Mortgages a deed owned by the player.
+     *
+     * @param field the deed to mortgage
+     */
     public void mortgageDeed(String field) {
 
         int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
@@ -115,10 +118,6 @@ public class Player {
 
         this.playerAccount.updateMortgagedDeeds(index);
 
-
-
-        //this.playerAccount.updateMortgagedDeeds(deed);
-        //this.playerAccount.updateBalance(deed.getMortgageValue());
     }
 
     /**
@@ -168,20 +167,11 @@ public class Player {
 
     public boolean haveGetOutOfJailCard() {
         return getOutOfJail > 0;
-        /*
-        if(getOutOfJail>0) {
-            return true;
-        }
-        else {
-            return false;
-        }
-        */
     }
 
     public void useGetOutOfJailCard(){
         getOutOfJail--;
     }
-
     public int getAmountOfGetOutOfJailCard() {
         return getOutOfJail;
     }
@@ -193,4 +183,42 @@ public class Player {
     public boolean isPlayerInJail() {
         return jailTime > 0;
     }
+
+    /**
+     * Lets player buy a house on a deed
+     * @param field is a String containing the deeds location-name
+     */
+    public void buyHouse(String field) {
+        int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
+        System.out.println("index " + index);
+        System.out.println("field " + field);
+
+        this.playerAccount.buyHouse(index);
+    }
+
+    public boolean canBuyHouse(String field) {
+        int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
+        System.out.println("index " + index);
+        System.out.println("field " + field);
+
+        return this.playerAccount.areThereAHouseOnTheOtherDeeds(getHouseAmountOfDeeds()[index],getColorIdOfAllDeeds()[index]);
+    }
+
+    public String[] getDeedsReadyForHouses() {
+        return this.playerAccount.getDeedsOfSameColor();
+    }
+    public int[] getHouseAmountOfDeeds() {
+        return this.playerAccount.getHouseAmountOfAllDeeds();
+    }
+    public int[] getColorIdOfAllDeeds() {
+        return this.playerAccount.getColorIdOfAllDeeds();
+    }
+    public int getFerries() {
+        return this.playerAccount.howManyFerries();
+    }
+    public int getOwnedDeedColorId(int index) {
+        int[] colorIdArray = playerAccount.getColorIdOfAllDeeds();
+        return colorIdArray[index];
+    }
+
 }

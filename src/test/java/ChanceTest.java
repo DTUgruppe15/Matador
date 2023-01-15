@@ -995,29 +995,6 @@ class ChanceTest {
     }
 
     @Test
-    @DisplayName("Get out of jail cards, do not continue to be in the deck")
-    void drawCard34_2() {
-        Player[] players = {new Player(), new Player(), new Player(), new Player()};
-        Player player1 = players[0];
-        Player player2 = players[1];
-        Chance chance = new Chance("ChanceField");
-
-        for(int i = 0; i < 46; i++) {
-            chance.doStuff(player1, players);
-        }
-        //Lost two chanceCards (card: 34) to player1
-        for(int i = 0; i < 44; i++) {
-            chance.doStuff(player2, players);
-        }
-
-        assertTrue(player1.haveGetOutOfJailCard());
-        assertEquals(2, player1.getAmountOfGetOutOfJailCard());
-        assertFalse(player2.haveGetOutOfJailCard());
-        assertEquals(0, player2.getAmountOfGetOutOfJailCard());
-
-    }
-
-    @Test
     @DisplayName("Player goes to jail")
     void drawCard35(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
@@ -1030,4 +1007,29 @@ class ChanceTest {
         assertEquals(10, player.getPosition());
         assertTrue(player.isPlayerInJail());
     }
+
+    /*
+    @Test
+    void shuffleAfter45DrawsTest() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
+
+        Chance chance = new Chance("ChanceField");
+
+        List<Integer> chanceList = chance.getDeck();
+
+        //Prints List
+        System.out.println(Arrays.toString(chanceList.toArray()));
+
+        for(int i = 0; i < 46; i++) {
+            chance.doStuff(player, players);
+        }
+
+        //After to do Stuff
+        System.out.println(Arrays.toString(chanceList.toArray()));
+        System.out.println(Arrays.toString(chance.getDeck().toArray()));
+
+        assertFalse(chanceList.equals(chance.getDeck()));
+    }
+    */
 }

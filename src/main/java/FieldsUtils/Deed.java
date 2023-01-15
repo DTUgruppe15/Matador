@@ -1,21 +1,24 @@
 package FieldsUtils;
 
 public class Deed{
-    private int price, mortgageValue, housePrice, rent0, rent1, rent2, rent3, rent4, rent5;
+    private int price;
+    private int mortgageValue;
+    private int housePrice;
+    private int rent0;
+    private int rent1;
+    private int rent2;
+    private int rent3;
+    private int rent4;
+    private int rent5;
+    private int colorId;
+
+    public int getHousesAmount() { return housesAmount; }
+    private int housesAmount;
     private String location;
-    private boolean bought = false;
+    private boolean bought,isMortgaged;
+    private int owner;
 
-    public boolean isMortgaged() {
-        return isMortgaged;
-    }
-
-    public void setMortgaged(boolean mortgaged) {
-        isMortgaged = mortgaged;
-    }
-
-    private  boolean isMortgaged = false;
-
-    public Deed(String location, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5) {
+    public Deed(String location, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5, int colorId) {
         this.location = location;
         this.price = price;
         this.housePrice = housePrice;
@@ -26,6 +29,9 @@ public class Deed{
         this.rent4 = rent4;
         this.rent5 = rent5;
         this.mortgageValue = price/2;
+        this.colorId = colorId;
+        this.bought = false;
+        this.isMortgaged = false;
     }
 
     public Deed(String location, int price) {
@@ -34,8 +40,13 @@ public class Deed{
         this.mortgageValue = price/2;
     }
 
-    public void buyDeed() {
+    public void buyDeed(int owner) {
+        this.owner = owner;
         this.bought = true;
+    }
+
+    public void buyHouse() {
+        housesAmount++;
     }
 
     public boolean getBoughtStatus() {
@@ -88,4 +99,14 @@ public class Deed{
     public int getRent5() { return rent5; }
 
     public void setRent5(int rent5) { this.rent5 = rent5; }
+    public int getOwner() { return owner; }
+    public void setOwner(int owner) { this.owner = owner; }
+    public int getColorId() {
+        return colorId;
+    }
+    public boolean isMortgaged() { return isMortgaged; }
+
+    public void setMortgaged(boolean mortgaged) { isMortgaged = mortgaged; }
+
+
 }

@@ -62,20 +62,11 @@ public class Game {
                 players[playerTurn].setPosition(10);
             }
 
-            //Update Car Position and Die (gui)
-            gui.moveCar(playerTurn,players[playerTurn].getPosition());
-            gui.setDice(die1.getEyes(),die2.getEyes());
 
-            //Active fields
+            int playerPreviousPosition = players[playerTurn].getPosition();
+            players[playerTurn].movePosition(die1.getEyes() + die2.getEyes());
+            int playerNewPosition = players[playerTurn].getPosition();
             int doStuffStatus = fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
-            //If doStuff returns 1, buy the plot
-            if(doStuffStatus == 1) {
-                gui.buyPlot(playerTurn,players[playerTurn].getPosition());
-            }
-            if(doStuffStatus == 2) {
-                //Do something
-                playerTaxChoice();
-            }
 
             //Updating Balance for all players (gui)
             for (int i = 0; i<players.length; i++) {
@@ -83,8 +74,20 @@ public class Game {
             }
             System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes() + " " + players[playerTurn].getBalance());
 
+            //Update player position and dice roll (gui)
+            gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
+            gui.setDice(die1.getEyes(),die2.getEyes());
             for (int i = 0; i<players.length; i++) {
                 gui.setBalance(i, players[i].getBalance());
+            }
+
+            //If doStuff returns 1, buy the plot
+            if(doStuffStatus == 1) {
+                gui.buyPlot(playerTurn,players[playerTurn].getPosition());
+            }
+            if(doStuffStatus == 2) {
+                //Do something
+                playerTaxChoice();
             }
 
             while(players[playerTurn].haveUnMortgagedDeeds() && players[playerTurn].getBalance() <= 0) {
@@ -134,9 +137,6 @@ public class Game {
             switch (gui.playerChoice()){
                 case 1:
                     die.rollDies(die1,die2);
-                    //die1.setEyes(1);
-                    //die2.setEyes(3);
-                    players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
                     playerChoiceInProgress = false;
                     break;
                 case 2:
@@ -157,7 +157,6 @@ public class Game {
             }
         }
     }
-
 
     public void playerJailChoice() {
         if (players[playerTurn].getJailTime() >= 3) {
@@ -211,4 +210,19 @@ public class Game {
             case 2 -> players[playerTurn].updateBalance(-players[playerTurn].getTotalValue() / 10);
         }
     }
+
+    public void playerBuyHouse() {
+        String[] array = players[playerTurn].getDeedsReadyForHouses();
+        String chosenProperty = gui.buyHouse(array);
+        if (chosenProperty != null) {
+            if (players[playerTurn].canBuyHouse(chosenProperty)) {
+                players[playerTurn].buyHouse(chosenProperty);
+            } else {
+                gui.sendMessage("Du skal købe huse på alle ejendomme før du kan købe 1 mere");
+            }
+        }
+
+    }
+
+
 }
