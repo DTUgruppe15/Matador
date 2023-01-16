@@ -13,8 +13,8 @@ public class UpdateGUI {
     public UpdateGUI(){
 
         initBoard();
-
-        gui = new GUI(fields, Color.blue);
+        Color board = new Color(51,153,255);
+        gui = new GUI(fields, board);
 
 
     }
@@ -176,28 +176,35 @@ public class UpdateGUI {
 
         players = new GUI_Player[playerAmount];
 
+        Color player1 = new Color(255,128,0);
+        Color player2 = new Color(25,51,0);
+        Color player3 = new Color(128,255,0);
+        Color player4 = new Color(0,204,204);
+        Color player5 = new Color(204,0,204);
+        Color player6 = new Color(255,102,102);
+
         for (int i = 0; i < players.length; i++) {
             players[i] = new GUI_Player("Spiller " + (i+1),30000);
             gui.addPlayer(players[i]);
 
             switch (i){
                 case 0:
-                    players[i].getCar().setPrimaryColor(Color.RED);
+                    players[i].getCar().setPrimaryColor(player1);
                     break;
                 case 1:
-                    players[i].getCar().setPrimaryColor(Color.BLUE);
+                    players[i].getCar().setPrimaryColor(player2);
                     break;
                 case 2:
-                    players[i].getCar().setPrimaryColor(Color.YELLOW);
+                    players[i].getCar().setPrimaryColor(player3);
                     break;
                 case 3:
-                    players[i].getCar().setPrimaryColor(Color.GREEN);
+                    players[i].getCar().setPrimaryColor(player4);
                     break;
                 case 4:
-                    players[i].getCar().setPrimaryColor(Color.MAGENTA);
+                    players[i].getCar().setPrimaryColor(player5);
                     break;
                 case 5:
-                    players[i].getCar().setPrimaryColor(Color.CYAN);
+                    players[i].getCar().setPrimaryColor(player6);
                     break;
             }
             players[i].getCar().setPosition(fields[0]);
