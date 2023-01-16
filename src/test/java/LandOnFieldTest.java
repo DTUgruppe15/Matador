@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import FileReader.*;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LandOnFieldTest {
@@ -151,7 +153,7 @@ class LandOnFieldTest {
 
     @Test
     @DisplayName("Land On a plot owned by another player with 1 house")
-    void GetDeedsReadyForHouse(){
+    void GetDeedsWithHouses(){
         Player[] players = new Player[2];
         players[0] = new Player();
         players[1] = new Player();
@@ -162,9 +164,37 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
+        players[0].buyHouse("Roskildevej");
+
+
+        String[] temp1 = players[0].getDeedsWithHouses();
+        System.out.println(Arrays.toString(temp1));
+
+        assertAll(
+                () -> assertEquals(30000-2000-2000-2400-1000,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(6)},temp1)
+        );
+    }
+
+    @Test
+    @DisplayName("Land On a plot owned by another player with 1 house")
+    void GetDeedsReadyForHouseTest(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
 
         String[] temp1 = players[0].getDeedsReadyForHouses();
 

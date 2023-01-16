@@ -163,9 +163,15 @@ public class Account {
     }
 
     public String[] getDeedsWithHouses() {
-        String[] array = new String[ownedDeeds.size()];
+        int deedsWithHouses = 0;
+        for (int i=0; i<ownedDeeds.size(); i++) {
+            if (ownedDeeds.get(i).getHousesAmount() > 0) {
+                deedsWithHouses++;
+            }
+        }
+        String[] array = new String[deedsWithHouses];
 
-        for (int i = 0; i < ownedDeeds.size(); i++) {
+        for (int i = 0; i < deedsWithHouses; i++) {
             if (ownedDeeds.get(i).getHousesAmount() > 0) {
                 array[i] = ownedDeeds.get(i).getLocation();
             }

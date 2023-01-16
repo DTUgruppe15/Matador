@@ -248,6 +248,7 @@ public class Game {
         String[] array = players[playerTurn].getDeedsWithHouses();
         String chosenProperty = gui.sellHouse(array);
         if (chosenProperty != null) {
+            gui.updateHouses(chosenProperty, players[playerTurn].getHouseAmountOfSingleDeed(chosenProperty)-1);
             players[playerTurn].sellHouse(chosenProperty);
         }
     }
