@@ -230,13 +230,13 @@ public class Game {
         }
     }
 
+    //Gives the player a selection of the plots where they own all of one color and lets them buy a house
     public void playerBuyHouse() {
         String[] array = players[playerTurn].getDeedsReadyForHouses();
         String chosenProperty = gui.buyHouse(array);
         if (chosenProperty != null) {
             if (players[playerTurn].canBuyHouse(chosenProperty)) {
                 players[playerTurn].buyHouse(chosenProperty);
-                int index = ArrayUtils.indexOf(players[playerTurn].getDeedsReadyForHouses(),chosenProperty);
                 int houseAmount = players[playerTurn].getHouseAmountOfSingleDeed(chosenProperty);
                 gui.updateHouses(chosenProperty, houseAmount);
             } else {
@@ -244,6 +244,7 @@ public class Game {
             }
         }
     }
+    //Gives the player a selection of the plots where they own a house and lets them sell one
     public void playerSellHouse() {
         String[] array = players[playerTurn].getDeedsWithHouses();
         String chosenProperty = gui.sellHouse(array);

@@ -60,6 +60,7 @@ public class Account {
         return array;
     }
 
+    //Returns an int-array of the houseAmount of all the deeds they own
     public int[] getHouseAmountOfAllDeeds(){
 
         int[] array = new int[ownedDeeds.size()];
@@ -70,6 +71,7 @@ public class Account {
         return array;
     }
 
+    //Returns an int-array of the colorId of all the deeds they own
     public int[] getColorIdOfAllDeeds() {
         int[] array = new int[ownedDeeds.size()];
 
@@ -142,6 +144,7 @@ public class Account {
         return Collections.min(amountOfHouses)==housesOnDeed;
     }
 
+    //returns how many ferries a player owns in the form of an int
     public int howManyFerries() {
         int ferries = 0;
         for (Deed deed : ownedDeeds) {
@@ -152,6 +155,7 @@ public class Account {
         return ferries;
     }
 
+    //returns how many breweries a player owns in the form of an int
     public int howManyBreweries() {
         int breweries = 0;
         for (Deed deed : ownedDeeds) {
@@ -162,15 +166,15 @@ public class Account {
         return breweries;
     }
 
+    //Returns a string-array with all the deeds where there are houses
     public String[] getDeedsWithHouses() {
         int deedsWithHouses = 0;
-        for (int i=0; i<ownedDeeds.size(); i++) {
-            if (ownedDeeds.get(i).getHousesAmount() > 0) {
+        for (Deed ownedDeed : ownedDeeds) {
+            if (ownedDeed.getHousesAmount() > 0) {
                 deedsWithHouses++;
             }
         }
         String[] array = new String[deedsWithHouses];
-
         for (int i = 0; i < deedsWithHouses; i++) {
             if (ownedDeeds.get(i).getHousesAmount() > 0) {
                 array[i] = ownedDeeds.get(i).getLocation();

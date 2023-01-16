@@ -350,6 +350,8 @@ public class UpdateGUI {
         return chosenElement;
     }
 
+    //Gives the player a selection of properties where they can buy a house and returns a string with the name of the
+    //chosen property
     public String buyHouse(String[] temp) {
         if (temp.length == 0) {
             gui.showMessage("Du ejer ikke alle grundende af en farve, du kan ikke købe huse");
@@ -361,6 +363,7 @@ public class UpdateGUI {
         }
     }
 
+    //Updates the amount of houses on a given property. If there are 5 houses, it makes a hotel instead
     public void updateHouses(String chosenProperty, int houseAmount) {
         String[] fieldLocations = new String[gui.getFields().length];
         for (int i=0; i<gui.getFields().length; i++){
@@ -376,6 +379,7 @@ public class UpdateGUI {
         }
     }
 
+    //Shows the player a selection of plots where they can sell houses and returns a string of the chosen plot
     public String sellHouse(String[] temp) {
         if (temp.length == 0) {
             gui.showMessage("Du har ingen huse at sælge");
