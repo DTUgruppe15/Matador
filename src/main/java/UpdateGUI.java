@@ -2,6 +2,7 @@ import FieldsUtils.Fields;
 import FileReader.CSVReader;
 import gui_fields.*;
 import gui_main.GUI;
+import org.apache.commons.lang.ArrayUtils;
 
 import java.awt.*;
 
@@ -359,6 +360,22 @@ public class UpdateGUI {
             return chosenElement;
         }
     }
+
+    public void updateHouses(String chosenProperty, int houseAmount) {
+        String[] fieldLocations = new String[gui.getFields().length];
+        for (int i=0; i<gui.getFields().length; i++){
+            fieldLocations[i] = gui.getFields()[i].getTitle();
+        }
+        int index = ArrayUtils.indexOf(fieldLocations,chosenProperty);
+        GUI_Street street = (GUI_Street) gui.getFields()[index];
+        if (houseAmount < 5) {
+            street.setHotel(false);
+            street.setHouses(houseAmount);
+        } else {
+            street.setHotel(true);
+        }
+    }
+
     public String sellHouse(String[] temp) {
         if (temp.length == 0) {
             gui.showMessage("Du har ingen huse at sælge");

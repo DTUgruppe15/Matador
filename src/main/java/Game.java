@@ -4,6 +4,7 @@ import FieldsUtils.Fields;
 import FieldsUtils.Tax;
 import PlayerUtils.Player;
 import FieldsUtils.Board;
+import org.apache.commons.lang.ArrayUtils;
 
 public class Game {
     private Fields[] fields;
@@ -157,6 +158,7 @@ public class Game {
                     System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
+                    players[playerTurn].movePosition(die1.getEyes());
                     playerChoiceInProgress = false;
                     break;
                 case 5:
@@ -234,11 +236,13 @@ public class Game {
         if (chosenProperty != null) {
             if (players[playerTurn].canBuyHouse(chosenProperty)) {
                 players[playerTurn].buyHouse(chosenProperty);
+                int index = ArrayUtils.indexOf(players[playerTurn].getDeedsReadyForHouses(),chosenProperty);
+                int houseAmount = players[playerTurn].getHouseAmountOfSingleDeed(chosenProperty);
+                gui.updateHouses(chosenProperty, houseAmount);
             } else {
                 gui.sendMessage("Du skal købe huse på alle ejendomme før du kan købe 1 mere");
             }
         }
-
     }
     public void playerSellHouse() {
         String[] array = players[playerTurn].getDeedsWithHouses();
