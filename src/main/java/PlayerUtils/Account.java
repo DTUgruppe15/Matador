@@ -25,18 +25,21 @@ public class Account {
         this.totalValue = balance;
     }
 
+    //buys a house on a deed and changes the players balance
     public void buyHouse(int index) {
         Deed newDeed = ownedDeeds.get(index);
         newDeed.buyHouse();
         this.balance = this.balance-newDeed.getHousePrice();
     }
 
+    //Sells a house and gives the player half the house price back
     public void sellHouse(int index) {
         Deed newDeed = ownedDeeds.get(index);
         newDeed.sellHouse();
         this.balance = (int) (this.balance+(newDeed.getHousePrice()*0.5));
     }
 
+    //returns a String[] with all the names of the deed that the player owns
     public String[] getNameOfAllDeeds(){
 
         String[] array = new String[ownedDeeds.size()];

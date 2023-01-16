@@ -26,11 +26,14 @@ public abstract class Fields {
         return -1; //failed to find the index of the object
     }
 
+    //Abstract method that is used as a way to make the field do something when a player lands on it
+    //returns an int in order for the gui to respond in main (game)
     public abstract int doStuff(Player player,Player[] players);
 
     public String getLabel(){
         return label;
     }
 
+    //Is used to buy plots/ferries/breweries
     public void buyPlot(Player player, Player[] players){}
 }

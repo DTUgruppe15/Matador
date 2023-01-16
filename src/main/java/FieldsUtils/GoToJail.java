@@ -8,6 +8,7 @@ public class GoToJail extends Fields{
         super(label);
     }
 
+    //Sets the position of the player to 10 and ads jailtime
     @Override
     public int doStuff(Player player, Player[] players) {
         player.setPosition(10);

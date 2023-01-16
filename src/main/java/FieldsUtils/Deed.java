@@ -68,14 +68,25 @@ public class Deed{
         this.mortgageValue = price/2;
     }
 
+    /**
+     * Buys a deed
+     * @param owner is an int that corresponds to the player that buys the deed
+     */
     public void buyDeed(int owner) {
         this.owner = owner;
         this.bought = true;
     }
 
+    /**
+     * Ups the amount of houses on the deed
+     */
     public void buyHouse() {
         housesAmount++;
     }
+
+    /**
+     * Downs the amount of houses
+     */
     public void sellHouse() { housesAmount--; }
 
     public boolean getBoughtStatus() {
