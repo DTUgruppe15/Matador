@@ -149,6 +149,61 @@ class LandOnFieldTest {
         );
     }
 
+    @Test
+    @DisplayName("Land On a plot owned by another player with 1 house")
+    void GetDeedsReadyForHouse(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(players[0],players);
+        fields[8].doStuff(players[0],players);
+        fields[9].doStuff(players[0],players);
+
+        String[] temp1 = players[0].getDeedsReadyForHouses();
+
+        assertAll(
+                () -> assertEquals(30000-2000-2000-2400,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(6),csv.getName(8),csv.getName(9)},temp1)
+        );
+    }
+
+    @Test
+    @DisplayName("Land On a plot owned by another player with 1 house")
+    void LandOnOwnedPlotWithHouseAgain(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[16].doStuff(players[0],players);
+        fields[18].doStuff(players[0],players);
+        fields[19].doStuff(players[0],players);
+        players[0].buyHouse("Bernstorffsvej");
+        fields[16].doStuff(players[1],players);
+
+        String[] temp1 = players[0].getOwnedDeeds();
+        String[] temp2 = players[1].getOwnedDeeds();
+
+        assertAll(
+                () -> assertEquals(30000-3600-3600-4000-2000+1400,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(16),csv.getName(18),csv.getName(19)},temp1),
+                () -> assertArrayEquals(new String[0],temp2),
+                () -> assertEquals(30000-1400,players[1].getBalance())
+        );
+    }
+
     //K15_AT
     @Test
     @DisplayName("Land On a plot owned by another player with 2 houses")

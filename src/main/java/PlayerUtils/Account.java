@@ -2,6 +2,7 @@ package PlayerUtils;
 
 import FieldsUtils.Deed;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Objects;
 
@@ -97,23 +98,25 @@ public class Account {
                 case 8 -> colorIdArray[7]++;
             }
         }
+        System.out.println(Arrays.toString(colorIdArray));
         // For loop that adds the location of the deeds to a list if the player owns all deeds of that color
         for (int colorId = 0 ; colorId < colorIdArray.length ; colorId++){
             if (colorIdArray[colorId] == 2 && (colorId == 0 || colorId == 7)) {
                 for (Deed ownedDeed : ownedDeeds) {
-                    if (ownedDeed.getColorId() == colorId) {
+                    if (ownedDeed.getColorId()-1 == colorId) {
                         deedsWhereAllColorsAreOwned.add(ownedDeed.getLocation());
                     }
                 }
             } else if (colorIdArray[colorId] == 3){
                 for (Deed ownedDeed : ownedDeeds) {
-                    if (ownedDeed.getColorId() == colorId) {
+                    if (ownedDeed.getColorId()-1 == colorId) {
                         deedsWhereAllColorsAreOwned.add(ownedDeed.getLocation());
                     }
                 }
             }
         }
         tempDeeds = new String[deedsWhereAllColorsAreOwned.size()];
+        System.out.println(Arrays.toString(tempDeeds));
         //For loop that makes the list into an array
         for (int i = 0; i < tempDeeds.length; i++) {
             tempDeeds[i] = deedsWhereAllColorsAreOwned.get(i);

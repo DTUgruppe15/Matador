@@ -226,8 +226,6 @@ public class Player {
 
     public boolean canBuyHouse(String field) {
         int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
-        System.out.println("index " + index);
-        System.out.println("field " + field);
 
         return this.playerAccount.areThereAHouseOnTheOtherDeeds(getColorIdOfAllDeeds()[index],getHouseAmountOfDeeds()[index]);
     }
@@ -237,6 +235,11 @@ public class Player {
     }
     public int[] getHouseAmountOfDeeds() {
         return this.playerAccount.getHouseAmountOfAllDeeds();
+    }
+    public int getHouseAmountOfSingleDeed(String field) {
+        int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
+
+        return this.playerAccount.getHouseAmountOfAllDeeds()[index];
     }
     public int[] getColorIdOfAllDeeds() {
         return this.playerAccount.getColorIdOfAllDeeds();
