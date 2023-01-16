@@ -13,4 +13,6 @@ public abstract class Properties extends Fields {
     public Properties(){}
 
     public abstract int doStuff(Player player, Player[] players);
+    
+    public void buyPlot(Player player, Player[] players){}
 }
