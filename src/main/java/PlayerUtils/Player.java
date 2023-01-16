@@ -210,7 +210,7 @@ public class Player {
         System.out.println("index " + index);
         System.out.println("field " + field);
 
-        return this.playerAccount.areThereAHouseOnTheOtherDeeds(getHouseAmountOfDeeds()[index],getColorIdOfAllDeeds()[index]);
+        return this.playerAccount.areThereAHouseOnTheOtherDeeds(getColorIdOfAllDeeds()[index],getHouseAmountOfDeeds()[index]);
     }
 
     public String[] getDeedsReadyForHouses() {

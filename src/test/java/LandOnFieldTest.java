@@ -283,6 +283,33 @@ class LandOnFieldTest {
         );
     }
 
+    @Test
+    @DisplayName("Land On a plot owned by another player with 1 house")
+    void PlayerTriesToBuyAHouseWithoutBuyingHousesOnOtherDeeds(){
+        Player[] players = new Player[2];
+        players[0] = new Player();
+        players[1] = new Player();
+
+        Fields[] fields = new Fields[40];
+        CSVReader csv = new CSVReader();
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        fields[6].doStuff(players[0],players);
+        fields[8].doStuff(players[0],players);
+        fields[9].doStuff(players[0],players);
+        players[0].buyHouse("Roskildevej");
+
+        String[] temp1 = players[0].getOwnedDeeds();
+
+        assertAll(
+                () -> assertEquals(30000-2000-2000-2400-1000,players[0].getBalance()),
+                () -> assertArrayEquals(new String[]{csv.getName(6),csv.getName(8),csv.getName(9)},temp1),
+                () -> assertFalse(players[0].canBuyHouse("Roskildevej"))
+        );
+    }
+
     //K21_AT
     @Test
     @DisplayName("Land on a field where 1 player first bought a house and then sold it")
