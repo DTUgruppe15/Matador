@@ -404,4 +404,13 @@ public class UpdateGUI {
             return 0;
         }
     }
+
+    public boolean buyPlotChoice(int player,int position){
+        if(gui.getUserLeftButtonPressed("Vil du købe grunden?","Ja","Nej")){
+            buyPlot(player,position);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

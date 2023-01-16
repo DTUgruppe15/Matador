@@ -151,9 +151,9 @@ public class PlayerTest {
         board.initBoard(fields);
 
         //Buying Fields
-        fields[6].doStuff(player, players);
-        fields[8].doStuff(player, players);
-        fields[9].doStuff(player, players);
+        fields[6].buyPlot(player, players);
+        fields[8].buyPlot(player, players);
+        fields[9].buyPlot(player, players);
 
         //Buying 8 houses
         player.buyHouse("Valby Langgade");
@@ -179,9 +179,9 @@ public class PlayerTest {
         board.initBoard(fields);
 
         //Buying Fields
-        fields[6].doStuff(player, players);
-        fields[8].doStuff(player, players);
-        fields[9].doStuff(player, players);
+        fields[6].buyPlot(player, players);
+        fields[8].buyPlot(player, players);
+        fields[9].buyPlot(player, players);
 
         //Buying 8 houses
         player.buyHouse("Valby Langgade");

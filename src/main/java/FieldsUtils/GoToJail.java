@@ -13,6 +13,6 @@ public class GoToJail extends Fields{
         player.setPosition(10);
         player.addJailTime();
         System.out.println("Fields.GoToJail: " + getLabel());
-        return 0;
+        return 3;
     }
 }

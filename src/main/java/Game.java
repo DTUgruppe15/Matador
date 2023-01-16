@@ -78,6 +78,7 @@ public class Game {
 
             int doStuffStatus = fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
 
+
             //Updating Balance for all players (gui)
             for (int i = 0; i<players.length; i++) {
                 gui.setBalance(i, players[i].getBalance());
@@ -85,19 +86,25 @@ public class Game {
             System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes() + " " + players[playerTurn].getBalance());
 
             //Update player position and dice roll (gui)
-            gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
             gui.setDice(die1.getEyes(),die2.getEyes());
-            for (int i = 0; i<players.length; i++) {
-                gui.setBalance(i, players[i].getBalance());
-            }
+            gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
 
             //If doStuff returns 1, buy the plot
             if(doStuffStatus == 1) {
-                gui.buyPlot(playerTurn,players[playerTurn].getPosition());
-            }
-            if(doStuffStatus == 2) {
+                if(gui.buyPlotChoice(playerTurn,players[playerTurn].getPosition())){
+                    fields[players[playerTurn].getPosition()].buyPlot(players[playerTurn],players);
+                }
+            }else if(doStuffStatus == 2) {
                 //Do something
                 playerTaxChoice();
+            } else if (doStuffStatus == 3) {//Go to Jail
+                gui.moveCar(playerTurn,30,10);
+            } else if (doStuffStatus == 4) {//Pay rent
+                fields[players[playerTurn].getPosition()].buyPlot(players[playerTurn],players);
+            }
+
+            for (int i = 0; i<players.length; i++) {
+                gui.setBalance(i, players[i].getBalance());
             }
 
             while(players[playerTurn].haveUnMortgagedDeeds() && players[playerTurn].getBalance() <= 0) {
@@ -150,7 +157,6 @@ public class Game {
                     System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
-                    players[playerTurn].movePosition(die1.getEyes()+ die2.getEyes());
                     playerChoiceInProgress = false;
                     break;
                 case 5:

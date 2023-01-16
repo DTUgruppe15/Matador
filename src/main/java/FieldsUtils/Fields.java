@@ -32,4 +32,5 @@ public abstract class Fields {
         return label;
     }
 
+    public void buyPlot(Player player, Player[] players){}
 }

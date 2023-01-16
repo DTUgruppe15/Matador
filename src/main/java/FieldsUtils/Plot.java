@@ -27,6 +27,15 @@ public class Plot extends Properties{
     //Method that lets player buy plots
     @Override
     public int doStuff(Player player, Player[] players) {
+        if(deed.getBoughtStatus() && !deed.isMortgaged() && players[deed.getOwner()].getJailTime() == 0){
+            return 4;
+        }else{
+            return 1;
+        }
+    }
+
+    @Override
+    public void buyPlot(Player player, Player[] players){
         //checks if the deed is bought, if it's not - buy it.
         // If it is - pay rent
         int payAmount = 0;
@@ -34,7 +43,6 @@ public class Plot extends Properties{
             if (player.getBalance() >= deed.getPrice()) {
                 System.out.println("Du har købt skødet");
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
-                return 1;
             }
         } else if (findPlayerInArray(player, players) == this.deed.getOwner()) {
         } else if(!deed.isMortgaged() && players[deed.getOwner()].getJailTime() == 0) {
@@ -66,8 +74,8 @@ public class Plot extends Properties{
             players[this.deed.getOwner()].updateBalance(payAmount);
         }
         System.out.println("plot: " + getLabel());
-        return 0;
     }
+
     public int getOwner() { return deed.getOwner(); }
 
     public int getColorId() {return deed.getColorId(); }

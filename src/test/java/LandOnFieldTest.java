@@ -22,7 +22,7 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[1].doStuff(players[0],players);
+        fields[1].buyPlot(players[0],players);
 
         String[] temp = players[0].getOwnedDeeds();
 
@@ -45,8 +45,8 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[1].doStuff(players[0],players);
-        fields[1].doStuff(players[1],players);
+        fields[1].buyPlot(players[0],players);
+        fields[1].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -73,9 +73,9 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[1].doStuff(players[0],players);
-        fields[3].doStuff(players[0],players);
-        fields[1].doStuff(players[1],players);
+        fields[1].buyPlot(players[0],players);
+        fields[3].buyPlot(players[0],players);
+        fields[1].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -102,10 +102,10 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
-        fields[6].doStuff(players[1],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
+        fields[6].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -132,11 +132,11 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
         players[0].buyHouse(fields[6].getLabel());
-        fields[6].doStuff(players[1],players);
+        fields[6].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -163,12 +163,12 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
-        fields[6].doStuff(players[1],players);
+        fields[6].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -195,13 +195,13 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
-        fields[6].doStuff(players[1],players);
+        fields[6].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -228,14 +228,14 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
-        fields[6].doStuff(players[1],players);
+        fields[6].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -262,15 +262,15 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
         players[0].buyHouse("Roskildevej");
-        fields[6].doStuff(players[1],players);
+        fields[6].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -296,9 +296,9 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
         players[0].buyHouse("Roskildevej");
 
         String[] temp1 = players[0].getOwnedDeeds();
@@ -324,12 +324,12 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
         players[0].buyHouse("Roskildevej");
         players[0].sellHouse("Roskildevej");
-        fields[6].doStuff(players[1],players);
+        fields[6].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
         String[] temp2 = players[1].getOwnedDeeds();
@@ -355,10 +355,10 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[1].doStuff(players[0],players);
+        fields[1].buyPlot(players[0],players);
         players[0].mortgageDeed(csv.getName(1));
 
-        fields[1].doStuff(players[1],players);
+        fields[1].buyPlot(players[1],players);
 
         String[] temp1 = players[0].getOwnedDeeds();
 
@@ -381,9 +381,9 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[1].doStuff(players[0],players);
-        fields[3].doStuff(players[0],players);
-        fields[6].doStuff(players[0],players);
+        fields[1].buyPlot(players[0],players);
+        fields[3].buyPlot(players[0],players);
+        fields[6].buyPlot(players[0],players);
 
         players[0].mortgageDeed(csv.getName(1));
         players[0].mortgageDeed(csv.getName(6));
@@ -430,10 +430,10 @@ class LandOnFieldTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[1].doStuff(players[0],players);
+        fields[1].buyPlot(players[0],players);
         fields[30].doStuff(players[0],players);
 
-        fields[1].doStuff(players[1],players);
+        fields[1].buyPlot(players[1],players);
 
         assertAll(
                 () -> assertEquals(30000-1200,players[0].getBalance()),

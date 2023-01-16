@@ -56,9 +56,9 @@ class ChanceTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(players[0],players);
-        fields[8].doStuff(players[0],players);
-        fields[9].doStuff(players[0],players);
+        fields[6].buyPlot(players[0],players);
+        fields[8].buyPlot(players[0],players);
+        fields[9].buyPlot(players[0],players);
 
         chance.drawCard(player, players, 0);
 
@@ -77,9 +77,9 @@ class ChanceTest {
         Board board = new Board();
         board.initBoard(fields);
 
-        fields[6].doStuff(player, players);
-        fields[8].doStuff(player, players);
-        fields[9].doStuff(player, players);
+        fields[6].buyPlot(player, players);
+        fields[8].buyPlot(player, players);
+        fields[9].buyPlot(player, players);
 
         player.buyHouse("Roskildevej");
 
@@ -101,9 +101,9 @@ class ChanceTest {
         board.initBoard(fields);
 
         //Buying Fields
-        fields[6].doStuff(player, players);
-        fields[8].doStuff(player, players);
-        fields[9].doStuff(player, players);
+        fields[6].buyPlot(player, players);
+        fields[8].buyPlot(player, players);
+        fields[9].buyPlot(player, players);
 
         //Buying Hotels (5 houses = 1 hotel)
         player.buyHouse("Roskildevej");
@@ -140,9 +140,9 @@ class ChanceTest {
         board.initBoard(fields);
 
         //Buying Fields
-        fields[6].doStuff(player, players);
-        fields[8].doStuff(player, players);
-        fields[9].doStuff(player, players);
+        fields[6].buyPlot(player, players);
+        fields[8].buyPlot(player, players);
+        fields[9].buyPlot(player, players);
 
         //Buying Hotels (5 houses = 1 hotel)
         player.buyHouse("Roskildevej");
@@ -177,9 +177,9 @@ class ChanceTest {
         board.initBoard(fields);
 
         //Buying Fields
-        fields[6].doStuff(player, players);
-        fields[8].doStuff(player, players);
-        fields[9].doStuff(player, players);
+        fields[6].buyPlot(player, players);
+        fields[8].buyPlot(player, players);
+        fields[9].buyPlot(player, players);
 
         chance.drawCard(player, players, 1);
 
@@ -199,9 +199,9 @@ class ChanceTest {
         board.initBoard(fields);
 
         //Buying Fields
-        fields[6].doStuff(player, players);
-        fields[8].doStuff(player, players);
-        fields[9].doStuff(player, players);
+        fields[6].buyPlot(player, players);
+        fields[8].buyPlot(player, players);
+        fields[9].buyPlot(player, players);
 
         //Buying Hotels (5 houses = 1 hotel)
         player.buyHouse("Roskildevej");
@@ -224,9 +224,9 @@ class ChanceTest {
        board.initBoard(fields);
 
        //Buying Fields
-       fields[6].doStuff(player, players);
-       fields[8].doStuff(player, players);
-       fields[9].doStuff(player, players);
+       fields[6].buyPlot(player, players);
+       fields[8].buyPlot(player, players);
+       fields[9].buyPlot(player, players);
 
        //Buying Hotels (5 houses = 1 hotel)
        player.buyHouse("Roskildevej");
@@ -263,9 +263,9 @@ class ChanceTest {
         board.initBoard(fields);
 
         //Buying Fields
-        fields[6].doStuff(player, players);
-        fields[8].doStuff(player, players);
-        fields[9].doStuff(player, players);
+        fields[6].buyPlot(player, players);
+        fields[8].buyPlot(player, players);
+        fields[9].buyPlot(player, players);
 
         //Buying Hotels (5 houses = 1 hotel)
         player.buyHouse("Roskildevej");

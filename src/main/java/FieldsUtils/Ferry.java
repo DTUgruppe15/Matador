@@ -22,6 +22,15 @@ public class Ferry extends Properties{
     //Lets player buys Ferry deed
     @Override
     public int doStuff(Player player, Player[] players) {
+        if(deed.getBoughtStatus() && !deed.isMortgaged() && players[deed.getOwner()].getJailTime() == 0){
+            return 4;
+        }else{
+            return 1;
+        }
+    }
+
+    @Override
+    public void buyPlot(Player player, Player[] players){
         //Checks if the deed is bought. Buys if it isn't
         //Pays rent if it is.
         int payAmount = 0;
@@ -29,7 +38,6 @@ public class Ferry extends Properties{
             if (player.getBalance() >= deed.getPrice()) {
                 System.out.println("Du har købt skødet");
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
-                return 1;
             }
         } else if (findPlayerInArray(player, players) == this.deed.getOwner()) {
         } else {
@@ -45,6 +53,5 @@ public class Ferry extends Properties{
             players[this.deed.getOwner()].updateBalance(payAmount);
         }
         System.out.println("Fields.Ferry: " + getLabel());
-        return 0;
     }
 }
