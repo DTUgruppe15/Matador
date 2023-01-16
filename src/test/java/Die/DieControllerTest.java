@@ -1,4 +1,4 @@
-package test;
+package Die;
 
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ public class DieControllerTest {
     Die die2 = new Die(6);
 
     @RepeatedTest(500)
-    public void TestrollDies() {
+    public void TestRollDies() {
         int result = raffle.rollDies(die1, die2);
         assertTrue(result >= 2 || result <= 12);
     }

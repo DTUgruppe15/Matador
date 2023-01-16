@@ -1,3 +1,4 @@
+import FieldsUtils.Fields;
 import FileReader.CSVReader;
 import gui_fields.*;
 import gui_main.GUI;
@@ -11,12 +12,9 @@ public class UpdateGUI {
     GUI_Field[] fields;
 
     public UpdateGUI(){
-
         initBoard();
         Color board = new Color(51,153,255);
         gui = new GUI(fields, board);
-
-
     }
 
     /**
@@ -219,10 +217,46 @@ public class UpdateGUI {
      * Moves the player token to the selected field.
      *
      * @param player The index of the player.
-     * @param field The index of the field that is moved to.
+     * @param previousField The index of the field that is moved from.
+     * @param newField The index of the field that is moved to.
      */
-    public void moveCar(int player, int field){
-        players[player].getCar().setPosition(fields[field]);
+    public void moveCar(int player, int previousField, int newField){
+        int previousPosition = previousField;
+        if (previousPosition <= newField) {
+            while (previousPosition <= newField) {
+                players[player].getCar().setPosition(fields[previousPosition]);
+                previousPosition++;
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } else {
+            while (previousPosition <= 39 && previousPosition != 0) {
+                players[player].getCar().setPosition(fields[previousPosition]);
+                if (previousPosition != 39) {
+                    previousPosition++;
+                } else {
+                    previousPosition = 0;
+                }
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            while (previousPosition <= newField) {
+                players[player].getCar().setPosition(fields[previousPosition]);
+                previousPosition++;
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
     }
 
     /**
@@ -231,7 +265,7 @@ public class UpdateGUI {
     public int playerChoice(){
         int choice = 0;
 
-        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Cheat Dice")){
+        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Cheat Dice","Sælg huse")){
             case "Rul terninger":
                 choice = 1;
                 break;
@@ -243,6 +277,9 @@ public class UpdateGUI {
                 break;
             case "Cheat Dice":
                 choice = 4;
+                break;
+            case "Sælg huse":
+                choice = 5;
                 break;
         }
 
@@ -287,6 +324,20 @@ public class UpdateGUI {
         return choice;
     }
 
+    //Player sees choice when paying tax on taxfield
+    public int playerTaxChoice() {
+        int choice = 0;
+        switch (gui.getUserSelection("Vælg handling", "Betal 4.000", "Betal 10% af din totalværdi")) {
+            case "Betal 4.000":
+                choice = 1;
+                break;
+            case "Betal 10% af din totalværdi":
+                choice = 2;
+                break;
+        }
+        return choice;
+    }
+
     /**
      * Prompts the user on which deed they want mortgaged.
      *
@@ -296,6 +347,27 @@ public class UpdateGUI {
         String chosenElement = gui.getUserSelection("Vælg grund til pantsætning",temp);
 
         return chosenElement;
+    }
+
+    public String buyHouse(String[] temp) {
+        if (temp.length == 0) {
+            gui.showMessage("Du ejer ikke alle grundende af en farve, du kan ikke købe huse");
+            return null;
+        } else {
+            String chosenElement = gui.getUserSelection("Vælg grund til at købe hus på",temp);
+            System.out.println(chosenElement);
+            return chosenElement;
+        }
+    }
+    public String sellHouse(String[] temp) {
+        if (temp.length == 0) {
+            gui.showMessage("Du har ingen huse at sælge");
+            return null;
+        } else {
+            String chosenElement = gui.getUserSelection("Vælg grund til at sælge hus på",temp);
+            System.out.println(chosenElement);
+            return chosenElement;
+        }
     }
 
     /**
@@ -331,7 +403,5 @@ public class UpdateGUI {
         }else{
             return 0;
         }
-
-
     }
 }

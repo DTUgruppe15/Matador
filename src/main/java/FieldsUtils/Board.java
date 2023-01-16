@@ -30,7 +30,7 @@ public class Board {
                 switch (fieldValues[2]) {
                     case " street" -> fields1[whatField] = new Plot(fieldValues[0], Integer.parseInt(fieldValues[3]), Integer.parseInt(fieldValues[4]), Integer.parseInt(fieldValues[5]),
                                 Integer.parseInt(fieldValues[6]), Integer.parseInt(fieldValues[7]), Integer.parseInt(fieldValues[8]), Integer.parseInt(fieldValues[9]),
-                                Integer.parseInt(fieldValues[10]));
+                                Integer.parseInt(fieldValues[10]),Integer.parseInt(fieldValues[11]));
                     case " brewery" -> fields1[whatField] = new Brewery(fieldValues[0], Integer.parseInt(fieldValues[3]));
                     case " ferry" -> fields1[whatField] = new Ferry(fieldValues[0], Integer.parseInt(fieldValues[3]));
                     case " start" -> fields1[whatField] = new Go(fieldValues[0]);
@@ -62,7 +62,7 @@ public class Board {
         Deed deed;
 
         for (int i = 0; i < fields.length; i++) {
-            deed = new Deed(csv.getName(i),csv.getPrice(i),csv.getHousePrice(i), csv.getRent0(i),csv.getRent1(i),csv.getRent2(i),csv.getRent3(i),csv.getRent4(i),csv.getRent5(i));
+            deed = new Deed(csv.getName(i),csv.getPrice(i),csv.getHousePrice(i), csv.getRent0(i),csv.getRent1(i),csv.getRent2(i),csv.getRent3(i),csv.getRent4(i),csv.getRent5(i),csv.getColorId(i));
 
             switch(csv.getType(i)){
                 case " start":
@@ -102,6 +102,7 @@ public class Board {
     }
 
     //For testing
+    /*
     public static void main(String[] args) {
         System.out.println("Writing board");
 
@@ -113,6 +114,7 @@ public class Board {
             System.out.println(fields[i].getLabel());
         }
     }
+     */
 
 
 

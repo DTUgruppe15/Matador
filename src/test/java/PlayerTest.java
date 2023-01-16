@@ -1,6 +1,9 @@
 
 
 
+import FieldsUtils.Board;
+import FieldsUtils.Chance;
+import FieldsUtils.Fields;
 import PlayerUtils.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -111,15 +114,15 @@ public class PlayerTest {
 
         assertAll(
                 () -> assertEquals(30000,players[0].getBalance()),
-                () -> assertFalse(players[0].haveGetOutOfJail()),
+                () -> assertFalse(players[0].haveGetOutOfJailCard()),
                 () -> assertEquals(40000,players[1].getBalance()),
-                () -> assertTrue(players[1].haveGetOutOfJail())
+                () -> assertTrue(players[1].haveGetOutOfJailCard())
         );
     }
 
     @Test
     @DisplayName("Child have advantage over Go. K34_AT")
-    void ChildMoneyOverGo(){
+    void ChildMoneyOverGo() {
         Player[] players = new Player[2];
         players[0] = new Player();
         players[1] = new Player();
@@ -132,8 +135,66 @@ public class PlayerTest {
         players[1].movePosition(3);
 
         assertAll(
-                () -> assertEquals(30000+4000,players[0].getBalance()),
-                () -> assertEquals(40000+5000,players[1].getBalance())
+                () -> assertEquals(30000 + 4000, players[0].getBalance()),
+                () -> assertEquals(40000 + 5000, players[1].getBalance())
         );
+    }
+
+    @Test
+    void getTotalAmountOfHousesTest() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = new Player();
+
+        Fields[] fields = new Fields[40];
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
+
+        //Buying 8 houses
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+
+        assertEquals(8, player.getTotalAmountOfHouses());
+    }
+
+    @Test
+    void getTotalAmountOfHotelsTest() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = new Player();
+
+        Fields[] fields = new Fields[40];
+
+        Board board = new Board();
+        board.initBoard(fields);
+
+        //Buying Fields
+        fields[6].doStuff(player, players);
+        fields[8].doStuff(player, players);
+        fields[9].doStuff(player, players);
+
+        //Buying 8 houses
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Valby Langgade");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+        player.buyHouse("Roskildevej");
+
+        assertEquals(2, player.getTotalAmountOfHotels());
     }
 }

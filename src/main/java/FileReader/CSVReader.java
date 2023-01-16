@@ -19,6 +19,9 @@ public class CSVReader {
     private int[] rent4 = new int[40];
     private int[] rent5 = new int[40];
 
+
+    private int[] colorId = new int[40];
+
     public String getName(int index){
         return name[index];
     }
@@ -62,7 +65,7 @@ public class CSVReader {
     public int getRent5(int index){
         return rent5[index];
     }
-
+    public int getColorId(int index) { return colorId[index]; }
     public void readFile(){
 
         try {
@@ -98,7 +101,7 @@ public class CSVReader {
                 rent3[index] = Integer.parseInt(tempArr[8]);
                 rent4[index] = Integer.parseInt(tempArr[9]);
                 rent5[index] = Integer.parseInt(tempArr[10]);
-
+                colorId[index] = Integer.parseInt(tempArr[11]);
                 index++;
             }
 
