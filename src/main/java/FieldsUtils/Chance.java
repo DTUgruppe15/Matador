@@ -21,7 +21,7 @@ public class Chance extends Fields {
         super(label);
         initChanceDeck();
         shuffleCards();
-        System.out.println(cardsList.toString());
+        //System.out.println(cardsList.toString());
     }
 
     /**

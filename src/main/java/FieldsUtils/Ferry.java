@@ -36,7 +36,7 @@ public class Ferry extends Properties{
         int payAmount = 0;
         if (!this.deed.getBoughtStatus()) {
             if (player.getBalance() >= deed.getPrice()) {
-                System.out.println("Du har købt skødet");
+                //System.out.println("Du har købt skødet");
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
             }
         } else if (findPlayerInArray(player, players) == this.deed.getOwner()) {
@@ -48,10 +48,10 @@ public class Ferry extends Properties{
                 case 3 -> payAmount = 2000;
                 case 4 -> payAmount = 4000;
             }
-            System.out.println("Skødet er købt, betal: " + payAmount + " til spiller: " + this.deed.getOwner() + ", da de ejer " + players[this.deed.getOwner()].getFerries() + " færge skøder");
+            //System.out.println("Skødet er købt, betal: " + payAmount + " til spiller: " + this.deed.getOwner() + ", da de ejer " + players[this.deed.getOwner()].getFerries() + " færge skøder");
             player.updateBalance(-payAmount);
             players[this.deed.getOwner()].updateBalance(payAmount);
         }
-        System.out.println("Fields.Ferry: " + getLabel());
+        //System.out.println("Fields.Ferry: " + getLabel());
     }
 }

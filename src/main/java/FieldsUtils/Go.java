@@ -10,7 +10,7 @@ public class Go extends Fields {
 
     @Override
     public int doStuff(Player player, Player[] players) {
-        System.out.println("Fields.Go: " + getLabel());
+        //System.out.println("Fields.Go: " + getLabel());
         return 0;
     }
 }

@@ -127,12 +127,5 @@ public class CSVReader {
         for (int i = 0; i < 40; i++) {
             System.out.println(temp.getType(i));
         }
-
-
-
     }
-
-
-
-
 }

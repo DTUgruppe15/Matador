@@ -27,7 +27,7 @@ public class UpdateGUI {
 
         fields = new GUI_Field[40];
         for (int i = 0; i < fields.length; i++) {
-            System.out.println(csvReader.getType(i));
+            //System.out.println(csvReader.getType(i));
             switch (csvReader.getType(i)){
                 case " start":
                     fields[i] = new GUI_Start();
@@ -266,7 +266,7 @@ public class UpdateGUI {
     public int playerChoice(){
         int choice = 0;
 
-        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Cheat Dice","Sælg huse","Byt grunde","Print grunde")){
+        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Sælg huse","Byt grunde")){
             case "Rul terninger":
                 choice = 1;
                 break;
@@ -301,7 +301,7 @@ public class UpdateGUI {
     public int playerJailChoice(boolean haveGetOutOfJail){
         int choice = 0;
         if(haveGetOutOfJail){
-            switch (gui.getUserSelection("Du er i fængsel. Vælg handling", "Rul terninger", "Betal 1000", "Brug et løsladelseskort", "Cheat Dice")) {
+            switch (gui.getUserSelection("Du er i fængsel. Vælg handling", "Rul terninger", "Betal 1000", "Brug et løsladelseskort")) {
                 case "Rul terninger":
                     choice = 1;
                     break;
@@ -316,7 +316,7 @@ public class UpdateGUI {
                     break;
             }
         }else {
-            switch (gui.getUserSelection("Du er i fængsel. Vælg handling", "Rul terninger", "Betal 1000", "Cheat Dice")) {
+            switch (gui.getUserSelection("Du er i fængsel. Vælg handling", "Rul terninger", "Betal 1000")) {
                 case "Rul terninger":
                     choice = 1;
                     break;
@@ -364,7 +364,7 @@ public class UpdateGUI {
             return null;
         } else {
             String chosenElement = gui.getUserSelection("Vælg grund til at købe hus på",temp);
-            System.out.println(chosenElement);
+            //System.out.println(chosenElement);
             return chosenElement;
         }
     }

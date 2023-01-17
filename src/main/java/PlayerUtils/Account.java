@@ -103,7 +103,7 @@ public class Account {
                 case 8 -> colorIdArray[7]++;
             }
         }
-        System.out.println(Arrays.toString(colorIdArray));
+        //System.out.println(Arrays.toString(colorIdArray));
         // For loop that adds the location of the deeds to a list if the player owns all deeds of that color
         for (int colorId = 0 ; colorId < colorIdArray.length ; colorId++){
             if (colorIdArray[colorId] == 2 && (colorId == 0 || colorId == 7)) {
@@ -121,7 +121,7 @@ public class Account {
             }
         }
         tempDeeds = new String[deedsWhereAllColorsAreOwned.size()];
-        System.out.println(Arrays.toString(tempDeeds));
+        //System.out.println(Arrays.toString(tempDeeds));
         //For loop that makes the list into an array
         for (int i = 0; i < tempDeeds.length; i++) {
             tempDeeds[i] = deedsWhereAllColorsAreOwned.get(i);
@@ -265,7 +265,7 @@ public class Account {
      */
     public void updateBalance(int amount) {
         balance = balance + amount;
-        System.out.println(amount);
+        //System.out.println(amount);
         updateTotalValue();
     }
 

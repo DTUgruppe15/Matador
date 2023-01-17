@@ -67,7 +67,7 @@ public class Game {
                 playerChoice();
             }
             if(extraStrokeCounter == 2) {
-                System.out.println("Inside ExtaStrokeCounter = 2");
+                //System.out.println("Inside ExtaStrokeCounter = 2");
                 players[playerTurn].addJailTime();
                 players[playerTurn].setPosition(10);
             }
@@ -84,7 +84,7 @@ public class Game {
             for (int i = 0; i<players.length; i++) {
                 gui.setBalance(i, players[i].getBalance());
             }
-            System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes() + " " + players[playerTurn].getBalance());
+            //System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes() + " " + players[playerTurn].getBalance());
 
             //Update player position and dice roll (gui)
             gui.setDice(die1.getEyes(),die2.getEyes());
@@ -112,7 +112,7 @@ public class Game {
                 playerMortgaged();
             }
 
-            System.out.println(extraStrokeCounter);
+            //System.out.println(extraStrokeCounter);
 
             //Check if there are any players that have gone bankrupt and stops the gameloop.
             //Controlling player turn
@@ -132,7 +132,8 @@ public class Game {
                 }
             }
         }
-        System.out.println("Spiller " + playerTurn + " er gået fallit");
+        //System.out.println("Spiller " + playerTurn + " er gået fallit");
+        gui.sendMessage("Spiller " + playerTurn + " er gået fallit");
     }
 
     //Player Choices
@@ -151,11 +152,11 @@ public class Game {
                     playerBuyHouse();
                     break;
                 case 3: //Mortgaged deeds.
-                    System.out.println("pant");
+                    //System.out.println("pant");
                     playerMortgaged();
                     break;
                 case 4: //Cheat dice to test stuff
-                    System.out.println("Cheating");
+                    //System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
                     playerChoiceInProgress = false;
@@ -215,7 +216,7 @@ public class Game {
                     players[playerTurn].releaseFromJail();
                     break;
                 case 4: //Roll with cheat dice that the player chooses
-                    System.out.println("Cheating");
+                    //System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
                     if (die.isEqual(die1, die2)) {

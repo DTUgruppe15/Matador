@@ -47,7 +47,6 @@ public class Deed{
      * @param colorId
      * @param position The field position
      */
-
     public Deed(String location, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5, int colorId, int position) {
         this.location = location;
         this.price = price;

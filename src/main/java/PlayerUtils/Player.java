@@ -163,10 +163,10 @@ public class Player {
 
     public boolean haveUnMortgagedDeeds() {
         if(playerAccount.getOwnedDeeds().size() == 0){
-            System.out.println("have no UnMortgagedDeeds");
+            //System.out.println("have no UnMortgagedDeeds");
             return false;
         }else{
-            System.out.println("haveUnMortgagedDeeds");
+            //System.out.println("haveUnMortgagedDeeds");
             return true;
         }
     }
@@ -262,7 +262,7 @@ public class Player {
     public int getTotalAmountOfHouses() {
         int total = 0;
         int[] temp = getHouseAmountOfDeeds();
-        System.out.println(Arrays.toString(temp));
+        //System.out.println(Arrays.toString(temp));
         for(int i = 0; i < temp.length; i++) {
             if(temp[i] > 0 && temp[i] != 5) {
                 total += temp[i];
@@ -288,9 +288,14 @@ public class Player {
     }
 
     /**
-     * removes a deed owned by the player.
+     * Moves ownership of deeds.
      *
-     * @param field the deed to mortgage
+     * @param field1 The name of the deed from player 1.
+     * @param field2 The name of the deed from player 2.
+     * @param playerToTrade player object that sis traded to.
+     * @param money How much money that is traded.
+     * @param player1 Index of player that initialize the trade.
+     * @param player2 Index of player traded to.
      */
     public void tradeDeed(String field1,String field2, Player playerToTrade, int money, int player1, int player2) {
 
