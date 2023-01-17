@@ -158,11 +158,16 @@ public class Game {
                     System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
-                    players[playerTurn].movePosition(die1.getEyes());
                     playerChoiceInProgress = false;
                     break;
                 case 5:
                     playerSellHouse();
+                    break;
+                case 6: //Trade plots
+                    tradePlots();
+                    break;
+                case 7:
+                    players[playerTurn].printDeeds();
                     break;
             }
         }
@@ -251,6 +256,34 @@ public class Game {
         if (chosenProperty != null) {
             gui.updateHouses(chosenProperty, players[playerTurn].getHouseAmountOfSingleDeed(chosenProperty)-1);
             players[playerTurn].sellHouse(chosenProperty);
+        }
+    }
+
+    public void tradePlots(){
+
+        int playerToTrade = gui.choosePlayerToTrade()-1;
+
+        String[] player1Deeds = players[playerTurn].getOwnedDeeds();
+        String[] player2Deeds = players[playerToTrade].getOwnedDeeds();
+
+
+        String choosenProperty1 = gui.playerTrade(player1Deeds);
+        String choosenProperty2 = gui.playerTrade(player2Deeds);
+
+        int money = gui.chooseAmountOfMoneyToTrade();
+
+        if(gui.playerAcceptTrade()){
+            players[playerTurn].tradeDeed(choosenProperty1,choosenProperty2,players[playerToTrade],money,playerTurn,playerToTrade);
+
+
+
+            gui.buyPlot(playerTurn,players[playerTurn].getDeedPosition(choosenProperty2));
+            gui.buyPlot(playerToTrade,players[playerToTrade].getDeedPosition(choosenProperty1));
+
+
+            for (int i = 0; i<players.length; i++) {
+                gui.setBalance(i, players[i].getBalance());
+            }
         }
     }
 }

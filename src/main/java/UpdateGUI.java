@@ -266,7 +266,7 @@ public class UpdateGUI {
     public int playerChoice(){
         int choice = 0;
 
-        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Cheat Dice","Sælg huse")){
+        switch (gui.getUserSelection("Vælg handling","Rul terninger","Køb huse","Pantsæt grund","Cheat Dice","Sælg huse","Byt grunde","Print grunde")){
             case "Rul terninger":
                 choice = 1;
                 break;
@@ -281,6 +281,12 @@ public class UpdateGUI {
                 break;
             case "Sælg huse":
                 choice = 5;
+                break;
+            case "Byt grunde":
+                choice = 6;
+                break;
+            case "Print grunde":
+                choice = 7;
                 break;
         }
 
@@ -433,5 +439,28 @@ public class UpdateGUI {
         }else{
             return false;
         }
+    }
+
+    public int choosePlayerToTrade(){
+        return gui.getUserInteger("Vælg spiller at bytte med.");
+    }
+
+    public boolean playerAcceptTrade(){
+        return gui.getUserLeftButtonPressed("Vil spilleren acceptere byttehandlen","Ja","Nej");
+    }
+
+    /**
+     * Prompts the user on which deed they want to trade.
+     *
+     * @param temp All the nemes on deeds that can be mortgaged.
+     */
+    public String playerTrade(String[] temp){
+        String chosenElement = gui.getUserSelection("Vælg grund at bytte",temp);
+
+        return chosenElement;
+    }
+
+    public int chooseAmountOfMoneyToTrade(){
+        return gui.getUserInteger("Vil du give ekstra penge?");
     }
 }
