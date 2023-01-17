@@ -280,7 +280,43 @@ public class Account {
         for (int i = 0; i < mortgagedDeeds.size(); i++) {
             System.out.println(mortgagedDeeds.get(i).getLocation());
         }
+    }
 
+    /**
+     * Adds a Fields.Deed object to the list of mortgaged Deeds and removes it from the list of owned Deeds if it is present.
+     * If the Fields.Deed is not in the list of owned Deeds, it is simply added to the list of mortgaged Deeds.
+     * Updates the total value of the Account.
+     *
+     * @param index the Fields.Deed object to be added to the list of mortgaged Deeds
+     */
+    public Deed removeDeeds(int index) {
 
+        Deed newDeed = ownedDeeds.get(index);
+
+        if (this.ownedDeeds.contains(newDeed)) {
+            this.ownedDeeds.remove(ownedDeeds.indexOf(newDeed));
+        }
+        updateTotalValue();
+
+        return newDeed;
+    }
+
+    /**
+     * Adds a Fields.Deed object to the list of mortgaged Deeds and removes it from the list of owned Deeds if it is present.
+     * If the Fields.Deed is not in the list of owned Deeds, it is simply added to the list of mortgaged Deeds.
+     * Updates the total value of the Account.
+     *
+     * @param index the Fields.Deed object to be added to the list of mortgaged Deeds
+     */
+    public void addDeeds(Deed deed) {
+        this.ownedDeeds.add(deed);
+
+        updateTotalValue();
+    }
+
+    public int getDeedPosition(int index){
+        Deed deed = ownedDeeds.get(index);
+
+        return deed.getPosition();
     }
 }
