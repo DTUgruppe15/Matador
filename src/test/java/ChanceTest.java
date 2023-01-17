@@ -1132,29 +1132,4 @@ class ChanceTest {
         assertEquals(10, player.getPosition());
         assertTrue(player.isPlayerInJail());
     }
-
-    /*
-    @Test
-    void shuffleAfter45DrawsTest() {
-        Player[] players = {new Player(), new Player(), new Player(), new Player()};
-        Player player = players[0];
-
-        Chance chance = new Chance("ChanceField");
-
-        List<Integer> chanceList = chance.getDeck();
-
-        //Prints List
-        System.out.println(Arrays.toString(chanceList.toArray()));
-
-        for(int i = 0; i < 46; i++) {
-            chance.doStuff(player, players);
-        }
-
-        //After to do Stuff
-        System.out.println(Arrays.toString(chanceList.toArray()));
-        System.out.println(Arrays.toString(chance.getDeck().toArray()));
-
-        assertFalse(chanceList.equals(chance.getDeck()));
-    }
-    */
 }

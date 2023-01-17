@@ -27,7 +27,6 @@ public class UpdateGUI {
 
         fields = new GUI_Field[40];
         for (int i = 0; i < fields.length; i++) {
-            //System.out.println(csvReader.getType(i));
             switch (csvReader.getType(i)){
                 case " start":
                     fields[i] = new GUI_Start();
@@ -363,7 +362,6 @@ public class UpdateGUI {
             return null;
         } else {
             String chosenElement = gui.getUserSelection("Vælg grund til at købe hus på",temp);
-            //System.out.println(chosenElement);
             return chosenElement;
         }
     }

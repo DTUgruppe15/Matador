@@ -7,6 +7,7 @@ import java.util.Random;
 public class Brewery extends Properties{
     private Deed deed;
 
+
     public Brewery(String label, int price) {
         super(label);
         this.deed = new Deed(label,price);
@@ -42,7 +43,6 @@ public class Brewery extends Properties{
         if (!this.deed.getBoughtStatus()) {
             //First checks if the player can buy it
             if (player.getBalance() >= deed.getPrice()) {
-                //System.out.println("Du har købt skødet");
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
             }
             //Then checks if the player who landed here already owns it
@@ -52,10 +52,8 @@ public class Brewery extends Properties{
                 case 1 -> payAmount += randNum*100;
                 case 2 -> payAmount += randNum*200;
             }
-            //System.out.println("Skødet er købt, betal: " + payAmount + " til spiller: " + this.deed.getOwner() + ", da de ejer " + players[this.deed.getOwner()].getBreweries() + " bryggeri-skøder og du slog: " + randNum);
             player.updateBalance(-payAmount);
             players[this.deed.getOwner()].updateBalance(payAmount);
         }
-        //System.out.println("Fields.Brewery: " + getLabel());
     }
 }

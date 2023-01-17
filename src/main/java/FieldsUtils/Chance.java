@@ -21,7 +21,6 @@ public class Chance extends Fields {
         super(label);
         initChanceDeck();
         shuffleCards();
-        //System.out.println(cardsList.toString());
     }
 
     /**
@@ -94,94 +93,115 @@ public class Chance extends Fields {
         int playerPosition = player.getPosition();
         int houses = player.getTotalAmountOfHouses();
         int hotels = player.getTotalAmountOfHotels();
+        String chanceCardText = "";
         switch(draw) {
             case 0:
                 //"Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel"
                 int cal1 = (houses*500) + (hotels*2000);
                 player.updateBalance(-cal1);
+                chanceCardText = "Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel";
                 break;
             case 1:
                 //"Ejendomsskatten er steget. Ekstraudgifterne er: 800 kr pr hus, 2300 kr pr hotel."
                 int cal2 = (houses*800) + (hotels*2300);
                 player.updateBalance(-cal2);
+                chanceCardText = "Ejendomsskatten er steget. Ekstraudgifterne er: 800 kr pr hus, 2300 kr pr hotel";
                 break;
             case 2:
                 //"De har kørt frem for “fuldt stop”, Betal 1000 kroner i bøde"
                 player.updateBalance(-1000);
+                chanceCardText = "De har kørt frem for “fuldt stop”, Betal 1000 kroner i bøde";
                 break;
             case 3:
                 //"Betal for vognvask og smøring kr 300"
                 player.updateBalance(-300);
+                chanceCardText = "Betal for vognvask og smøring kr 300";
                 break;
             case 4:
                 //"Betal kr 200 for levering af 2 kasser øl"
                 player.updateBalance(-200);
+                chanceCardText = "Betal kr 200 for levering af 2 kasser øl";
                 break;
             case 5:
                 //There exists two of these ChanceCards
                 //"Betal 3000 for reparation af deres vogn"
                 player.updateBalance(-3000);
+                chanceCardText = "Betal 3000 for reparation af deres vogn";
                 break;
             case 6:
                 //"De har købt 4 nye dæk til Deres vogn, betal kr 1000"
                 player.updateBalance(-1000);
+                chanceCardText = "De har købt 4 nye dæk til Deres vogn, betal kr 1000";
                 break;
             case 7:
                 //"De har fået en parkeringsbøde, betal kr 200 i bøde"
                 player.updateBalance(-200);
+                chanceCardText = "De har fået en parkeringsbøde, betal kr 200 i bøde";
                 break;
             case 8:
                 //"Betal deres bilforsikring, kr 1000"
                 player.updateBalance(-1000);
+                chanceCardText = "Betal deres bilforsikring, kr 1000";
                 break;
             case 9:
                 //"De har været udenlands og købt for mange smøger, betal kr 200 i told."
                 player.updateBalance(-200);
+                chanceCardText = "De har været udenlands og købt for mange smøger, betal kr 200 i told";
                 break;
             case 10:
                 //"Tandlægeregning, betal kr 2000."
                 player.updateBalance(-2000);
+                chanceCardText = "Tandlægeregning, betal kr 2000.";
                 break;
             case 11:
                 //There exists two of these ChanceCards
                 //"De har vundet i klasselotteriet. Modtag 500 kr."
                 player.updateBalance(500);
+                chanceCardText = "De har vundet i klasselotteriet. Modtag 500 kr";
                 break;
             case 12:
                 //There exists three of these ChanceCards
                 //"De modtager Deres aktieudbytte. Modtag kr 1000 af banken"
                 player.updateBalance(1000);
+                chanceCardText = "De modtager Deres aktieudbytte. Modtag kr 1000 af banken";
                 break;
             case 13:
                 //"Kommunen har eftergivet et kvartals skat. Hæv i banken 3000 kr."
                 player.updateBalance(3000);
+                chanceCardText = "Kommunen har eftergivet et kvartals skat. Hæv i banken 3000 kr";
                 break;
             case 14:
                 //"De have en række med elleve rigtige i tipning, modtag kl 1000"
                 player.updateBalance(1000);
+                chanceCardText = "De have en række med elleve rigtige i tipning, modtag kl 1000";
                 break;
             case 15:
                 //"Grundet dyrtiden har De fået gageforhøjelse, modtag kr 1000."
                 player.updateBalance(1000);
+                chanceCardText = "Grundet dyrtiden har De fået gageforhøjelse, modtag kr 1000";
                 break;
             case 16:
                 //There exists two of these ChanceCards
                 //"Deres præmieobligation er udtrykket. De modtager 1000 kr af banken."
                 player.updateBalance(1000);
+                chanceCardText = "Deres præmieobligation er udtrykket. De modtager 1000 kr af banken";
                 break;
             case 17:
                 //"De har solg nogle gamle møbler på auktion. Modtag 1000 kr af banken."
                 player.updateBalance(1000);
+                chanceCardText = "De har solg nogle gamle møbler på auktion. Modtag 1000 kr af banken";
                 break;
             case 18:
                 //"Værdien af egen avl fra nyttehaven udgør 200 som de modtager af banken"
                 player.updateBalance(200);
+                chanceCardText = "Værdien af egen avl fra nyttehaven udgør 200 som de modtager af banken";
                 break;
             case 19:
                 //"De modtager “Matador-legatet” på kr 40.000, men kun hvis værdier ikke overstiger 15.000 kr"
                 if (player.getTotalValue() <= 15000) {
                     player.updateBalance(40000);
                 }
+                chanceCardText = "De modtager “Matador-legatet” på kr 40.000, men kun hvis værdier ikke overstiger 15.000 kr";
                 break;
             case 20:
                 //"Det er deres fødselsdag. Modtag af hver medspiller 200 kr."
@@ -194,6 +214,7 @@ public class Chance extends Fields {
                     }
                 }
                 player.updateBalance(200*(players.length-1));
+                chanceCardText = "Det er deres fødselsdag. Modtag af hver medspiller 200 kr";
                 break;
             case 21, 22:
                 //"De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver medspiller 500 kr."
@@ -206,20 +227,24 @@ public class Chance extends Fields {
                     }
                 }
                 player.updateBalance(500*(players.length-1));
+                chanceCardText = "De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver medspiller 500 kr";
                 break;
             case 23:
                 //There exists two of these ChanceCards
                 //"Ryk frem til START"
                 player.setPosition(0);
+                chanceCardText = "Ryk frem til START";
                 break;
             case 24:
                 //"Ryk tre felter frem"
                 player.movePosition(3);
+                chanceCardText = "Ryk tre felter frem";
                 break;
             case 25:
                 //There exists two of these ChanceCards
                 //"Ryk tre felter tilbage"
                 player.movePosition(-3);
+                chanceCardText = "Ryk tre felter tilbage";
                 break;
             case 26:
                 //"Ryk frem til Frederiksberg Allé. Hvis De passere START, indkasser da 4000 kr."
@@ -230,6 +255,7 @@ public class Chance extends Fields {
                 else {
                     player.movePosition(frederiksbergAlle-playerPosition); //If the player is not past Frederiksberg Allé's position, then it just moves the difference between their positions forward
                 }
+                chanceCardText = "Ryk frem til Frederiksberg Allé. Hvis De passere START, indkasser da 4000 kr";
                 break;
             case 27: //Ikke implementeret endnu (købs metoder er ikke 100% done endnu)
                 //There exists two of these ChanceCards
@@ -252,6 +278,7 @@ public class Chance extends Fields {
                 else {
                     player.movePosition(ferriesLocations[index] - playerPosition);
                 }
+                chanceCardText = "Ryk frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til, hvis selskabet ikke ejes af nogen kan de købe det af banken";
                 break;
             case 28:
                 //"Tag med Mols-Linien, flyt brikken frem og hvis De passerer START indkassér da kr 4000."
@@ -262,6 +289,7 @@ public class Chance extends Fields {
                 else {
                     player.movePosition(molsLinien-playerPosition);
                 }
+                chanceCardText = "Tag med Mols-Linien, flyt brikken frem og hvis De passerer START indkassér da kr 4000";
                 break;
             case 29:
                 // "Ryk frem til Grønningen, hvis De passerer start indkasser da kr 4000"
@@ -271,6 +299,7 @@ public class Chance extends Fields {
                 } else {
                     player.movePosition(gronningen-playerPosition);
                 }
+                chanceCardText = "Ryk frem til Grønningen, hvis De passerer start indkasser da kr 4000";
                 break;
             case 30:
                 // "Ryk frem til Vimmelskaftet, hvis de passerer start indkasser da kr 4000"
@@ -280,6 +309,7 @@ public class Chance extends Fields {
                 } else {
                     player.movePosition(vimmelskaftet - playerPosition);
                 }
+                chanceCardText = "Ryk frem til Vimmelskaftet, hvis de passerer start indkasser da kr 4000";
                 break;
             case 31:
                 // "Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000"
@@ -299,6 +329,7 @@ public class Chance extends Fields {
                 else {
                     player.movePosition(ferriesLocations1[index1] - playerPosition);
                 }
+                chanceCardText = "Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000";
                 break;
             case 32:
                 // Ryk frem til Strandvejen. Hvis De passere START, indkasser da 4000 kr.
@@ -309,20 +340,26 @@ public class Chance extends Fields {
                 else {
                     player.movePosition(strandvejen - playerPosition);
                 }
+                chanceCardText = "Ryk frem til Strandvejen. Hvis De passere START, indkasser da 4000 kr";
                 break;
             case 33:
                 // Tag til Rådhuspladsen
                 player.setPosition(39);
+                chanceCardText = "Tag til Rådhuspladsen";
                 break;
             case 34:
                 //I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det.
                 player.addGetOutOfJailCard();
+                chanceCardText = "I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det";
                 break;
             case 35:
                 // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.
                 player.addJailTime();
                 player.setPosition(10);
+                chanceCardText = "Gå i fængsel, De indkasserer ikke 4000 kr for at passere start";
                 break;
         }
+        //Announce what ChanceCard have been drawed in console
+        System.out.println("Chancekort: " + chanceCardText);
     }
 }

@@ -41,7 +41,6 @@ public class Plot extends Properties{
         int payAmount = 0;
         if (!this.deed.getBoughtStatus()) {
             if (player.getBalance() >= deed.getPrice()) {
-                //System.out.println("Du har købt skødet");
                 player.buyDeed(this.buyDeed(findPlayerInArray(player, players)));
             }
         } else if (findPlayerInArray(player, players) == this.deed.getOwner()) {
@@ -69,11 +68,9 @@ public class Plot extends Properties{
                 }
             } else { payAmount = this.deed.getRent0(); }
 
-            //System.out.println("Skødet er købt, betal: " + payAmount + " til spiller: " + this.deed.getOwner());
             player.updateBalance(-payAmount);
             players[this.deed.getOwner()].updateBalance(payAmount);
         }
-        //System.out.println("plot: " + getLabel());
     }
 
     public int getOwner() { return deed.getOwner(); }

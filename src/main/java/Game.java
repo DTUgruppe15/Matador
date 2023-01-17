@@ -1,10 +1,8 @@
 import DieUtils.Die;
 import DieUtils.DieController;
 import FieldsUtils.Fields;
-import FieldsUtils.Tax;
 import PlayerUtils.Player;
 import FieldsUtils.Board;
-import org.apache.commons.lang.ArrayUtils;
 
 public class Game {
     private Fields[] fields;
@@ -50,7 +48,6 @@ public class Game {
             gui.setBalance(i, players[i].getBalance());
         }
 
-
         boolean gameActive = true;
         boolean anyBankruptPlayers = false;
 
@@ -59,30 +56,13 @@ public class Game {
             if(playerTurn >= amountOfPlayers) {
                 playerTurn = 0;
             }
-            System.out.println("ExtraStrokeCounter: " + extraStrokeCounter);
-            if(extraStrokeCounter == 2) {
-                System.out.println("Inside ExtaStrokeCounter = 2");
-                players[playerTurn].addJailTime();
-                players[playerTurn].setPosition(10);
-            }
             //Checking if a player is in prison or not
             if(players[playerTurn].getJailTime() > 0){
                 playerJailChoice();
             }
             if(players[playerTurn].getJailTime() == 0) {
                 playerChoice();
-                int playerPreviousPosition = players[playerTurn].getPosition();
-                players[playerTurn].movePosition(die1.getEyes() + die2.getEyes());
-                int playerNewPosition = players[playerTurn].getPosition();
-
-                //Update player position and dice roll (gui)
-                gui.setDice(die1.getEyes(),die2.getEyes());
-                gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
             }
-
-            System.out.println("Is player in jail?" + players[playerTurn].isPlayerInJail());
-
-
 
             int doStuffStatus = fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
 
@@ -99,8 +79,7 @@ public class Game {
                 if(gui.buyPlotChoice(playerTurn,players[playerTurn].getPosition())){
                     fields[players[playerTurn].getPosition()].buyPlot(players[playerTurn],players);
                 }
-            } else if(doStuffStatus == 2) {
-                //Do something
+            } else if(doStuffStatus == 2) { //Give player tax options
                 playerTaxChoice();
             } else if (doStuffStatus == 3) { //Go to Jail
                 gui.moveCar(playerTurn,30,10);
@@ -116,11 +95,9 @@ public class Game {
                 playerMortgaged();
             }
 
-            //Check if there are any players that have gone bankrupt and stops the gameloop.
             //Controlling player turn
-            if(die.isEqual(die1, die2) && extraStrokeCounter < 2) {
-                //Count the extra stroke
-                extraStrokeCounter++;
+            if(die.isEqual(die1, die2) && extraStrokeCounter < 3) {
+                //Do nothing. Player keeps his turn
             } else {
                 //Give turn to the next player and reset extraStrokeCounter
                 extraStrokeCounter = 0;
@@ -134,11 +111,9 @@ public class Game {
                 }
             }
         }
-        //System.out.println("Spiller " + playerTurn + " er gået fallit");
         endScreen();
     }
 
-    //Player Choices
     /**
      * Prompts user for what they want to do.
      */
@@ -147,20 +122,31 @@ public class Game {
         while(playerChoiceInProgress){
             switch (gui.playerChoice()){
                 case 1: //Roll dice and move.
-                    //die.rollDies(die1,die2);
-                    die1.setEyes(1);
-                    die2.setEyes(1);
+                    die.rollDies(die1,die2);
+                    if(die.isEqual(die1, die2)) {
+                        extraStrokeCounter++;
+                    }
+                    if(extraStrokeCounter > 2) {
+                        players[playerTurn].addJailTime();
+                        players[playerTurn].setPosition(10);
+                    } else {
+                        int playerPreviousPosition = players[playerTurn].getPosition();
+                        players[playerTurn].movePosition(die1.getEyes() + die2.getEyes());
+                        int playerNewPosition = players[playerTurn].getPosition();
+
+                        //Update player position and dice roll (gui)
+                        gui.setDice(die1.getEyes(),die2.getEyes());
+                        gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
+                    }
                     playerChoiceInProgress = false;
                     break;
                 case 2:
                     playerBuyHouse();
                     break;
                 case 3: //Mortgaged deeds.
-                    //System.out.println("pant");
                     playerMortgaged();
                     break;
                 case 4: //Cheat dice to test stuff
-                    //System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
                     playerChoiceInProgress = false;
@@ -208,6 +194,12 @@ public class Game {
                     gui.setDice(die1.getEyes(),die2.getEyes());
                     if (die.isEqual(die1, die2)) {
                         players[playerTurn].releaseFromJail();
+                        int playerPreviousPosition = players[playerTurn].getPosition();
+                        players[playerTurn].movePosition(die1.getEyes() + die2.getEyes());
+                        int playerNewPosition = players[playerTurn].getPosition();
+
+                        //Update player position and dice roll (gui)
+                        gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
                     } else {
                         players[playerTurn].addJailTime();
                     }
@@ -221,7 +213,6 @@ public class Game {
                     players[playerTurn].releaseFromJail();
                     break;
                 case 4: //Roll with cheat dice that the player chooses
-                    //System.out.println("Cheating");
                     die1.setEyes(gui.getUserInt(1));
                     die2.setEyes(gui.getUserInt(2));
                     if (die.isEqual(die1, die2)) {
@@ -272,7 +263,6 @@ public class Game {
         String[] player1Deeds = players[playerTurn].getOwnedDeeds();
         String[] player2Deeds = players[playerToTrade].getOwnedDeeds();
 
-
         String choosenProperty1 = gui.playerTrade(player1Deeds);
         String choosenProperty2 = gui.playerTrade(player2Deeds);
 
@@ -281,11 +271,8 @@ public class Game {
         if(gui.playerAcceptTrade()){
             players[playerTurn].tradeDeed(choosenProperty1,choosenProperty2,players[playerToTrade],money,playerTurn,playerToTrade);
 
-
-
             gui.buyPlot(playerTurn,players[playerTurn].getDeedPosition(choosenProperty2));
             gui.buyPlot(playerToTrade,players[playerToTrade].getDeedPosition(choosenProperty1));
-
 
             for (int i = 0; i<players.length; i++) {
                 gui.setBalance(i, players[i].getBalance());
