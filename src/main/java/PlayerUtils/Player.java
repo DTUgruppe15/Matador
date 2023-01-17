@@ -286,4 +286,33 @@ public class Player {
         }
         return total;
     }
+
+    /**
+     * removes a deed owned by the player.
+     *
+     * @param field the deed to mortgage
+     */
+    public void tradeDeed(String field1,String field2, Player playerToTrade, int money, int player1, int player2) {
+
+        int index1 = ArrayUtils.indexOf(getOwnedDeeds(),field1);
+        int index2 = ArrayUtils.indexOf(playerToTrade.getOwnedDeeds(),field2);
+
+        Deed deed1 = this.playerAccount.removeDeeds(index1);
+        this.playerAccount.updateBalance(-money);
+
+        Deed deed2 = playerToTrade.playerAccount.removeDeeds(index2);
+        playerToTrade.playerAccount.updateBalance(money);
+
+        this.playerAccount.addDeeds(deed2);
+        playerToTrade.playerAccount.addDeeds(deed1);
+
+        deed1.setOwner(player2);
+        deed2.setOwner(player1);
+    }
+
+    public int getDeedPosition(String field){
+        int index = ArrayUtils.indexOf(getOwnedDeeds(),field);
+
+        return playerAccount.getDeedPosition(index);
+    }
 }

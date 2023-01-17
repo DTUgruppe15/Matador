@@ -62,7 +62,7 @@ public class Board {
         Deed deed;
 
         for (int i = 0; i < fields.length; i++) {
-            deed = new Deed(csv.getName(i),csv.getPrice(i),csv.getHousePrice(i), csv.getRent0(i),csv.getRent1(i),csv.getRent2(i),csv.getRent3(i),csv.getRent4(i),csv.getRent5(i),csv.getColorId(i));
+            deed = new Deed(csv.getName(i),csv.getPrice(i),csv.getHousePrice(i), csv.getRent0(i),csv.getRent1(i),csv.getRent2(i),csv.getRent3(i),csv.getRent4(i),csv.getRent5(i),csv.getColorId(i), csv.getPosition(i));
 
             switch(csv.getType(i)){
                 case " start":

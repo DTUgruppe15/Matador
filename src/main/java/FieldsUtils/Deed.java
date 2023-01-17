@@ -12,6 +12,12 @@ public class Deed{
     private int rent5;
     private int colorId;
 
+    public int getPosition() {
+        return position;
+    }
+
+    private int position;
+
     public int getHousesAmount() { return housesAmount; }
     private int housesAmount;
     private String location;
@@ -38,9 +44,11 @@ public class Deed{
      * @param rent3 The amount of rent with 3 houses.
      * @param rent4 The amount of rent with 4 houses.
      * @param rent5 The amount of rent with 1 hotel.
+     * @param colorId
+     * @param position The field position
      */
 
-    public Deed(String location, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5, int colorId) {
+    public Deed(String location, int price, int housePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5, int colorId, int position) {
         this.location = location;
         this.price = price;
         this.housePrice = housePrice;
@@ -54,6 +62,7 @@ public class Deed{
         this.colorId = colorId;
         this.bought = false;
         this.isMortgaged = false;
+        this.position = position;
     }
 
     /**
