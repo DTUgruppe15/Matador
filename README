@@ -1,0 +1,9 @@
+BYGGER/KØRER PROGRAMMET:
+1. Du åbner mappen med IntelliJ.
+2. Derefter går man ind i src -> main -> java -> Game.
+3. Derinde klikker du Run 'Game.java' eller klikker Shift+F10
+
+TESTER PROGRAMMET:
+1. Du åbner mappen med IntelliJ.
+2. Derefter går man ind i test og højreklikker på 'java'.
+3. Du klikker på "Run 'All Tests'"
