@@ -21,6 +21,7 @@ public class Chance extends Fields {
         super(label);
         initChanceDeck();
         shuffleCards();
+        System.out.println(cardsList.toString());
     }
 
     /**
@@ -70,13 +71,11 @@ public class Chance extends Fields {
         int cardToDraw = cardsList.remove(0);
         addToDeck(cardToDraw);
         if(counter >= 45) {
-            System.out.println("Inside Shuffle");
             shuffleCards();
             counter = 0;
         }
         else {
             counter++;
-            System.out.println("Counter: " + counter);
         }
         drawCard(player, players, cardToDraw);
         return 0;
@@ -89,7 +88,7 @@ public class Chance extends Fields {
      * @param players A list of players
      * @param draw The drawn card
      */
-    public void drawCard(Player player, Player[] players, int draw){
+    public void drawCard(Player player, Player[] players, int draw) {
         int temp = findPlayerInArray(player, players);
         int playerPosition = player.getPosition();
         int houses = player.getTotalAmountOfHouses();

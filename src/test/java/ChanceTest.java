@@ -66,6 +66,18 @@ class ChanceTest {
     }
 
     @Test
+    @DisplayName("Pay 500 per house and 2000 per hotel, with no house, no hotel and zero plots")
+    void drawCard22222() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
+        Chance chance = new Chance("ChanceField");
+
+        chance.drawCard(player, players, 0);
+
+        assertEquals(30000, player.getBalance());
+    }
+
+    @Test
     @DisplayName("Pay 500 per house and 2000 per hotel, with 1 house and no hotel")
     void drawCard0_2(){
         Player[] players = {new Player(), new Player(), new Player(), new Player()};
@@ -184,6 +196,18 @@ class ChanceTest {
         chance.drawCard(player, players, 1);
 
         assertEquals(30000-2000-2000-2400, player.getBalance());
+    }
+
+    @Test
+    @DisplayName("Pay 800 per house and 2300 per hotel, with no house, no hotel and zero plots")
+    void drawCard222222() {
+        Player[] players = {new Player(), new Player(), new Player(), new Player()};
+        Player player = players[0];
+        Chance chance = new Chance("ChanceField");
+
+        chance.drawCard(player, players, 1);
+
+        assertEquals(30000, player.getBalance());
     }
 
     @Test
