@@ -289,8 +289,8 @@ public class Chance extends Fields {
                 for(int i = 0; i < ferriesLocations1.length; i++) {
                     int calculation = ferriesLocations1[i] - playerPosition;
                     if(calculation < lowest1 & !(calculation < 0)) {
-                        lowest = calculation;
-                        index = i;
+                        lowest1 = calculation;
+                        index1 = i;
                     }
                 }
                 if(playerPosition > ferriesLocations1[index1]) {

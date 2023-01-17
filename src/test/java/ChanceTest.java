@@ -806,26 +806,6 @@ class ChanceTest {
         );
     }
 
-    /*
-    @Test //Need implementing of ferry first
-    @DisplayName("Move to field nearest ferry and pay owner dobbelt, doesn't have owner")
-    void drawCard27_1(){
-        Player[] players = {new Player(), new Player(), new Player(), new Player()};
-        Player player = players[0];
-        Chance chance = new Chance();
-
-        player.setPosition(2);
-
-        int target = 11;
-
-        chance.drawCard(player, players, 27);
-
-        int result = player.getPosition();
-
-        assertEquals(target,result);
-    }
-    */
-
     @Test
     @DisplayName("Move to field 15, doesn't pass go")
     void drawCard28_1(){
