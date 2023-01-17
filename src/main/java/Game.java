@@ -267,10 +267,10 @@ public class Game {
         String[] player2Deeds = players[playerToTrade].getOwnedDeeds();
 
 
-        String choosenProperty1 = gui.playerMortgaged(player1Deeds);
-        String choosenProperty2 = gui.playerMortgaged(player2Deeds);
+        String choosenProperty1 = gui.playerTrade(player1Deeds);
+        String choosenProperty2 = gui.playerTrade(player2Deeds);
 
-        int money = gui.choosePlayerToTrade();
+        int money = gui.chooseAmountOfMoneyToTrade();
 
         if(gui.playerAcceptTrade()){
             players[playerTurn].tradeDeed(choosenProperty1,choosenProperty2,players[playerToTrade],money,playerTurn,playerToTrade);
