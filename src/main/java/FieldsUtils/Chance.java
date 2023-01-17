@@ -69,6 +69,7 @@ public class Chance extends Fields {
     @Override
     public int doStuff(Player player, Player[] players) {
         int cardToDraw = cardsList.remove(0);
+        System.out.println("Chancekort: " + cardToDraw);
         addToDeck(cardToDraw);
         if(counter >= 45) {
             shuffleCards();
