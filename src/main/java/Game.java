@@ -65,6 +65,13 @@ public class Game {
             }
             if(players[playerTurn].getJailTime() == 0) {
                 playerChoice();
+                int playerPreviousPosition = players[playerTurn].getPosition();
+                players[playerTurn].movePosition(die1.getEyes() + die2.getEyes());
+                int playerNewPosition = players[playerTurn].getPosition();
+
+                //Update player position and dice roll (gui)
+                gui.setDice(die1.getEyes(),die2.getEyes());
+                gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
             }
             if(extraStrokeCounter == 2) {
                 //System.out.println("Inside ExtaStrokeCounter = 2");
@@ -73,9 +80,7 @@ public class Game {
             }
 
 
-            int playerPreviousPosition = players[playerTurn].getPosition();
-            players[playerTurn].movePosition(die1.getEyes() + die2.getEyes());
-            int playerNewPosition = players[playerTurn].getPosition();
+
 
             int doStuffStatus = fields[players[playerTurn].getPosition()].doStuff(players[playerTurn],players);
 
@@ -86,9 +91,7 @@ public class Game {
             }
             //System.out.println(playerTurn + " " + die1.getEyes() + " " + die2.getEyes() + " " + players[playerTurn].getBalance());
 
-            //Update player position and dice roll (gui)
-            gui.setDice(die1.getEyes(),die2.getEyes());
-            gui.moveCar(playerTurn,playerPreviousPosition,playerNewPosition);
+
 
             //If doStuff returns 1, buy the plot
             if(doStuffStatus == 1) {
@@ -133,7 +136,7 @@ public class Game {
             }
         }
         //System.out.println("Spiller " + playerTurn + " er gået fallit");
-        gui.sendMessage("Spiller " + playerTurn + " er gået fallit");
+        endScreen();
     }
 
     //Player Choices
@@ -201,6 +204,7 @@ public class Game {
             switch (gui.playerJailChoice(players[playerTurn].haveGetOutOfJailCard())) {
                 case 1: //Roll dice. If 2 of the same they get released
                     die.rollDies(die1, die2);
+                    gui.setDice(die1.getEyes(),die2.getEyes());
                     if (die.isEqual(die1, die2)) {
                         players[playerTurn].releaseFromJail();
                     } else {
@@ -286,5 +290,20 @@ public class Game {
                 gui.setBalance(i, players[i].getBalance());
             }
         }
+    }
+
+    public void endScreen(){
+        gui.sendMessage("Spiller " + playerTurn + " er gået fallit");
+
+        int winner = 0;
+        int winnerTotalValue = 0;
+
+        for (int i = 0; i<players.length; i++) {
+            if (players[i].getTotalValue() > winnerTotalValue) {
+                winner = i;
+                winnerTotalValue = players[i].getTotalValue();
+            }
+        }
+        gui.sendMessage("Spiller " + (winner+1) + " har vundet med den totale værdi " + winnerTotalValue);
     }
 }
