@@ -448,4 +448,19 @@ public class UpdateGUI {
     public boolean playerAcceptTrade(){
         return gui.getUserLeftButtonPressed("Vil spilleren acceptere byttehandlen","Ja","Nej");
     }
+
+    /**
+     * Prompts the user on which deed they want to trade.
+     *
+     * @param temp All the nemes on deeds that can be mortgaged.
+     */
+    public String playerTrade(String[] temp){
+        String chosenElement = gui.getUserSelection("Vælg grund at bytte",temp);
+
+        return chosenElement;
+    }
+
+    public int chooseAmountOfMoneyToTrade(){
+        return gui.getUserInteger("Vil du give ekstra penge?");
+    }
 }
